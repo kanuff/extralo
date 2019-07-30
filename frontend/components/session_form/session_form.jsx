@@ -12,12 +12,13 @@ export default class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  
+
 
   handleSubmit(e){
     e.preventDefault();
+    const user = Object.assign({}, this.state)
     this.props.formAction(this.state).then( () => {
-      return this.setState({email: "", password:""})
+      return this.setState(user)
     });
   }
 
