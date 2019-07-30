@@ -1,4 +1,5 @@
-class Api::SesssionsController < ApplicationController
+class Api::SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def create
     @user = User.find_by_credentials(
@@ -7,7 +8,7 @@ class Api::SesssionsController < ApplicationController
     ) 
     if @user
       login!(@user)
-      render :show #change to partial TASK FOR POST LUNCH
+      render :show
     else
       render json: ["Username/password do not match"], status: 422
     end
