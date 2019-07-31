@@ -1,15 +1,54 @@
 
 
 
+.splash-blurb-background {
+  background-image: linear-gradient(rgb(0, 121, 191), rgb(0, 121, 191), rgb(0, 87, 181));
+  /* width: auto; */
+}
+
 /* container for the whole blue top of the splashpage */
 .splash-blurb {
-  background-image: linear-gradient(rgb(0, 121, 191), rgb(0, 121, 191), rgb(0, 87, 181));
   padding: 100px 4%;
   display: flex;
   color: white;
   justify-content: space-around;
+  width: 1200px;
+  margin: 0 auto;
 }
 
+.splash-content{
+  flex-direction: column;
+  width: 1110px;
+  margin: 0 auto;
+}
+
+.splash-content > * {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid black; */
+}
+
+.splash-content > * > .right-content, .left-content {
+  /* border: 1px solid black; */
+  margin: 5% auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.right-content > .splash-content-text{
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.left-content > .splash-content-text{
+  padding-right: 45px;
+}
+
+.splash-content > * > * > img {
+  width: 550px;
+}
 
 .splash-blurb-text {
   display: flex;
@@ -40,13 +79,45 @@
   font-weight: bolder;
   letter-spacing: 0.12em;
   text-align: center;
+  color: white;
 }
 
 .splash-content > * {
-  height: 500px;
+  /* height: 500px; */
 }
 
-
 .blurb-img > img {
+  margin-top: 8%;
   width: 600px;
+}
+
+.splash-content-text {
+  /* border: 1px red dashed; */
+  line-height: 175%;
+}
+
+.splash-content-text > * {
+  /* border: 1px orangered dashed; */
+}
+
+.large-text {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.med-text {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.splash-content-text > .large-text {
+  padding: 5px;
+}
+
+.splash-content-text > .med-text {
+  padding: 5px;
+}
+
+.bottom-img {
+  width: 100%;
 }
