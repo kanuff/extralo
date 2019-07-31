@@ -38,6 +38,17 @@ export const login = (user) => dispatch => {
                        )
 }
 
+export const demoLogin = () => dispatch => {
+  const demoUser = {
+    email: "hunter12@gmail.com",
+    password: "hunter12"
+  }
+  return SessionAPIUtil.login(demoUser)
+    .then(user => dispatch(receiveCurrentUser(user)),
+      errors => dispatch(receiveErrors(errors))
+    )
+}
+
 export const signup = (user) => dispatch => {
   return SessionAPIUtil.signup(user)
                        .then( user => dispatch(receiveCurrentUser(user)),

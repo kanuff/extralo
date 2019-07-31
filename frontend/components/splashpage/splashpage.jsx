@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 export default class Splashpage extends React.Component {
-  
-
-
   render(){
     return(
       <section className={"splashpage"}>
@@ -20,6 +17,9 @@ export default class Splashpage extends React.Component {
               </div>
               <div className={"blurb-signup"}>
                 <Link to={"/signup"}>Sign Up - It's Free!</Link>
+              </div>
+              <div className={"blurb-demo"}>
+                <button onClick={this.props.demoLogin}>Take a tour!</button>
               </div>
             </div>
             <div className={"blurb-img"}>
@@ -81,13 +81,11 @@ export default class Splashpage extends React.Component {
               </div>
             </div>
           </div>
-          {/* <div className={"splash-content-5"}>
-          </div> */}
         </section>
         <img 
-        className={"bottom-img"} 
+          className={"bottom-img"} 
           src="https://cdn.pixabay.com/photo/2018/03/28/21/49/mountains-3270710_960_720.png"
-        alt="Whats App interface"> 
+          alt="Mountain silhouettes"> 
         </img>
       </section>
     )

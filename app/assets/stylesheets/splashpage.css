@@ -82,6 +82,23 @@
   color: white;
 }
 
+.blurb-demo > button {
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  margin: 10% auto auto 0;
+  background-color: rgb(85, 196, 85);
+  border-radius: 5px;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.blurb-demo > button:focus {
+  outline: none;
+}
+
 .splash-content > * {
   /* height: 500px; */
 }
