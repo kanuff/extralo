@@ -1,11 +1,14 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
     height: 72px;
     background-color: rgb(0, 121, 191);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .navbar > * {
@@ -21,7 +24,7 @@ a {
 .float-right > a {
     margin-left: 12px;
     font-size: 16px;
-    font-weight: 900;
+    font-weight: bolder;
 }
 
 .float-right > button {
@@ -30,6 +33,7 @@ a {
     margin-right: 15px;
     background-color: inherit;
     font-size: 16px;
+    font-weight: bolder;
     color: white;
 }
 
@@ -46,7 +50,12 @@ a {
 
 .float-left {
     margin-top: 10px;
+    margin-left: 2%;
     font-size: 30px;
+}
+
+.float-right {
+    margin-right: 4%;
 }
 
 .signup-form-button {

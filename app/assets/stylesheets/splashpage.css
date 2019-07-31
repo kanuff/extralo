@@ -1,0 +1,49 @@
+
+/* container for the whole blue top of the splashpage */
+.splash-blurb {
+  background-image: linear-gradient(rgb(0, 121, 191), rgb(0, 121, 191), rgb(0, 87, 181));
+  padding: 100px 4%;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+}
+
+
+.splash-blurb-text {
+  display: flex;
+  flex-direction: column;
+  width: 33.333%;
+}
+
+.blurb-big-text {
+  line-height: 120%;
+  padding-top: 10%;
+  font-size: 45px;
+  font-weight: bolder;
+}
+
+.blurb-small-text {
+  padding-top: 5%;
+  font-size: 25px;
+  letter-spacing: 0.09em;
+  line-height: 150%;
+}
+
+.blurb-signup {
+  padding: 20px 40px;
+  margin: 10% auto auto 0;
+  background-color: rgb(85, 196, 85);
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+.splash-content > * {
+  height: 500px;
+}
+
+.blurb-image {
+  padding: 150px;
+}

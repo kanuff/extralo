@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     line-height: 220%;
+    padding-top: 100px;
 }
 
 .form-title {

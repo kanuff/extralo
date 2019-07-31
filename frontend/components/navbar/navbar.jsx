@@ -35,11 +35,6 @@ export default class Navbar extends React.Component{
         </section>
       )
     }
-
-    // return(
-      
-    //   //Should contain the logo and (Login + Signup buttons) or a greeting depending on whether the user is logged in
-    // )
   }
 
 }
