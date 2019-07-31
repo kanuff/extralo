@@ -22,8 +22,7 @@ export default class Splashpage extends React.Component {
             </div>
           </div>
           <div className={"blurb-img"}>
-            <img></img>
-            Image will eventually go here
+            <img src={"/splash-calendar.png"} alt="Calendar graphic"></img>
           </div>
         </section>
         <section className={"splash-content"}>
