@@ -30,10 +30,7 @@ export default class SessionForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, this.state)
-    this.props.formAction(this.state).then( () => {
-      return this.setState(user)
-    });
+    this.props.formAction(this.state);
   }
 
   update(field){
