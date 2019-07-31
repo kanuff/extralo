@@ -10,7 +10,8 @@ const msp = state => {
     submitText: "Create New Account",
     welcomeMessage: "Create an Extralo account",
     otherForm: '/login',
-    otherFormButtonText: 'or sign into your account'
+    otherFormButtonText: 'or sign into your account',
+    errors: state.errors
   }
 }
 

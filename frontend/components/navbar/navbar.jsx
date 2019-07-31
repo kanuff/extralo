@@ -20,14 +20,13 @@ export default class Navbar extends React.Component{
             <button onClick={this.props.logout}>Logout</button>
           </div>
         </section>
-
       )
 
     } else {
       return (
         <section className={"navbar"}>
           <div className={"float-left"}>
-            <Link to={"/"}><h1>Extralo!</h1></Link>
+            <Link to={"/"}><h1>Extralo</h1></Link>
           </div>
           <div className={"float-right"}>
             <Link className={'login-form-button'} to={"/login"}>Log In</Link>

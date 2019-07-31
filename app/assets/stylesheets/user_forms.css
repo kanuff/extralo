@@ -47,3 +47,23 @@
     background-color: green;
     color: white;
 }
+
+.errors {
+    margin-bottom: 25px;
+    line-height: 220%;
+    /* margin: 0 auto; */
+    /* display: inline-block;
+    flex-direction: column; */
+}
+
+.errors > li {
+    color: white;
+    background-color: rgba(218, 47, 47, 0.904);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 1px 7px;
+    /* margin: 10px 0px; */
+    box-sizing: border-box;
+
+}
+
