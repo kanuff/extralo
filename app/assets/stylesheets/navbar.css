@@ -65,3 +65,12 @@ a {
     color:  rgb(0, 121, 191);
 }
 
+#demo-btn {
+    color: white;
+    margin-right: 0;
+    background-color: rgb(85, 196, 85);
+    border-radius: 4px;
+    padding: 8px 10px 8px 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}

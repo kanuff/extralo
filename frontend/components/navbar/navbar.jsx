@@ -29,6 +29,7 @@ export default class Navbar extends React.Component{
             <Link to={"/"}><h1>Extralo</h1></Link>
           </div>
           <div className={"float-right"}>
+            <button id={'demo-btn'} onClick={this.props.demoLogin}>Demo!</button>
             <Link className={'login-form-button'} to={"/login"}>Log In</Link>
             <Link className={'signup-form-button'} to={"/signup"}>Sign Up</Link>
           </ div>

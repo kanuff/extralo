@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Navbar from './navbar';
-import { logout } from '../../actions/session_actions'
+import { 
+  demoLogin,
+  logout } from '../../actions/session_actions'
 
 const msp = state => {
   return {
@@ -12,6 +14,7 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     logout: () => dispatch(logout()),
+    demoLogin: () => dispatch(demoLogin()),
   }
 }
 
