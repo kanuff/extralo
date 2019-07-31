@@ -23,7 +23,7 @@ a {
 
 .float-right > a {
     margin-left: 12px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bolder;
 }
 
@@ -55,7 +55,8 @@ a {
 }
 
 .float-right {
-    margin-right: 4%;
+    margin-right: 3%;
+    margin-top: 10px;
 }
 
 .signup-form-button {
@@ -70,7 +71,7 @@ a {
     margin-right: 0;
     background-color: rgb(85, 196, 85);
     border-radius: 4px;
-    padding: 8px 10px 8px 12px;
+    padding: 9px 10px 9px 12px;
     font-weight: 400;
     letter-spacing: 0.08em;
 }
