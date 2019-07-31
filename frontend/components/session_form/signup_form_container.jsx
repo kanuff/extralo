@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signup } from '../../actions/session_actions'
+import { 
+  signup,
+  clearErrors
+ } from '../../actions/session_actions'
 
 
 const msp = state => {
@@ -11,13 +14,16 @@ const msp = state => {
     welcomeMessage: "Create an Extralo account",
     otherForm: '/login',
     otherFormButtonText: 'or sign into your account',
-    errors: state.errors
+    errors: state.errors,
+    nameFieldDisplay: "show",
   }
 }
 
 const mdp = dispatch => {
   return {
-    formAction: user => dispatch(signup(user))
+    formAction: user => dispatch(signup(user)),
+    clearErrors: () => dispatch(clearErrors())
+
   }
 }
 

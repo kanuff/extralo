@@ -13,10 +13,10 @@ export default class Navbar extends React.Component{
       return (
         <section className={"navbar"}>
           <div className={"float-left"}>
-            <h1>Extralo!</h1>
+            <h1>Extralo</h1>
           </div>
           <div className={"float-right"}>
-            Hello, {this.props.currentUser.email}
+            Hello, {this.props.currentUser.name}
             <button onClick={this.props.logout}>Logout</button>
           </div>
         </section>

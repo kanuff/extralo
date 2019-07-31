@@ -6,10 +6,15 @@ export default class SessionForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      name: "",
       email: "",
       password: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors()
   }
 
 
@@ -51,6 +56,9 @@ export default class SessionForm extends React.Component {
           <Link to={this.props.otherForm}>{this.props.otherFormButtonText}</Link>
           <form id={this.props.formType} onSubmit={this.handleSubmit}>
 
+            <label id={this.props.nameFieldDisplay}>Name</label>
+              <input id={this.props.nameFieldDisplay} type="text" value={this.state.name} onChange={this.update("name")} />
+              
             <label>Email</label>
               <input type="text" value={this.state.email} onChange={this.update("email")}/>
 

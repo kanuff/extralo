@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { login } from '../../actions/session_actions'
+import { 
+  login,
+  clearErrors
+ } from '../../actions/session_actions'
 
 
 const msp = state => {
@@ -12,12 +15,14 @@ const msp = state => {
     otherForm: '/signup',
     otherFormButtonText: 'or create an account',
     errors: state.errors,
+    nameFieldDisplay: "hidden",
   }
 }
 
 const mdp = dispatch => {
   return {
-    formAction: user => dispatch(login(user))
+    formAction: user => dispatch(login(user)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
