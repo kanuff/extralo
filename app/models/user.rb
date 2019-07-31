@@ -18,12 +18,19 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_many :memberships,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: :BoardMembership
+
   has_many :boards,
+  through: :memberships,
+  source: :board
+
+  has_many :owned_boards,
   primary_key: :id,
   foreign_key: :creator_id,
   class_name: :Board
-
-
 
 
   def self.find_by_credentials(email, password)
