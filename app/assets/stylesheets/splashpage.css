@@ -1,11 +1,13 @@
 
+
+
 /* container for the whole blue top of the splashpage */
 .splash-blurb {
   background-image: linear-gradient(rgb(0, 121, 191), rgb(0, 121, 191), rgb(0, 87, 181));
   padding: 100px 4%;
   display: flex;
   color: white;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 
@@ -42,4 +44,9 @@
 
 .splash-content > * {
   height: 500px;
+}
+
+
+.blurb-img > img {
+  width: 600px;
 }

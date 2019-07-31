@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Calendar from './splashpage-assets/calendar';
 
 
 export default class Splashpage extends React.Component {
@@ -22,7 +23,7 @@ export default class Splashpage extends React.Component {
             </div>
           </div>
           <div className={"blurb-img"}>
-            <img src={"/splash-calendar.png"} alt="Calendar graphic"></img>
+            <img src="https://cdn.pixabay.com/photo/2016/10/23/17/06/calendar-1763587_960_720.png" alt="Calendar graphic"></img>
           </div>
         </section>
         <section className={"splash-content"}>
