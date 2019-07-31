@@ -27,7 +27,7 @@ export default class Navbar extends React.Component{
       return (
         <section className={"navbar"}>
           <div className={"float-left"}>
-            <h1>Extralo!</h1>
+            <Link to={"/"}><h1>Extralo!</h1></Link>
           </div>
           <div className={"float-right"}>
             <Link className={'login-form-button'} to={"/login"}>Log In</Link>

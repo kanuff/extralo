@@ -33,18 +33,17 @@ export default class SessionForm extends React.Component {
       return <Redirect to="/" />
     }
     return(
-      <>
+      <section className={"user-form"}>
+        <h1 className={"form-title"}>{this.props.welcomeMessage}</h1>
         <Link to={this.props.otherForm}>{this.props.otherFormButtonText}</Link>
         <form id={this.props.formType} onSubmit={this.handleSubmit}>
-          <label>Email
-            <input type="text" value={this.state.email} onChange={this.update("email")}/>
-          </label>
-          <label>Password
-            <input type="password" value={this.state.password} onChange={this.update("password")}/>
-          </label>
+          <label>Email</label>
+          <input type="text" value={this.state.email} onChange={this.update("email")}/>
+          <label>Password</label>
+          <input type="password" value={this.state.password} onChange={this.update("password")}/>
           <input type="submit" value={this.props.submitText}/>
         </form>
-      </>
+      </section>
     )
   }
 

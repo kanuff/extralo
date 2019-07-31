@@ -1,0 +1,49 @@
+.user-form {
+    width: 400px;
+    margin: 35px auto;
+    /* background-color: lightgrey; */
+    display: flex;
+    flex-direction: column;
+    line-height: 220%;
+}
+
+.form-title {
+    /* background-color: grey;  */
+    width: 100%;
+    font-size: 31.8px;
+}
+
+.user-form > form {
+    display: flex;
+    flex-direction: column;
+    /* margin: 20px auto; */
+}
+
+.user-form > a {
+    text-decoration: underline;
+    color: blue;
+}
+
+.user-form > * > label {
+    /* color: grey; */
+}
+
+.user-form > * > input {
+    /* width: 100%; */
+    background-color: rgb(238, 238, 238);
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+.user-form > * > input[type=submit] {
+    margin-top: 35px;
+    color: grey;
+}
+
+.user-form > * > input[type=submit]:hover {
+    margin-top: 35px;
+    background-color: green;
+    color: white;
+}

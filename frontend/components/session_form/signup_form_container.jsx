@@ -8,6 +8,7 @@ const msp = state => {
     currentUser: state.session.id,
     formType: "signup-form",
     submitText: "Create New Account",
+    welcomeMessage: "Create an Extralo account",
     otherForm: '/login',
     otherFormButtonText: 'or sign into your account'
   }
