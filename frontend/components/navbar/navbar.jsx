@@ -11,19 +11,29 @@ export default class Navbar extends React.Component{
   render(){
     if(this.props.currentUser){
       return (
-        <div id={"navbar"}>
-          Hello, {this.props.currentUser.email}
-          <button onClick={this.props.logout}>Logout</button>
-        </div>
+        <section className={"navbar"}>
+          <div className={"float-left"}>
+            <h1>Extralo!</h1>
+          </div>
+          <div className={"float-right"}>
+            Hello, {this.props.currentUser.email}
+            <button onClick={this.props.logout}>Logout</button>
+          </div>
+        </section>
 
       )
 
     } else {
       return (
-        <div id={"navbar"}>
-          <Link to={"/login"}>Login</Link>
-          <Link to={"/signup"}>Sign Up</Link>
-        </ div>
+        <section className={"navbar"}>
+          <div className={"float-left"}>
+            <h1>Extralo!</h1>
+          </div>
+          <div className={"float-right"}>
+            <Link className={'login-form-button'} to={"/login"}>Log In</Link>
+            <Link className={'signup-form-button'} to={"/signup"}>Sign Up</Link>
+          </ div>
+        </section>
       )
     }
 
