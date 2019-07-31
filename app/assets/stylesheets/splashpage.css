@@ -18,8 +18,9 @@
 
 .splash-content{
   flex-direction: column;
-  width: 1110px;
+  width: 1200px;
   margin: 0 auto;
+  padding: 0px 100px;
 }
 
 .splash-content > * {
