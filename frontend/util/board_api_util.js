@@ -1,12 +1,11 @@
 
-
-
 export const indexBoards = () => {
   return $.ajax({
     method: "GET",
     url: "api/boards"
   })
 }
+
 export const createBoard = (board) => {
   return $.ajax({
     method: "POST",
