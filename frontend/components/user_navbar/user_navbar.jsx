@@ -49,7 +49,14 @@ export default class UserNavbar extends React.Component{
         <div className={"float-left"}>
           <Link to="/" className={"home-btn"}><i className="fas fa-home"></i></Link>
           <button className={"boards-btn"}><i className="fas fa-list"></i>  Boards</button>
-          <input value={this.state.searchbar} onBlur={this.clearSearch} onChange={this.update("searchbar")} className={"searchbar"} type="text"/>
+          <input 
+            value={this.state.searchbar} 
+            onBlur={this.clearSearch} 
+            onChange={this.update("searchbar")}
+            onFocus={this.props.closeModal} 
+            className={"searchbar"} 
+            type="text"
+          />
         </div>
         <div className={"float-middle"}>
           <Link to="/" className={"logo"}>Extralo</Link>

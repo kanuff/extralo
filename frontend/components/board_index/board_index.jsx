@@ -7,6 +7,4 @@ class BoardIndex extends React.Component{
   }
 
 
-  //on component did mount,fetch all the boards that belong to the logged in user
-
 }
