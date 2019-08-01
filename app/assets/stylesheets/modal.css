@@ -10,4 +10,5 @@
 
 .transparent {
   background: none;
+  z-index: -1;
 }
