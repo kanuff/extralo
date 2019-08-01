@@ -37,17 +37,6 @@ a {
     color: white;
 }
 
-.float-right > button:hover {
-    border: none;
-    margin-left: 12px;
-    margin-right: 15px;
-    background-color: rgb(1, 101, 158);
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-}
-
 .float-left {
     margin-top: 10px;
     margin-left: 2%;

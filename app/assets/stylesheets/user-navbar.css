@@ -1,8 +1,8 @@
 .user-navbar {
   display: flex;
   background-color: #026aa7;
-  border: 1px red solid;
   justify-content: space-between;
+  padding-bottom: 2px;
 }
 
 .user-navbar > * {
@@ -10,7 +10,7 @@
   justify-content: space-evenly;
   padding: 2px;
   box-sizing: content-box;
-  border: 1px orange dashed;
+  margin: auto 0;
 }
 
 
@@ -25,17 +25,121 @@
   height: 30px;
 }
 
+.home-btn {
+  background-color: hsla(0,0%,100%,.3);
+  border-radius: 4px;
+  font-size: 18px;
+  text-align: center;
+  margin: auto; 
+  padding: 7px;
+  color: white;
+}
+
+.logo {
+  font-size: 23px;
+  text-align: center;
+  margin: auto; 
+  padding: 1px;
+  padding-top: 3px;
+  color: hsla(0,0%,100%,.3);
+}
+
+.logo:hover {
+  color: white;
+}
+
+.home-btn:hover{
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,.2);
+}
+
+.boards-btn {
+  background-color: hsla(0,0%,100%,.3);
+  border: none;
+  color: white;
+  margin-left: 3px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.boards-btn:focus {
+  outline: none;
+}
+
+button, .home-btn{
+  -webkit-transition: background-color 0.1s;
+  -moz-transition:    background-color 0.1s;
+  -ms-transition:     background-color 0.1s;
+  -o-transition:      background-color 0.1s;
+  transition:         background-color 0.1s;
+}
+
+.boards-btn:hover{
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,.2);
+}
+
+.searchbar {
+  border: none;
+  background-color: hsla(0,0%,100%,.3);
+  margin-left: 3px;
+  border-radius: 4px;
+  width: 180px;
+  padding: 4px;
+  font-size: 14px;
+}
+
+.searchbar:focus {
+  background-color: white;
+  outline: none;
+}
+
+.float-middle{
+  font-size: 20px;
+  color: hsla(0,0%,100%,.3);
+  height: inherit;
+}
+
+
 .float-right {
   margin-right: 3px;
   margin-top: 3px;
 }
 
-.home-btn {
+.user-navbar > .float-right > button {
   background-color: hsla(0,0%,100%,.3);
   border-radius: 4px;
-  font-size: 25px;
+  font-size: 18px;
   text-align: center;
-  margin: auto; 
-  padding: 3px;
+  margin: auto 2px; 
+  padding: 5.5px;
   color: white;
+  width: 33px;
+}
+
+.float-right > button:hover {
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,.2);
+}
+
+.float-right > button:focus {
+  outline: none;
+}
+
+
+#user-options-btn{
+  color: black;
+  background-color: lightcyan;
+  border-radius: 50%;
+  height: 33px;
+  font-size: 14px;
+}
+
+#user-options-btn:hover{
+  background-color: lightcyan;
+}
+
+.dropdown-menu {
+  display: none;
 }
