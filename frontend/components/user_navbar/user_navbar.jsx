@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserOptionsMenu from './user_options_menu'
-
 
 export default class UserNavbar extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      searchbar: "",
+    }
+    this.clearSearch = this.clearSearch.bind(this)
+    this.update = this.update.bind(this)
+  }
+
+  componentDidMount(){
+    this.props.closeModal();
   }
 
   componentWillUnmount(){
@@ -13,13 +20,27 @@ export default class UserNavbar extends React.Component{
   }
 
   showForm(field){
+    if(this.props.modal===field){
+      return () => {
+        this.props.closeModal();
+      }
+    }
     return () => this.props.openModal(field)
   }
 
-  hideForm(){
+  clearSearch(){
     this.setState(
-      { "form-visible": false }
-    )
+      { searchbar: ""}
+      )
+  }
+
+  update(field){
+    return e => {
+      e.preventDefault();
+      this.setState(
+        {[field]: e.target.value}
+      )
+    }
   }
 
   render(){
@@ -28,7 +49,7 @@ export default class UserNavbar extends React.Component{
         <div className={"float-left"}>
           <Link to="/" className={"home-btn"}><i className="fas fa-home"></i></Link>
           <button className={"boards-btn"}><i className="fas fa-list"></i>  Boards</button>
-          <input /*onBlur={implemement once building the container and internal state with handler helper methods}*/className={"searchbar"} type="text"/>
+          <input value={this.state.searchbar} onBlur={this.clearSearch} onChange={this.update("searchbar")} className={"searchbar"} type="text"/>
         </div>
         <div className={"float-middle"}>
           <Link to="/" className={"logo"}>Extralo</Link>
