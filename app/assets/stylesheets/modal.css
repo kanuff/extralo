@@ -13,6 +13,10 @@
 }
 
 .board-index-list > li{
+  z-index: 2;
+}
+
+.board-index-navbar-container {
   z-index: 3;
 }
 

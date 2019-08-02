@@ -8,12 +8,15 @@
 
 .board-index-navbar-container{
   width: 30%;
+  border: 1px solid red;
   max-width: 250px;
   min-width: 100px;
   box-sizing: content-box;
   padding: 5px;
   margin-left: 5px;
   line-height: 200%;
+  max-height: 250px;
+  height: 0;
 }
 
 .board-index-navbar-container > *{
