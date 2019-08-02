@@ -15,9 +15,15 @@ const mdp = dispatch => {
 }
 
 const UserOptionsMenu = (props) => {
+  let name;
+  let email;
+  if(props.current_user){
+    name = props.current_user.name;
+    email = props.current_user.email;
+  }
     return (
       <ul className="user-options">
-        <li id={"user-options-title"}>{props.current_user.name} ({props.current_user.email})</li>
+        <li id={"user-options-title"}>{name} ({email})</li>
         <hr className={"menu-line"}></hr>
         <li onClick={props.logout}>Logout</li>
       </ul>
