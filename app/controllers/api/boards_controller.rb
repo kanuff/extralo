@@ -2,7 +2,7 @@ class Api::BoardsController < ApplicationController
 
 
   def index
-    @boards = Board.all
+    @boards = Board.joins(:memberships).where(:board_memberships => {:user_id => current_user.id})
     render :index
   end
 

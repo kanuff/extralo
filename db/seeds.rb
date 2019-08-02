@@ -22,8 +22,8 @@ boards = Board.create([
 ])
 
 memberships = BoardMembership.create([
-  {user_id: users.first.id, board_id: boards.first.id},
-  {user_id: users.first.id, board_id: boards.second.id},
+  {user_id: User.first.id, board_id: boards.first.id},
+  {user_id: User.first.id, board_id: boards.second.id},
   {user_id: users.first.id, board_id: boards.third.id},
   {user_id: users.second.id, board_id: boards.first.id},
   {user_id: users.second.id, board_id: boards.third.id},

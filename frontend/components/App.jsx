@@ -7,6 +7,7 @@ import UserNavbar from './user_navbar/user_navbar_container';
 import Splashpage from './splashpage/splashpage_container'
 import { AuthRoute, ProtectedRoute, AltRoute } from '../util/route_util';
 import Modal from './modal';
+import BoardIndex from './board_index/board_index_container'
 
 const App = () => (
   <div>
@@ -17,7 +18,7 @@ const App = () => (
     <Switch>
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
-      <AuthRoute path="/" component={Splashpage} />
+      <AltRoute exact path="/" loggedIn_component={BoardIndex}  loggedOut_component={Splashpage} />
     </Switch>
   </div>
 )
