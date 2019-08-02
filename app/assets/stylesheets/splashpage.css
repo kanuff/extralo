@@ -1,9 +1,9 @@
 
-
-
 .splash-blurb-background {
   background-image: linear-gradient(rgb(0, 121, 191), rgb(0, 121, 191), rgb(0, 87, 181));
-  max-width: 100%;
+  max-width: auto;
+  min-width: 1000px;
+  width: 100%;
 }
 
 /* container for the whole blue top of the splashpage */
@@ -23,14 +23,15 @@
 
 .splash-content{
   flex-direction: column;
-  width: 1200px;
+  min-width: 1000px;
+  max-width: 1200px;
+  width: auto;
   margin: 0 auto;
-  padding: 0px 100px;
 }
 
 .splash-content > * {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   max-width: 100%;
   /* border: 1px solid black; */
 }
@@ -43,20 +44,24 @@
   flex-direction: column;
   justify-content: space-evenly;
   max-width: 100%;
-
 }
 
 .right-content > .splash-content-text{
   padding-left: 45px;
   padding-right: 45px;
+  max-width: 350px;
 }
 
 .left-content > .splash-content-text{
   padding-right: 45px;
+  max-width: 350px;
 }
 
 .splash-content > * > * > img {
-  width: 550px;
+  max-width: 550px;
+  min-width: 400px;
+  width: 100%;
+  height: auto;
 }
 
 .splash-blurb-text {
@@ -69,7 +74,7 @@
 .blurb-big-text {
   line-height: 120%;
   padding-top: 7%;
-  font-size: 45px;
+  font-size: 55px;
   font-weight: bolder;
   min-width: inherit;
 }

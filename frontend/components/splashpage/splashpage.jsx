@@ -23,7 +23,10 @@ export default class Splashpage extends React.Component {
               </div>
             </div>
             <div className={"blurb-img"}>
-              <img src="https://cdn.pixabay.com/photo/2016/10/23/17/06/calendar-1763587_960_720.png" alt="Calendar graphic"></img>
+              <img 
+                src="https://cdn.pixabay.com/photo/2016/10/23/17/06/calendar-1763587_960_720.png" 
+                alt="Calendar graphic">
+              </img>
             </div>
           </section>
         </div>
@@ -40,12 +43,20 @@ export default class Splashpage extends React.Component {
               </div>
             </div>
             <div className={"right-content"}>
-              <img src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286_960_720.png" alt="Work desk"></img>
+              <img 
+                src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286_960_720.png" 
+                alt="Work desk">
+
+              </img>
             </div>
           </div>
           <div className={"splash-content-2"}>
             <div className={"left-content"}>
-              <img src="https://cdn.pixabay.com/photo/2016/10/16/16/33/dual-screen-1745705_960_720.png" alt="Dual-screens for programming"></img>            
+              <img 
+                src="https://cdn.pixabay.com/photo/2016/10/16/16/33/dual-screen-1745705_960_720.png" 
+                alt="Dual-screens for programming">
+                
+              </img>            
             </div>
             <div className={"right-content"}>
               <div className={"splash-content-text"}>
@@ -71,7 +82,11 @@ export default class Splashpage extends React.Component {
               </div>
             </div>
             <div className={"right-content"}>
-              <img src="https://cdn.pixabay.com/photo/2016/09/11/05/34/whatsapp-interface-1660652_960_720.png" alt="Whats App interface"></img>
+              <img 
+                src="https://cdn.pixabay.com/photo/2016/09/11/05/34/whatsapp-interface-1660652_960_720.png" 
+                alt="Whats App interface">
+
+              </img>
             </div>
           </div>
           <div className={"splash-content-4"}>
