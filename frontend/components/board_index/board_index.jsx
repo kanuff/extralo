@@ -31,7 +31,7 @@ export default class BoardIndex extends React.Component{
           </ul>
         </section>
         <section className={"board-index-list-container"}>
-          <i class="far fa-user"></i> Personal Boards
+          <i className="far fa-user"></i> Personal Boards
           <ul className={"board-index-list"}>
             {boards}
             <li id={"create-board-btn"} onClick={this.openCreateBoardModal}>Create new board</li>

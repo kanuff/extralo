@@ -130,19 +130,19 @@ button, .home-btn{
 
 #user-options-btn{
   color: black;
-  background-color: lightcyan;
+  background-color: whitesmoke;
   border-radius: 50%;
   height: 33px;
   font-size: 14px;
 }
 
 #user-options-btn:hover{
-  background-color: lightcyan;
+  background-color: whitesmoke;
 }
 
 .user-options {
   position: absolute;
-  background-color: lightcyan;
+  background-color: whitesmoke;
   color: red;
   cursor: pointer;
   z-index: 1;
@@ -155,4 +155,18 @@ button, .home-btn{
 
 .user-options > li {
   padding: 10px;
+}
+
+#user-options-title{
+  color: rgba(53, 52, 52, 0.735);
+  text-align: center;
+  cursor: text;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+  box-shadow: none;
+  color: none;
+  width: 80%;
 }
