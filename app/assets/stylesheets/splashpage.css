@@ -137,8 +137,9 @@
 }
 
 .large-text {
-  font-size: 25px;
+  font-size: 35px;
   font-weight: bolder;
+  line-height: 135%;
 }
 
 .med-text {
