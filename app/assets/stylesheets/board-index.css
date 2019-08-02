@@ -16,6 +16,10 @@
   line-height: 200%;
 }
 
+.board-index-navbar-container > *{
+  cursor: pointer;
+}
+
 .board-index-list-container{
   min-width: 70%;
   box-sizing: content-box;
@@ -39,6 +43,7 @@
   min-width: 100px;
   max-width: 400px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 #create-board-btn{
@@ -47,4 +52,10 @@
   text-align: center;
   line-height: 450%;
   border: 1px red solid;
+}
+
+
+.board-index-list > *:hover {
+  background-color: rgba(128, 128, 128, 0.666);
+
 }
