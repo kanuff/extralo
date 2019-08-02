@@ -4,7 +4,8 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const msp = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    current_user: state.entities.users[state.session.id]
   }
 }
 

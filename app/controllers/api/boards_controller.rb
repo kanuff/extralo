@@ -1,6 +1,5 @@
 class Api::BoardsController < ApplicationController
 
-
   def index
     @boards = Board.joins(:memberships).where(:board_memberships => {:user_id => current_user.id})
     render :index
@@ -23,8 +22,13 @@ class Api::BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:board][:id])
-    render :show
+    board_id = params[:id]
+    @board = Board.joins(:memberships).find_by(:board_memberships => {:user_id => current_user.id, :board_id => board_id})
+    if @board
+      render :show
+    else
+      render json: ["You don't have permission to view that board"], status: 401
+    end
   end
 
   def update

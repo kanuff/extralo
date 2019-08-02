@@ -38,8 +38,8 @@ export const fetchBoards = () => dispatch => {
                      .then( boards => dispatch(receiveBoards(boards)))
 }
 
-export const fetchBoard = () => dispatch => {
-  return BoardAPIUtil.fetchBoard()
+export const fetchBoard = (id) => dispatch => {
+  return BoardAPIUtil.fetchBoard(id)
                      .then( board => dispatch(receiveBoard(board)))
 }
 

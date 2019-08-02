@@ -59,5 +59,19 @@
 
 .board-index-list > *:hover {
   background-color: rgba(128, 128, 128, 0.666);
+}
 
+.board-index-list > * > a{
+  display: block;
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  margin-top: -10px;
+  margin-left: -10px;
+  padding: 10px;
+
+}
+
+.board-index-navbar-container {
+  z-index: 3;
 }

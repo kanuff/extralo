@@ -65,7 +65,7 @@ export default class UserNavbar extends React.Component{
           <button onClick={this.showForm("create-board-options")} className={"create-board-btn"}><i className="fas fa-plus"></i></button>
           <button onClick={this.showForm("information")} className={"information-btn"}><i className="fas fa-info-circle"></i></button>
           <button onClick={this.showForm("notifications")} className={"notification-btn"}><i className="far fa-bell"></i></button>
-          <button onClick={this.showForm("user-options")} id={"user-options-btn"}>M</button>
+          <button onClick={this.showForm("user-options")} id={"user-options-btn"}>{this.props.current_user.name[0]}</button>
         </div>
       </section>
     )

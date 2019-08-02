@@ -25,6 +25,15 @@ const UserOptionsMenu = (props) => {
       <ul className="user-options">
         <li id={"user-options-title"}>{name} ({email})</li>
         <hr className={"menu-line"}></hr>
+        <li>Profile and Visibility</li>
+        <li>Activity</li>
+        <li>Cards</li>
+        <li>Settings</li>
+        <hr className={"menu-line"}></hr>
+        <li>Help</li>
+        <li>Shortcuts</li>
+        <li>Change Lanuage...</li>
+        <hr className={"menu-line"}></hr>
         <li onClick={props.logout}>Logout</li>
       </ul>
     )

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { configureStore } from './store/store'
 import Root from './components/root'
+import {fetchBoard} from './actions/board_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // TESTING ONLY
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchBoard = id => store.dispatch(fetchBoard(id));
   // TESTING ONLY
 
   const root = document.getElementById("root");

@@ -7,7 +7,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const msp = state => {
   return {
-    boards: state.entities.boards
+    boards: Object.values(state.entities.boards)
   }
 }
 

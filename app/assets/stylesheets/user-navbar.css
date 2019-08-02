@@ -11,6 +11,7 @@
   padding: 2px;
   box-sizing: content-box;
   margin: auto 0;
+  z-index: 1;
 }
 
 
@@ -143,9 +144,8 @@ button, .home-btn{
 .user-options {
   position: absolute;
   background-color: whitesmoke;
-  color: red;
+  color: black;
   cursor: pointer;
-  z-index: 1;
   box-shadow: 0 0 1px;
   margin-right: 3px;
   min-width: 300px;

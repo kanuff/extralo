@@ -16,8 +16,6 @@ export default class BoardIndex extends React.Component{
     this.props.openModal("create-board")
   }
 
-
-
   render(){
     const boards = this.props.boards.map( (board,idx) => {
       return <BoardIndexItem board={board} key={`board_${idx}`}/>
