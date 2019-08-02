@@ -10,6 +10,11 @@ export default class BoardIndex extends React.Component{
 
   componentDidMount(){
     this.props.fetchBoards();
+    this.props.closeModal();
+  }
+
+  componentWillUnmount(){
+    this.props.closeModal();
   }
 
   openCreateBoardModal(){
