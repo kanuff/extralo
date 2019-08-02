@@ -33,6 +33,16 @@ export const receiveBoard = board => {
   }
 }
 
+export const fetchBoards = () => dispatch => {
+  return BoardAPIUtil.fetchBoards()
+                     .then( boards => dispatch(receiveBoards(boards)))
+}
+
+export const fetchBoard = () => dispatch => {
+  return BoardAPIUtil.fetchBoard()
+                     .then( board => dispatch(receiveBoard(board)))
+}
+
 export const createBoard = board => dispatch => {
   return BoardAPIUtil.createBoard(board)
                      .then( board => dispatch(receiveBoard(board)))

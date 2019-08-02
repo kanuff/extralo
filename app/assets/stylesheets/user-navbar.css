@@ -152,3 +152,7 @@ button, .home-btn{
   right: 3px;
   top: 45px;
 }
+
+.user-options > li {
+  padding: 10px;
+}

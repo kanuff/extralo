@@ -1,8 +1,15 @@
 
-export const indexBoards = () => {
+export const fetchBoards = () => {
   return $.ajax({
     method: "GET",
     url: "api/boards"
+  })
+}
+
+export const fetchBoard = (id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/boards/${id}`
   })
 }
 
