@@ -1,6 +1,7 @@
 import BoardIndex from './board_index';
 import { connect } from 'react-redux';
 import { fetchBoards } from '../../actions/board_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 
@@ -12,7 +13,9 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    fetchBoards: () => dispatch(fetchBoards())
+    fetchBoards: () => dispatch(fetchBoards()),
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal()),
   }
 }
 

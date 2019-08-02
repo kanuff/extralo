@@ -1,0 +1,50 @@
+
+
+.board-index{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 65px;
+}
+
+.board-index-navbar-container{
+  width: 30%;
+  max-width: 250px;
+  min-width: 100px;
+  box-sizing: content-box;
+  padding: 5px;
+  margin-left: 5px;
+  line-height: 200%;
+}
+
+.board-index-list-container{
+  min-width: 70%;
+  box-sizing: content-box;
+  margin: 0 auto;
+  padding: 5px;
+  
+}
+
+.board-index-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.board-index-list > * {
+  padding: 10px;
+  margin: 5px;
+  overflow: hidden;
+  background-color: lightgrey;
+  height: 75px;
+  width: inherit;
+  min-width: 100px;
+  max-width: 400px;
+  border-radius: 4px;
+}
+
+#create-board-btn{
+  cursor: pointer;
+  background-color: white;
+  text-align: center;
+  line-height: 450%;
+  border: 1px red solid;
+}

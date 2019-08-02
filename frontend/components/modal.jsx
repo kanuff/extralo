@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal, openModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
 import UserOptionsMenu from './user_navbar/user_options_menu';
+import CreateBoardForm from './board_index/create_board_form';
 
 const Modal = ({modal, closeModal}) => {
   if(!modal){
@@ -14,6 +15,9 @@ const Modal = ({modal, closeModal}) => {
     case 'user-options':
       component = <UserOptionsMenu />
       modalType = "transparent"
+      break;
+    case 'create-board':
+      component = <CreateBoardForm />
       break;
     default:
       return null;

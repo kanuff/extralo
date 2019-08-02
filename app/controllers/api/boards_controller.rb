@@ -15,6 +15,7 @@ class Api::BoardsController < ApplicationController
       return
     end
     if @board.save
+      BoardMembership.create(user_id: current_user.id, board_id: @board.id)
       render :show
     else
       render json: @board.errors.full_messages, status: 422

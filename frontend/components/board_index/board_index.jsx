@@ -5,10 +5,15 @@ import { BoardIndexItem } from './board_index_item';
 export default class BoardIndex extends React.Component{
   constructor(props){
     super(props)
+    this.openCreateBoardModal = this.openCreateBoardModal.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchBoards();
+  }
+
+  openCreateBoardModal(){
+    this.props.openModal("create-board")
   }
 
 
@@ -26,9 +31,10 @@ export default class BoardIndex extends React.Component{
           </ul>
         </section>
         <section className={"board-index-list-container"}>
+          Personal Boards
           <ul className={"board-index-list"}>
             {boards}
-            <li>Create new board</li>
+            <li id={"create-board-btn"} onClick={this.openCreateBoardModal}>Create new board</li>
           </ul>
         </section>
       </section>
