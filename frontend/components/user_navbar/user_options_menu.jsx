@@ -34,7 +34,7 @@ const UserOptionsMenu = (props) => {
         <li>Shortcuts</li>
         <li>Change Lanuage...</li>
         <hr className={"menu-line"}></hr>
-        <li onClick={props.logout}>Logout</li>
+        <li id={"logout-btn"}onClick={props.logout}>Logout</li>
       </ul>
     )
 }

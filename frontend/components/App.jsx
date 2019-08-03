@@ -12,7 +12,7 @@ import BoardShow from './board_show/board_show_container';
 
 const App = () => (
   <div>
-    <Modal />
+    <Modal/>
     <header>
       <AltRoute path="/" loggedIn_component={UserNavbar} loggedOut_component={Navbar} />
     </header>

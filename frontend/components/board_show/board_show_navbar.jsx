@@ -14,14 +14,12 @@ class BoardShowNavbar extends React.Component{
       <section className={"board-show-navbar-container"}>
         <section className={"float-left"} >
           <button id={'board-title'}>{this.props.board.title}</button>
-          <button id={'board-favorited'}>Star</button>
-          <div className={'board-member-icons'}>
-            <button className={'member-icon'}>Circle icon</button>
-          </div>
-          <button id={'board-invite-btn'}></button>
+          <button id={'board-favorited'}><i className="far fa-star"></i></button>
+          <button id={'member-icon'}>M</button>
+          <button id={'board-invite-btn'}>Invite</button>
         </section>
         <section className={"float-right"} >
-          <button id={'board-show-menu-btn'}>Show Menu</button>
+          <button id={'board-show-menu-btn'}> ...Show Menu</button>
         </section>
       </section>
     )

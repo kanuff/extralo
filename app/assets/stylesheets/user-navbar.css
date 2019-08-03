@@ -3,6 +3,7 @@
   background-color: #026aa7;
   justify-content: space-between;
   padding-bottom: 2px;
+  margin-top: -1.5px;
 }
 
 .user-navbar > * {
@@ -20,11 +21,12 @@
   margin-top: 3px;
 }
 
-.float-middle {
-  margin-top: 3px;
-  display: flex;
-  height: 30px;
+.float-middle{
+  font-size: 20px;
+  color: hsla(0,0%,100%,.3);
+  height: inherit;
 }
+
 
 .home-btn {
   background-color: hsla(0,0%,100%,.3);
@@ -96,11 +98,6 @@ button, .home-btn{
   outline: none;
 }
 
-.float-middle{
-  font-size: 20px;
-  color: hsla(0,0%,100%,.3);
-  height: inherit;
-}
 
 
 .float-right {
@@ -151,14 +148,25 @@ button, .home-btn{
   min-width: 300px;
   right: 3px;
   top: 45px;
+  padding: 5px 0;
 }
 
 .user-options > li {
   padding: 10px;
 }
 
+.user-options > li:hover {
+  background-color: rgba(22, 22, 22, 0.05);
+}
+
 #user-options-title{
   color: rgba(53, 52, 52, 0.735);
+  text-align: center;
+  cursor: text;
+}
+
+#user-options-title:hover{
+  background-color: inherit;
   text-align: center;
   cursor: text;
 }
