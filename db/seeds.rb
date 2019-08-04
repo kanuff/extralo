@@ -9,6 +9,7 @@
 User.destroy_all
 Board.destroy_all
 BoardMembership.destroy_all
+List.destroy_all
 
 demoUser = User.create(name: "Matthew", email:"hunter12@gmail.com", password: "hunter12")
 
@@ -32,4 +33,23 @@ memberships = BoardMembership.create([
   {user_id: users.second.id, board_id: boards.third.id},
   {user_id: users.third.id, board_id: boards.second.id}
 ])
+
+lists = List.create([
+  {board_id: Board.first.id, title: "Herb Garden"},
+  {board_id: Board.first.id, title: "Grape Vineyard"},
+  {board_id: Board.first.id, title: "Koi Pond"},
+  {board_id: Board.second.id, title: "Doing"},
+  {board_id: Board.second.id, title: "Done"},
+  {board_id: Board.third.id, title: "Do"},
+  {board_id: Board.third.id, title: "Doing"},
+  {board_id: Board.third.id, title: "Done"}
+])
+
+lists.first.insertNode(lists.second)
+lists.second.insertNode(lists.third)
+
+lists[3].insertNode(lists[4])
+
+lists[5].insertNode(lists[6])
+lists[6].insertNode(lists[7])
 

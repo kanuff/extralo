@@ -9,7 +9,9 @@ export default class BoardShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchBoard(this.props.board_id)
+      .then(() => this.props.fetchLists(this.props.board_id));
   }
+    
 
 
   render(){

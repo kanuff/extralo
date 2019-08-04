@@ -23,7 +23,7 @@ class Api::BoardsController < ApplicationController
 
   def show
     board_id = params[:id]
-    @board = Board.joins(:memberships).find_by(:board_memberships => {:user_id => current_user.id, :board_id => board_id})
+    @board = Board.includes(:lists).joins(:memberships).find_by(:board_memberships => {:user_id => current_user.id, :board_id => board_id})
     if @board
       render :show
     else

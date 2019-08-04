@@ -7,6 +7,9 @@ import {
   receiveErrors,
   clearErrors,
   updateBoard } from '../../actions/board_actions';
+import {
+  fetchLists
+} from '../../actions/list_actions';
 
 const msp = (state, ownProps) => {
   console.log(ownProps)
@@ -32,6 +35,7 @@ const mdp = (dispatch) => {
     updateBoard: board => dispatch(updateBoard(board)),
     receiveErrors: errors => dispatch(receiveErrors(errors)),
     clearErrors: () => dispatch(clearErrors()),
+    fetchLists: board_id => dispatch(fetchLists(board_id)),
   }
 }
 

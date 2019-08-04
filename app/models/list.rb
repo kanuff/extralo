@@ -15,6 +15,7 @@
 class List < ApplicationRecord
     validates :board_id, :title, presence: true
     validates :archived, inclusion: {in: [true, false]}
+    attr_reader :root
 
     belongs_to :board,
     primary_key: :id,
@@ -33,7 +34,7 @@ class List < ApplicationRecord
     class_name: :List,
     required: false
 
-    def addNode(list)
+    def insertNode(list)
         #update prev child node if exists
         if self.next_id
             oldChild = List.find(self.next_id)
@@ -59,12 +60,7 @@ class List < ApplicationRecord
         return if (list.next_id == nil) && (list.prev_id == nil)
         parent = list.prev_id ? List.find(list.prev_id) : nil
         child =  list.next_id ? List.find(list.next_id) : nil
-        # if list.prev_id
-        #     parent = List.find(list.prev_id)
-        # end
-        # if list.next_id
-        #     child = List.find(list.next_id)
-        # end
+
         if parent && child          #if node was in the middle of a list
             parent.next_id = child.id
             child.prev_id = parent.id
@@ -84,7 +80,25 @@ class List < ApplicationRecord
         list
     end
 
+    def root # THESE ARE N + 1 QUERIES, FIND WAY TO FIX (dynamically create joins?)
+        prev_id = self.prev_id || self.id
+        return self if prev_id == self.id
+        while prev_id
+            root_id = prev_id
+            prev_id = List.find(prev_id).prev_id
+        end
+        List.find(root_id)
+    end
 
-
+    def leaf # THESE ARE N + 1 QUERIES, FIND WAY TO FIX (dynamically create joins?)
+        prev_id = self.prev_id || self.id
+        next_id = self.next_id || self.id
+        return self if next_id == self.id
+        while next_id
+            leaf_id = next_id
+            next_id = List.find(next_id).next_id
+        end
+        List.find(leaf_id)
+    end
 
 end

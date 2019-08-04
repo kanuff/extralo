@@ -14,7 +14,7 @@
 class Board < ApplicationRecord
   validates :title, :creator_id, presence: true
   validates :starred, inclusion: {in: [true, false]}
-  attr_reader :member_ids
+  attr_reader :member_ids, :root_list
 
   belongs_to :creator,
   primary_key: :id,
@@ -35,6 +35,10 @@ class Board < ApplicationRecord
   foreign_key: :board_id,
   class_name: :List
 
+  def root_list_id
+    lists.first.root.id
+  end
+
   def member_ids #this seems ugly --> is there a better way of doing it?
     member_ids = []
     members.each do |member|
@@ -42,5 +46,13 @@ class Board < ApplicationRecord
     end
     member_ids
   end
+
+  # def list_ids
+  #   list_ids = []
+  #   lists.each do |list|
+  #     list_ids << list.id
+  #   end
+  #   list_ids
+  # end
 
 end
