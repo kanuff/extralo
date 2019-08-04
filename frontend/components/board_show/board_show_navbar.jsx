@@ -17,7 +17,9 @@ class BoardShowNavbar extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateBoard(this.state)
+    // e.target.blur();
+    document.getElementById("board-title-input").blur();
+    this.props.updateBoard(this.state);
   }
   
   update(field){
@@ -68,6 +70,7 @@ class BoardShowNavbar extends React.Component{
           <section className={"float-left"} >
             <form id={'board-title'} onSubmit={this.handleSubmit}>
               <input
+                id={'board-title-input'}
                 type="text" 
                 onChange={this.update("title")} 
                 onBlur={this.handleSubmit}

@@ -89,8 +89,9 @@ button:focus {
     width: 35px;
 }
 
-#board-title{
-    background-color: none;
+#board-title {
+    margin: auto 0;
+    margin-left: 3px;
 }
 
 #board-title > * {
@@ -102,6 +103,7 @@ button:focus {
     height: inherit;
     margin-top: -1px;
     color: inherit;
+    width: auto;
 }
 
 #board-title > *:focus {
