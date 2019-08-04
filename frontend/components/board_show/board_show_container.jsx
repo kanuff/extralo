@@ -12,7 +12,6 @@ import {
 } from '../../actions/list_actions';
 
 const msp = (state, ownProps) => {
-  console.log(ownProps)
   const defaultBoard = {
     title: "Title",
     description: "Description",

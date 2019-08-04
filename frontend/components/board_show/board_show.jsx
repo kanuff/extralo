@@ -1,5 +1,6 @@
 import React from 'react';
 import BoardShowNavbar from './board_show_navbar';
+import ListIndex from '../lists/list_index_container';
 
 export default class BoardShow extends React.Component {
   constructor(props){
@@ -27,6 +28,7 @@ export default class BoardShow extends React.Component {
           clearErrors={this.props.clearErrors}
           errors={this.props.errors}
         />
+        <ListIndex />
       </section>
     )
   }

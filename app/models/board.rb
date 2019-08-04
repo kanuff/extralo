@@ -36,7 +36,8 @@ class Board < ApplicationRecord
   class_name: :List
 
   def root_list_id
-    lists.first.root.id
+    return lists.first.root.id if lists.first
+    nil
   end
 
   def member_ids #this seems ugly --> is there a better way of doing it?

@@ -2,11 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 
 const mdp = dispatch => {
   return {
     createBoard: board => dispatch(createBoard(board)),
     closeModal: () => dispatch(closeModal()),
+  }
+}
+
+const msp = (state, ownProps) => {
+  return {
+    history: ownProps.history,
   }
 }
 
@@ -26,8 +33,10 @@ class CreateBoardForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    console.log(this.props)
     if (this.state.title !== "Add board title"){
       this.props.createBoard(this.state)
+        // .then( board => this.props.history.push(`/boards/${board.id}`))
         .then(() => this.props.closeModal())
     }
   }
@@ -57,6 +66,4 @@ class CreateBoardForm extends React.Component{
   }
 } 
 
-
-
-export default connect(null, mdp)(CreateBoardForm)
+export default withRouter(connect(msp, mdp)(CreateBoardForm))

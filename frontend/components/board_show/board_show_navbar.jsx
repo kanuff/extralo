@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HashRouter } from 'react-router-dom'
 
 
 class BoardShowNavbar extends React.Component{
@@ -17,7 +16,7 @@ class BoardShowNavbar extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    // e.target.blur();
+    // e.target.blur(); ???? doesn't work???
     document.getElementById("board-title-input").blur();
     this.props.updateBoard(this.state);
   }

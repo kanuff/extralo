@@ -19,7 +19,7 @@ const App = () => (
     <Switch>
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
-      <AltRoute path="/boards/:board_id" loggedIn_component={BoardShow}  loggedOut_component={Splashpage} />
+      <ProtectedRoute path="/boards/:board_id" component={BoardShow} />
       <AltRoute exact path="/" loggedIn_component={BoardIndex}  loggedOut_component={Splashpage} />
     </Switch>
   </div>
