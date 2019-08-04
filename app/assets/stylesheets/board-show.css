@@ -78,7 +78,6 @@ button:focus {
     margin: auto 3px;
     text-align: center;
     padding: 5px;
-    padding-left: 4px;
 }
 
 #board-favorited > *{
