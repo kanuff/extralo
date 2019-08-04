@@ -43,7 +43,6 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    # debugger
     self.session_token = User.generate_session_token
     self.save!
     self.session_token

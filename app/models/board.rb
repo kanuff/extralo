@@ -30,6 +30,11 @@ class Board < ApplicationRecord
   through: :memberships,
   source: :user
 
+  has_many :lists,
+  primary_key: :id,
+  foreign_key: :board_id,
+  class_name: :List
+
   def member_ids #this seems ugly --> is there a better way of doing it?
     member_ids = []
     members.each do |member|
