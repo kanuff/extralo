@@ -40,9 +40,6 @@ export default class SessionForm extends React.Component {
   }
 
   render(){
-    // if(this.props.currentUser){
-    //   return <Redirect to="/" />
-    // }
     return(
       <>
         <section className={"user-form"}>

@@ -15,7 +15,16 @@ export default class BoardShow extends React.Component {
   render(){
     return(
       <section className={'board-show-container'}>
-        <BoardShowNavbar board={this.props.board}/>
+        <BoardShowNavbar 
+          board={this.props.board} 
+          destroyBoard={this.props.destroyBoard} 
+          updateBoard={this.props.updateBoard} 
+          history={this.props.history}
+          current_user_id={this.props.current_user_id}
+          receiveErrors={this.props.receiveErrors}
+          clearErrors={this.props.clearErrors}
+          errors={this.props.errors}
+        />
       </section>
     )
   }

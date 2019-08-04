@@ -32,8 +32,8 @@ class Api::BoardsController < ApplicationController
   end
 
   def update
-    @board = Board.new(board_params)
-    if @board.update
+    @board = Board.find(params[:id])
+    if @board.update(board_params)
       render :show
     else
       render json: @board.errors.full_messages, status: 422
@@ -41,7 +41,7 @@ class Api::BoardsController < ApplicationController
   end
 
   def destroy
-    @board = Board.find(params[:board][:id])
+    @board = Board.find(params[:id])
     @board.destroy
     render json: {}
   end

@@ -55,5 +55,4 @@ export const updateBoard = board => dispatch => {
 
 export const destroyBoard = id => dispatch => {
   return BoardAPIUtil.destroyBoard(id)
-                     .then( () => dispatch(console.log(`Board ${id} has been deleted`)))
 }
