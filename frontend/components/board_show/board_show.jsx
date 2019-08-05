@@ -13,7 +13,10 @@ export default class BoardShow extends React.Component {
       .then(() => this.props.fetchLists(this.props.board_id));
   }
     
-
+  componentWillUnmount(){
+    this.props.clearCards();
+    this.props.clearLists();
+  }
 
   render(){
     return(

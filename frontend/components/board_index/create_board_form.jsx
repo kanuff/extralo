@@ -33,7 +33,6 @@ class CreateBoardForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.props)
     if (this.state.title !== "Add board title"){
       this.props.createBoard(this.state)
         // .then( board => this.props.history.push(`/boards/${board.id}`))

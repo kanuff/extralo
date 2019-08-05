@@ -3,6 +3,7 @@ import ListIndexItem from './list_index_item';
 import CreateListForm from './create_list_form';
 
 
+
 export default class ListIndex extends React.Component{
     constructor(props){
         super(props)
@@ -11,12 +12,14 @@ export default class ListIndex extends React.Component{
     renderLists(){
         const { lists } = this.props;
         return lists.map( (list, idx) => {
-            return (
-                <ListIndexItem
-                    list={list} 
-                    key={`list_${idx}`}
-                />
-            )
+            if(!list.archived){
+                return (
+                    <ListIndexItem
+                        list={list} 
+                        key={`list_${idx}`}
+                    />
+                )
+            }
         })
     }
 

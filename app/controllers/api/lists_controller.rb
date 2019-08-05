@@ -24,8 +24,14 @@ class Api::ListsController < ApplicationController
         end
     end
 
-    # def destroy
-    # end
+    def destroy
+        @list = List.find(params[:id])
+        List.removeNode(@list)
+        @list.archived = true
+        if @list.save!
+            render :show
+        end
+    end
 
     private
     def list_params

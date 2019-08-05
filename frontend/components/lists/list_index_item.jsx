@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateList } from '../../actions/list_actions'
-
+import { updateList } from '../../actions/list_actions';
+import { fetchCards } from '../../actions/card_actions';
+import CardItem from '../cards/card_item_container';
 
 const msp = state => {
     return {
-
+        cards: Object.values(state.entities.cards),
     }
 }
 
 const mdp = dispatch => {
     return {
-        updateList: list => dispatch(updateList(list))
+        updateList: list => dispatch(updateList(list)),
+        fetchCards: list_id => dispatch(fetchCards(list_id)),
     }
 }
-
-
 
 
 class ListIndexItem extends React.Component{
@@ -25,6 +25,7 @@ class ListIndexItem extends React.Component{
             title: props.list.title,
             id: props.list.id,
         }
+        this.cardIds = props.list.card_ids
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -43,6 +44,24 @@ class ListIndexItem extends React.Component{
         }
     }
 
+    componentDidMount(){
+        this.props.fetchCards(this.props.list.id)
+    }
+
+
+    renderCards(){
+        return this.props.cards.map( (card, idx) => {
+            if( card.list_id === this.state.id){
+                return (
+                    <CardItem 
+                        card={card}
+                        key={`card_${this.state.id}_${idx}`}
+                    />
+                )
+            }
+        })
+    }
+
     render(){
         const { list } = this.props
         return (
@@ -57,10 +76,7 @@ class ListIndexItem extends React.Component{
                     />
                 </form>
                 <ul className={"card-container"}>
-                    <div>CARDS GO HERE! askdfkj asdnf ahsdkfj haskjdfhkj ashdfkjhasdkjf</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
+                    {this.renderCards()}
                 </ul>
             </li>
         )

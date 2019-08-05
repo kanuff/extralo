@@ -35,6 +35,10 @@ class Board < ApplicationRecord
   foreign_key: :board_id,
   class_name: :List
 
+  has_many :cards,
+  through: :lists,
+  source: :cards
+
   def root_list_id
     return lists.first.root.id if lists.first
     nil

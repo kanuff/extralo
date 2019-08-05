@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_140344) do
+ActiveRecord::Schema.define(version: 2019_08_05_142356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_140344) do
     t.integer "prev_id"
     t.boolean "archived", default: false
     t.string "title", null: false
+    t.string "description"
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["next_id"], name: "index_cards_on_next_id"
     t.index ["prev_id"], name: "index_cards_on_prev_id"

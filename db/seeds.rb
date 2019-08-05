@@ -53,3 +53,21 @@ lists[3].insertNode(lists[4])
 lists[5].insertNode(lists[6])
 lists[6].insertNode(lists[7])
 
+cards = Card.create([
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Cull sage"},
+  {list_id: lists.first.id, title: "Graft onions onto carrot plant"},
+  {list_id: lists.first.id, title: "Spray pesticide"},
+  {list_id: lists.second.id, title: "Drink wine"},
+  {list_id: lists.second.id, title: "Wrink dine"},
+  {list_id: lists.fourth.id, title: "Should belong to second board"},
+  {list_id: lists.fifth.id, title: "Should also belong to second board"}
+
+])
+
+cards.first.insertNode(cards.second)
+cards.second.insertNode(cards.third)
+cards.third.insertNode(cards.fourth)
+
+cards[4].insertNode(cards[5])
+

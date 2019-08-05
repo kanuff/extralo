@@ -1,13 +1,18 @@
 import * as ListAPIUtil from '../util/list_api_util';
-import { receiveBoard } from './board_actions';
 
 export const RECEIVE_LISTS = "RECEIVE_LISTS";
 export const RECEIVE_LIST = "RECEIVE_LIST";
+export const CLEAR_LISTS = "CLEAR_LISTS";
 
+export const clearLists = () => {
+    return {
+        type: CLEAR_LISTS,
+    }
+}
 export const receiveLists = lists => {
     return {
         type: RECEIVE_LISTS,
-        lists
+        lists,
     }
 }
 

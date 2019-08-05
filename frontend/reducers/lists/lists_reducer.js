@@ -1,6 +1,7 @@
 import {
     RECEIVE_LISTS,
-    RECEIVE_LIST
+    RECEIVE_LIST,
+    CLEAR_LISTS,
 } from '../../actions/list_actions';
 
 export default (state={}, action) => {
@@ -10,11 +11,12 @@ export default (state={}, action) => {
             return objectified(action.lists)
         case RECEIVE_LIST:
             return Object.assign({}, state, {[action.list.id]: action.list})
+        case CLEAR_LISTS:
+            return {}
         default:
             return state
     }
 }
-
 
 const objectified = (array) => {
     const obj = {}

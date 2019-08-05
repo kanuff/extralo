@@ -15,7 +15,7 @@
 class List < ApplicationRecord
     validates :board_id, :title, presence: true
     validates :archived, inclusion: {in: [true, false]}
-    attr_reader :root
+    attr_reader :root, :card_ids
 
     belongs_to :board,
     primary_key: :id,
@@ -33,6 +33,19 @@ class List < ApplicationRecord
     foreign_key: :next_id,
     class_name: :List,
     required: false
+
+    has_many :cards,
+    primary_key: :id,
+    foreign_key: :list_id,
+    class_name: :Card
+
+    def card_ids
+        card_ids = []
+        cards.each do |card|
+            card_ids << card.id
+        end
+        card_ids
+    end
 
     def insertNode(list)
         #update prev child node if exists

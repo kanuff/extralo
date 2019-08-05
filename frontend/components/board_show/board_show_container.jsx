@@ -8,8 +8,12 @@ import {
   clearErrors,
   updateBoard } from '../../actions/board_actions';
 import {
-  fetchLists
+  fetchLists,
+  clearLists
 } from '../../actions/list_actions';
+import {
+  clearCards
+} from '../../actions/card_actions';
 
 const msp = (state, ownProps) => {
   const defaultBoard = {
@@ -35,6 +39,8 @@ const mdp = (dispatch) => {
     receiveErrors: errors => dispatch(receiveErrors(errors)),
     clearErrors: () => dispatch(clearErrors()),
     fetchLists: board_id => dispatch(fetchLists(board_id)),
+    clearLists: () => dispatch(clearLists()),
+    clearCards: () => dispatch(clearCards()),
   }
 }
 
