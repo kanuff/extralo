@@ -12,7 +12,7 @@ const mdp = dispatch => {
 
 const msp = (state, ownProps) => {
     const defaultList = {
-        title: " + Add another list",
+        title: "",
         board_id: ownProps.match.params.board_id,
     }
     return {
