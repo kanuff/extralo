@@ -9,7 +9,7 @@
 .lists-index {
     /* border: 2px purple solid; */
     display: flex;
-    overflow: scroll;
+    overflow-x: scroll;
     /* --thisHeight: height; */
     max-height: 90vh;
 }
@@ -27,7 +27,7 @@
 }
 
 .lists-index > li > form > input:focus{
-    /* border: 2px green dashed; */
+    /* border: 2px yellow dashed; */
     background: white;
     font-size: 14px;
     font-weight: bold;
@@ -42,7 +42,7 @@
 }
 
 .lists-index > li {
-    /* border: 1px yellow dashed; */
+    /* border: 1px brown solid; */
     background-color: lightgrey;
     display: flex;
     flex-direction: column;
@@ -83,18 +83,20 @@
 }
 
 .card-container {
-    /* border: 1px greenyellow solid; */
-    background: transparent;
+    /* border: 2px orangered solid; */
+    background: lightgrey;
     margin-right: -10px;
     margin-left: -5px;
+    /* width: 300px; */
 }
 
 .card-container > * {
+    /* border: solid red 1px; */
     background: white;
-    padding: 3px;
+    padding: 10px;
     margin: 7px;
-    margin-right: 8px;
-    margin-left: -3px;
+    margin-right: 0;
+    margin-left:  0;
     border-radius: 4px;
 }
 
@@ -104,7 +106,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    padding-bottom: 530px;
+    /* padding-bottom: 530px; */
     background: transparent;
 }
 
@@ -146,3 +148,33 @@
     cursor: pointer;
 }
 
+.card-container::-webkit-scrollbar {
+    width: 8px;
+}
+.card-container::-webkit-scrollbar-track-piece{
+    border-radius: 8px;
+    /* background: rgba(0, 0, 0, 0.14); */
+    background: transparent;
+}
+.card-container::-webkit-scrollbar-thumb{
+    background: rgba(128, 128, 128, 0.721);
+    /* background: transparent; */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track-piece{
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.324);
+}
+
+/* ::-webkit-scrollbar-track{
+} */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(201, 201, 201);
+    border-radius: 10px;
+}

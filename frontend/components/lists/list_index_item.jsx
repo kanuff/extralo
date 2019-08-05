@@ -61,15 +61,9 @@ class ListIndexItem extends React.Component{
                     <div>alsdfjlasdjflkajsdfl</div>
                     <div>alsdfjlasdjflkajsdfl</div>
                     <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
                 </ul>
             </li>
         )
-
     }
 }
 
