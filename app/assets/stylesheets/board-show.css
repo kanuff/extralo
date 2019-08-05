@@ -4,6 +4,15 @@
     background-color: rgba(37, 116, 206, 0.911);
 }
 
+.board-show-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(37, 116, 206, 0.911);
+  top: 41px;
+}
+
 
 .board-show-navbar-container {
     display: flex;

@@ -1,5 +1,6 @@
 import {
-    RECEIVE_LISTS
+    RECEIVE_LISTS,
+    RECEIVE_LIST
 } from '../../actions/list_actions';
 
 export default (state={}, action) => {
@@ -7,6 +8,8 @@ export default (state={}, action) => {
     switch (action.type) {
         case RECEIVE_LISTS:
             return objectified(action.lists)
+        case RECEIVE_LIST:
+            return Object.assign({}, state, {[action.list.id]: action.list})
         default:
             return state
     }

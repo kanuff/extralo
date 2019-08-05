@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show] #SHOW IS ONLY FOR TESTING, REMOVE FOR PRODUCTION
     resource :session, only: [:create, :destroy]
     resources :boards, only: [:index, :create, :show, :update, :destroy] do
-      resources :lists, only: :index
+      resources :lists, only: [:index, :create]
     end
-    resource :lists, only: [:create, :update, :destroy]
+    resource :lists, only: [:update, :destroy]
   end
 end
