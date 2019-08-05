@@ -38,8 +38,10 @@ class ListIndexItem extends React.Component{
         this.handleCardSubmit = this.handleCardSubmit.bind(this);
     }
 
-    componentDidUpdate(){
-        this.listIndexBottom.scrollIntoView();
+    componentDidUpdate(pastProps){
+        if(pastProps !== this.props){
+            this.listIndexBottom.scrollIntoView();
+        }
     }
 
     handleSubmit(e) {
@@ -156,7 +158,7 @@ class ListIndexItem extends React.Component{
                 <ul className={"card-container"}>
                     {this.renderCards()}
                     {this.cardForm()}
-                    <div style={{height: '0px', color: 'transparent', background: 'transparent', 'box-shadow': 'none'}} ref={ el => this.listIndexBottom = el}>
+                    <div style={{height: '0px', color: 'transparent', background: 'transparent', 'boxShadow': 'none'}} ref={ el => this.listIndexBottom = el}>
                     </div>
                 </ul>
                 {this.addCardForm()}
