@@ -79,7 +79,10 @@ class ListIndexItem extends React.Component{
                         placeholder={"Enter a title for this card..."}
                         onChange={this.update("cardTitle")}
                     />
-                    <input type="submit" value={"Add Card"}/>
+                    <div>
+                        <input type="submit" value={"Add Card"}/>
+                        <button onClick={this.formToggle}> x </button>
+                    </div>
                 </form>
             )
         } else {
@@ -88,6 +91,22 @@ class ListIndexItem extends React.Component{
                 </>
             )
         }
+    }
+
+    addCardForm(){
+        if (this.state.formVisible) {
+            return (
+                <>
+                </>
+            )
+        } else {
+            return(
+                <button onClick={this.formToggle}>
+                    Add a new card
+                </button>
+            )
+        }
+
     }
 
     formToggle() {
@@ -131,9 +150,7 @@ class ListIndexItem extends React.Component{
                     {this.renderCards()}
                     {this.cardForm()}
                 </ul>
-                <button onClick={this.formToggle}>
-                    Add a new card
-                </button>
+                {this.addCardForm()}
             </li>
         )
     }
