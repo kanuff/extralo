@@ -12,7 +12,7 @@ const mdp = dispatch => {
 
 const msp = (state, ownProps) => {
     const defaultList = {
-        title: "Add another list",
+        title: " + Add another list",
         board_id: ownProps.match.params.board_id,
     }
     return {
@@ -26,17 +26,34 @@ class CreateListForm extends React.Component {
         this.state = {
             title: props.list.title,
             board_id: props.list.board_id,
+            placeholder: " + Add another list"
         }
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.editTitle = this.editTitle.bind(this)
+        this.fillTitle = this.fillTitle.bind(this)
+    }
+
+    editTitle() {
+        this.setState(
+            { placeholder: "Enter list title..." }
+        )
+    }
+
+    fillTitle() {
+        this.setState(
+            { placeholder: " + Add another list" }
+        )
     }
 
     handleSubmit(e){
         e.preventDefault()
+        e.persist()
         const newList = {
             title: this.state.title
         }
         this.props.createList(newList, this.state.board_id)
+                  .then( () => e.target.reset())
     }
 
     update(field){
@@ -47,16 +64,21 @@ class CreateListForm extends React.Component {
         }
     }
 
+
     render() {
         return (
             <form className={"create-list-form"} onSubmit={this.handleSubmit}>
                 <input 
                     type="text"
-                    value={this.state.title}
                     onChange={this.update("title")}
+                    onFocus={this.editTitle}
+                    onBlur={this.fillTitle}
+                    placeholder={this.state.placeholder}
                 />
-                <div>{this.props.list.title}</div>
-                <div>{this.props.list.board_id}</div>
+                <input
+                    type="submit"
+                    value={"Add List"}
+                />
             </form>
         )
     }

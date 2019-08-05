@@ -1,53 +1,63 @@
 .lists-index-container {
-    border: 1px red solid;
+    /* border: 1px red solid; */
+    --indexHeight: 87vh;
     background: transparent;
     margin-top: -20px;
-    height: 85vh;
+    height: var(--indexHeight);
 }
 
 .lists-index {
-    display: block;
-    /* height: 50px; */
+    /* border: 2px purple solid; */
+    display: flex;
     overflow: scroll;
-    border: 2px purple solid;
-    max-height: 100vh;
-    height:100%;
+    /* --thisHeight: height; */
+    max-height: 90vh;
 }
 
-.list-index-item {
-    /* background: transparent; */
-    background-color: lightgrey;
-    border: 1px red solid;
-    display: flex;
-    flex-direction: column;
-}
 
 
 .lists-index > li > form > input{
-    border: 2px green dashed;
+    /* border: 2px green dashed; */
     background: transparent;
     font-size: 14px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.88);
     padding: 5px;
+    cursor: pointer;
 }
+
+.lists-index > li > form > input:focus{
+    /* border: 2px green dashed; */
+    background: white;
+    font-size: 14px;
+    font-weight: bold;
+    color: black(0, 0, 0, 0.88);
+    padding: 5px;
+}
+
+
 
 .lists-index > li > form {
     background: transparent;
 }
 
 .lists-index > li {
-    border: 1px yellow dashed;
+    /* border: 1px yellow dashed; */
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
     margin-left: 5px;
     border-radius: 4px;
     padding: 10px;
     padding-bottom: 40px;
-    /* height: 100%; */
+    margin-bottom: 15px;
     /* height: 80vh; */
     /* max-height: 80vh; */
+    max-height: 77vh;
     width: 230px;
     min-width: 230px;
     max-width: 100%;
+    /* display: inline-table; */
     /* overflow-y: hidden; */
 }
 
@@ -55,10 +65,15 @@
     padding: 10px;
 }
 
+.list-index-item > form > input {
+
+}
+
 .lists-index > li > ul {
     padding: 5px;
     margin-top: 10px;
     overflow-y: scroll;
+    max-height: 80vh;
 }
 
 .lists-index {
@@ -68,8 +83,8 @@
 }
 
 .card-container {
+    /* border: 1px greenyellow solid; */
     background: transparent;
-    border: 1px greenyellow solid;
     margin-right: -10px;
     margin-left: -5px;
 }
@@ -82,3 +97,51 @@
     margin-left: -3px;
     border-radius: 4px;
 }
+
+.create-list-form{
+    /* border: 1px solid pink; */
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-bottom: 530px;
+    background: transparent;
+}
+
+.create-list-form > input[type=text]{
+    /* border: 2px green dashed; */
+    background-color: rgba(0, 0, 0, 0.38);
+    border-radius: 4px;
+    cursor: pointer;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.88);
+    padding: 5px;
+    margin: 5px;
+    width: 230px;
+    min-width: 230px;
+    max-width: 100%;
+}
+
+.create-list-form > input[type=text]:focus{
+    outline: none;
+    cursor: text;
+    background-color: white;
+    color: black;
+}
+
+.create-list-form > input[type=submit]{
+    outline: none;
+    cursor: text;
+    background-color: rgb(85, 196, 85);
+    color: white;
+    width: 100px;
+    padding: 7px 1px 7px 1px;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+

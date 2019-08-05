@@ -31,9 +31,8 @@ class ListIndexItem extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.updateList(
-            this.state
-            )
+        document.getElementById(`list-title-input_${this.props.list.id}`).blur();
+        this.props.updateList(this.state)
     }
 
     update(field) {
@@ -50,6 +49,7 @@ class ListIndexItem extends React.Component{
             <li className={"list-index-item"} >
                 <form onSubmit={this.handleSubmit}>
                     <input 
+                        id={`list-title-input_${list.id}`}
                         type="text"
                         value={this.state.title}
                         onChange={this.update("title")}
@@ -58,34 +58,6 @@ class ListIndexItem extends React.Component{
                 </form>
                 <ul className={"card-container"}>
                     <div>CARDS GO HERE! askdfkj asdnf ahsdkfj haskjdfhkj ashdfkjhasdkjf</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
-                    <div>alsdfjlasdjflkajsdfl</div>
                     <div>alsdfjlasdjflkajsdfl</div>
                     <div>alsdfjlasdjflkajsdfl</div>
                     <div>alsdfjlasdjflkajsdfl</div>
