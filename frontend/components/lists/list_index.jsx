@@ -12,7 +12,10 @@ export default class ListIndex extends React.Component{
         const { lists } = this.props;
         return lists.map( (list, idx) => {
             return (
-                <ListIndexItem list={list} key={`list_${idx}`}/>
+                <ListIndexItem
+                    list={list} 
+                    key={`list_${idx}`}
+                />
             )
         })
     }
