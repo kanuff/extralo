@@ -153,12 +153,10 @@
 }
 .card-container::-webkit-scrollbar-track-piece{
     border-radius: 8px;
-    /* background: rgba(0, 0, 0, 0.14); */
     background: transparent;
 }
 .card-container::-webkit-scrollbar-thumb{
     background: rgba(128, 128, 128, 0.721);
-    /* background: transparent; */
     border-radius: 10px;
 }
 
@@ -168,13 +166,10 @@
 
 ::-webkit-scrollbar-track-piece{
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.324);
+    background: transparent;
 }
 
-/* ::-webkit-scrollbar-track{
-} */
-
 ::-webkit-scrollbar-thumb {
-    background: rgb(201, 201, 201);
+    background: rgba(255, 255, 255, 0.612);
     border-radius: 10px;
 }
