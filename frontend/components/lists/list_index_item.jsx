@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateList } from '../../actions/list_actions';
-import { fetchCards } from '../../actions/card_actions';
+import { 
+    fetchCards,
+    createCard,
+ } from '../../actions/card_actions';
 import CardItem from '../cards/card_item_container';
 
 const msp = state => {
@@ -14,6 +17,7 @@ const mdp = dispatch => {
     return {
         updateList: list => dispatch(updateList(list)),
         fetchCards: list_id => dispatch(fetchCards(list_id)),
+        createCard: card => dispatch(createCard(card)),
     }
 }
 
@@ -24,16 +28,38 @@ class ListIndexItem extends React.Component{
         this.state = {
             title: props.list.title,
             id: props.list.id,
+            formVisible: false,
+            cardTitle: ""
         }
         this.cardIds = props.list.card_ids
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.formToggle = this.formToggle.bind(this);
+        this.handleCardSubmit = this.handleCardSubmit.bind(this);
     }
 
     handleSubmit(e) {
+        const list = {
+            title: this.state.title,
+            id: this.state.id
+        }
         e.preventDefault()
         document.getElementById(`list-title-input_${this.props.list.id}`).blur();
-        this.props.updateList(this.state)
+        this.props.updateList(list)
+    }
+
+    handleCardSubmit(e){
+        const card = {
+            title: this.state.cardTitle,
+            list_id: this.state.id,
+        }
+        e.preventDefault()
+        e.persist()
+        this.props.createCard(card)
+                 .then( () => {
+                     this.setState({cardTitle: ""});
+                     e.target.reset();
+                    })
     }
 
     update(field) {
@@ -44,18 +70,44 @@ class ListIndexItem extends React.Component{
         }
     }
 
+    cardForm(){
+        if (this.state.formVisible){
+            return (
+                <form className={"create-card-form"} onSubmit={this.handleCardSubmit}>
+                    <input
+                        type="text"
+                        placeholder={"Enter a title for this card..."}
+                        onChange={this.update("cardTitle")}
+                    />
+                    <input type="submit" value={"Add Card"}/>
+                </form>
+            )
+        } else {
+            return (
+                <>
+                </>
+            )
+        }
+    }
+
+    formToggle() {
+        this.setState({
+            formVisible: !this.state.formVisible
+        })
+    }
+
     componentDidMount(){
         this.props.fetchCards(this.props.list.id)
     }
 
 
     renderCards(){
-        return this.props.cards.map( (card, idx) => {
+        return this.props.cards.map( (card) => {
             if( card.list_id === this.state.id){
                 return (
                     <CardItem 
                         card={card}
-                        key={`card_${this.state.id}_${idx}`}
+                        key={`card_${this.state.id}_${card.id}`}
                     />
                 )
             }
@@ -77,7 +129,11 @@ class ListIndexItem extends React.Component{
                 </form>
                 <ul className={"card-container"}>
                     {this.renderCards()}
+                    {this.cardForm()}
                 </ul>
+                <button onClick={this.formToggle}>
+                    Add a new card
+                </button>
             </li>
         )
     }

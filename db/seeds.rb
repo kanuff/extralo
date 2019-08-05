@@ -61,8 +61,23 @@ cards = Card.create([
   {list_id: lists.second.id, title: "Drink wine"},
   {list_id: lists.second.id, title: "Wrink dine"},
   {list_id: lists.fourth.id, title: "Should belong to second board"},
-  {list_id: lists.fifth.id, title: "Should also belong to second board"}
-
+  {list_id: lists.fifth.id, title: "Should also belong to second board"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
+  {list_id: lists.first.id, title: "Plant tomatoes"},
 ])
 
 cards.first.insertNode(cards.second)

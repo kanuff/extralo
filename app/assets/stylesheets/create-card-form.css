@@ -1,0 +1,38 @@
+.create-card-form {
+  border: 1px red solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.create-card-form > input[type=text] {
+  border: 1px green solid;
+  padding: 10px;
+  font-size: 15px;
+  background: transparent;
+}
+
+.create-card-form > input[type=submit] {
+  border: 1px purple solid;
+  padding: 10px 5px 10px 5px;
+  font-size: 15px;
+  background: rgba(85, 196, 85, 0.9);
+  color: white;
+  /* width: 33.33%; */
+  width: 100px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.create-card-form > input[type=text]::placeholder{
+  font-size: 11px;
+}
+
+.create-card-form > input[type=text]:focus::placeholder{
+  color: transparent;
+}
+
+.create-card-form > input[type=text]:focus{
+  outline: none;
+}
+

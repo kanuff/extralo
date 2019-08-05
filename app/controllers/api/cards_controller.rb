@@ -10,7 +10,7 @@ class Api::CardsController < ApplicationController
     if @card.save
       list_cards = List.find(params[:list_id]).cards
       if list_cards.length > 1
-        list_cards[-2].insertNode(@card)
+        list_cards[list_cards.length-2].insertNode(@card)
       end
       render :show
     end

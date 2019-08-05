@@ -11,7 +11,7 @@ class Api::ListsController < ApplicationController
         if @list.save
             board_lists = Board.find(params[:board_id]).lists
             if board_lists.length > 1
-                board_lists[-2].insertNode(@list)
+                board_lists[board_lists.length-1].insertNode(@list)
             end
             render :show
         end

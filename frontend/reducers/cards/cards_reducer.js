@@ -5,7 +5,7 @@ import {
 } from '../../actions/card_actions';
 
 // import RECEIVE_LIST from '../../actions/list_actions';
-import RECEIVE_BOARDS from '../../actions/board_actions';
+// import RECEIVE_BOARDS from '../../actions/board_actions';
 
 export default (state={}, action) => {
   Object.freeze(state);

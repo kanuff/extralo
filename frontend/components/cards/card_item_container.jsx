@@ -1,5 +1,9 @@
 import { connect } from 'react-redux';
 import CardItem from './card_item';
+import {
+  updateCard,
+  createCard,
+} from '../../actions/card_actions'
 
 const msp = state => {
   return {
@@ -9,7 +13,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-
+    updateCard: card => dispatch(updateCard(card)),
+    createCard: card => dispatch(createCard(card)),
   }
 }
 
