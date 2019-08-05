@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
-  height: 40px;
+  height: 35px;
 }
 
 .create-card-form > input[type=text] {
@@ -27,6 +27,11 @@
   margin-top: 18px;
   cursor: pointer;
   margin-left: -10px;
+  margin-bottom: 5px;
+}
+
+.create-card-form > div > input[type=submit]:focus {
+  outline: none;
 }
 
 .create-card-form > div {
@@ -47,7 +52,7 @@
 }
 
 .create-card-form > input[type=text]::placeholder{
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .create-card-form > input[type=text]:focus::placeholder{
@@ -58,3 +63,37 @@
   outline: none;
 }
 
+#add-card-btn {
+  padding: 7px;
+  background: transparent;
+  text-align: left;
+  /* border: 1px solid red; */
+  width: 100%;
+  font-size: 15px;
+  margin-top: 5px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+#add-card-btn:hover {
+  background: rgba(0, 0, 0, 0.4);
+  color: black;
+  text-decoration: underline;
+}
+
+#add-card-btn {
+  -webkit-transition: text-decoration 0.1s, background-color 0.1s;
+  -moz-transition:    text-decoration 0.1s, background-color 0.1s;
+  -ms-transition:     text-decoration 0.1s, background-color 0.1s;
+  -o-transition:      text-decoration 0.1s, background-color 0.1s;
+  transition:         text-decoration 0.1s, background-color 0.1s;
+}
+
+/* 
+input {
+  -webkit-transition: background-color 0.1s, outline 0.1s;
+  -moz-transition:    background-color 0.1s, outline 0.1s;
+  -ms-transition:     background-color 0.1s, outline 0.1s;
+  -o-transition:      background-color 0.1s, outline 0.1s;
+  transition:         background-color 0.1s, outline 0.1s;
+} */

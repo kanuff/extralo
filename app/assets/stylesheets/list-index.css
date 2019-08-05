@@ -49,11 +49,11 @@
     margin-left: 5px;
     border-radius: 4px;
     padding: 10px;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
     margin-bottom: 15px;
     /* height: 80vh; */
     /* max-height: 80vh; */
-    max-height: 77vh;
+    max-height: 85vh;
     width: 230px;
     min-width: 230px;
     max-width: 100%;
@@ -188,6 +188,8 @@ input {
 }
 
 ::-webkit-scrollbar-track-piece{
+    margin-left: 5px;
+    margin-right: 5px;
     border-radius: 10px;
     background: transparent;
 }

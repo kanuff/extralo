@@ -80,7 +80,10 @@ class ListIndexItem extends React.Component{
                         onChange={this.update("cardTitle")}
                     />
                     <div>
-                        <input type="submit" value={"Add Card"}/>
+                        <input 
+                            type="submit" 
+                            value={"Add Card"}
+                        />
                         <button onClick={this.formToggle}> x </button>
                     </div>
                 </form>
@@ -101,8 +104,8 @@ class ListIndexItem extends React.Component{
             )
         } else {
             return(
-                <button onClick={this.formToggle}>
-                    Add a new card
+                <button id={"add-card-btn"} onClick={this.formToggle}>
+                    + Add another card
                 </button>
             )
         }
