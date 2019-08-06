@@ -186,7 +186,11 @@ class ListIndexItem extends React.Component{
                         onBlur={this.handleSubmit}
                     />
                 </form>
-                <button onClick={this.archiveList}>Archive List</button>
+                <button 
+                    id={'archive-list-btn'}
+                    onClick={this.archiveList}>
+                    Archive List
+                </button>
                 <ul className={"card-container"}>
                     {this.renderCards()}
                     {this.cardForm()}
