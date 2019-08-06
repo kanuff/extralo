@@ -11,6 +11,7 @@ import {
 import CardItem from '../cards/card_item_container';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
+import { Draggable } from 'react-beautiful-dnd'
 
 const msp = (state, ownProps) => {
     return {
@@ -46,6 +47,7 @@ class ListIndexItem extends React.Component{
         this.formToggle = this.formToggle.bind(this);
         this.handleCardSubmit = this.handleCardSubmit.bind(this);
         this.archiveList = this.archiveList.bind(this);
+        // this.innerRef = React.createRef();
     }
 
     archiveList(){
@@ -112,16 +114,9 @@ class ListIndexItem extends React.Component{
             )
         } else {
             return (
-                // <button 
-                //     ref={el => this.listIndexBottom = el}
-                //     id={"add-card-btn"} 
-                //     onClick={this.formToggle}>
-                //     + Add another card
-                // </button>
                 <div
                     style={{
                         position: 'relative',
-                        // bottom: 0,
                         height: '30px',
                         padding: '0px',
                         color: 'transparent',
@@ -178,27 +173,36 @@ class ListIndexItem extends React.Component{
     render(){
         const { list } = this.props
         return (
-            <li className={"list-index-item"} >
-                <form onSubmit={this.handleSubmit}>
-                    <input 
-                        id={`list-title-input_${list.id}`}
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.update("title")}
-                        onBlur={this.handleSubmit}
-                    />
-                </form>
-                <button 
-                    id={'archive-list-btn'}
-                    onClick={this.archiveList}>
-                    Archive List
-                </button>
-                <ul className={"card-container"}>
-                    {this.renderCards()}
-                    {this.cardForm()}
-                </ul>
-                {this.addCardForm()}
-            </li>
+            <Draggable draggableId={this.props.list.id} index={this.props.index}>
+                {(provided, snapshot) => (
+                    <li 
+                        className={"list-index-item"}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                    >
+                        <form onSubmit={this.handleSubmit}>
+                            <input 
+                                id={`list-title-input_${list.id}`}
+                                type="text"
+                                value={this.state.title}
+                                onChange={this.update("title")}
+                                onBlur={this.handleSubmit}
+                            />
+                        </form>
+                        <button 
+                            id={'archive-list-btn'}
+                            onClick={this.archiveList}>
+                            Archive List
+                        </button>
+                        <ul className={"card-container"}>
+                            {this.renderCards()}
+                            {this.cardForm()}
+                        </ul>
+                        {this.addCardForm()}
+                    </li>
+                )}
+            </Draggable>
         )
     }
 }
