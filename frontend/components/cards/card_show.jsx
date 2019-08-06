@@ -21,21 +21,54 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchCard: id => dispatch(fetchCard(id)),
+        updateCard: card => dispatch(updateCard(card)),
     }
 }
 
 class CardShow extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            title: props.card.title,
+            description: props.card.description,
+            id: props.card_id,
+        }
+        this.update = this.update.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount(){
         this.props.fetchCard(this.props.card_id)
     }
 
+    update(field) {
+        return (e) => {
+            this.setState({
+                [field]: e.target.value,
+            })
+        }
+    }
+
+    handleSubmit(e) {
+        const card = {
+            title: this.state.title,
+            id: this.state.id
+        }
+        e.preventDefault()
+        this.props.updateCard(card)
+    }
+
     render(){
         return (
-            <h1>{this.props.card.title}</h1>
+            <form action="">
+                <input
+                    id={`card-title-input_${this.props.card_id}`}
+                    type="text"
+                    value={this.state.title}
+                    onChange={this.update("title")}
+                    onBlur={this.handleSubmit}
+                />
+            </form>
         )
     }
 }
