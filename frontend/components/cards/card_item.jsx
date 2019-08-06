@@ -11,6 +11,12 @@ export default class CardItem extends React.Component {
     }
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openCardShowModal = this.openCardShowModal.bind(this);
+  }
+
+  openCardShowModal(){
+    this.props.history.push(`/boards/${this.props.board_id}/cards/${this.state.id}`)
+    this.props.openModal("card-show")
   }
 
   handleSubmit(e) {
@@ -30,7 +36,7 @@ export default class CardItem extends React.Component {
 
   render(){
     return (
-      <li>
+      <li onClick={this.openCardShowModal}>
         {this.state.title}
       </li>
     )

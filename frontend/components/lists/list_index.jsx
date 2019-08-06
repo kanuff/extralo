@@ -17,6 +17,7 @@ export default class ListIndex extends React.Component{
                     <ListIndexItem
                         list={list} 
                         key={`list_${idx}`}
+                        board_id={this.props.board_id}
                     />
                 )
             }

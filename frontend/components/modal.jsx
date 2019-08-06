@@ -3,6 +3,7 @@ import { closeModal, openModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
 import UserOptionsMenu from './user_navbar/user_options_menu';
 import CreateBoardForm from './board_index/create_board_form';
+import CardShow from './cards/card_show';
 
 const Modal = ({modal, closeModal}) => {
   if(!modal){
@@ -19,6 +20,9 @@ const Modal = ({modal, closeModal}) => {
     case 'create-board':
       component = <CreateBoardForm />
       break;
+    case 'card-show':
+      component = <CardShow className={"card-show-form"}/>
+      break
     default:
       return null;
   }

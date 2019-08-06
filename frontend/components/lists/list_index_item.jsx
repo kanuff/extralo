@@ -1,15 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateList } from '../../actions/list_actions';
+import { 
+    updateList,
+    deleteList,
+ } from '../../actions/list_actions';
 import { 
     fetchCards,
     createCard,
  } from '../../actions/card_actions';
 import CardItem from '../cards/card_item_container';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 
-const msp = state => {
+const msp = (state, ownProps) => {
     return {
         cards: Object.values(state.entities.cards),
+        history: ownProps.history,
     }
 }
 
@@ -18,6 +24,9 @@ const mdp = dispatch => {
         updateList: list => dispatch(updateList(list)),
         fetchCards: list_id => dispatch(fetchCards(list_id)),
         createCard: card => dispatch(createCard(card)),
+        openModal: modal => dispatch(openModal(modal)),
+        closeModal: () => dispatch(closeModal()),
+        deleteList: id => dispatch(deleteList(id)),
     }
 }
 
@@ -36,13 +45,18 @@ class ListIndexItem extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.formToggle = this.formToggle.bind(this);
         this.handleCardSubmit = this.handleCardSubmit.bind(this);
+        this.archiveList = this.archiveList.bind(this);
     }
 
-    componentDidUpdate(pastProps){
-        if(pastProps !== this.props){
-            this.listIndexBottom.scrollIntoView();
-        }
+    archiveList(){
+        this.props.deleteList(this.state.id);
     }
+
+    // componentDidUpdate(pastProps){
+    //     if(pastProps !== this.props){
+    //         this.listIndexBottom.scrollIntoView();
+    //     }
+    // }
 
     handleSubmit(e) {
         const list = {
@@ -136,6 +150,9 @@ class ListIndexItem extends React.Component{
                     <CardItem 
                         card={card}
                         key={`card_${this.state.id}_${card.id}`}
+                        openModal={this.props.openModal}
+                        history={this.props.history}
+                        board_id={this.props.board_id}
                     />
                 )
             }
@@ -155,6 +172,7 @@ class ListIndexItem extends React.Component{
                         onBlur={this.handleSubmit}
                     />
                 </form>
+                {/* <button onClick={this.archiveList}>Archive List</button> */}
                 <ul className={"card-container"}>
                     {this.renderCards()}
                     {this.cardForm()}
@@ -167,4 +185,4 @@ class ListIndexItem extends React.Component{
     }
 }
 
-export default connect(msp, mdp)(ListIndexItem);
+export default withRouter(connect(msp, mdp)(ListIndexItem));

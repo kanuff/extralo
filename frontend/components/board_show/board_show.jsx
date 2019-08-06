@@ -31,7 +31,7 @@ export default class BoardShow extends React.Component {
           clearErrors={this.props.clearErrors}
           errors={this.props.errors}
         />
-        <ListIndex />
+        <ListIndex board_id={this.props.board_id}/>
       </section>
     )
   }
