@@ -38,7 +38,7 @@ export const fetchLists = board_id => dispatch => {
                      .then( lists => dispatch(receiveLists(lists)))
 }
 
-export const deleteList = id => {
+export const deleteList = id => dispatch => {
     return ListAPIUtil.deleteList(id)
                      .then( list => dispatch(receiveList(list)))
 }
