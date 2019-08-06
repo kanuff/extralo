@@ -1,10 +1,12 @@
 .create-board-form{
-  margin: 50px 30%;
+  /* margin: 50px 30%; */
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   padding: 20px;
   background-color: grey;
   border-radius: 4px;
+  width: fit-content;
 }
 
 .create-board-form > input[type=text]{

@@ -6,10 +6,15 @@
   left: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
+  text-align: center;
 }
 
 .modal-child {
-  margin: 0 auto;
+  display: inline-block;
+  padding: 0px;
+  height: fit-content;
+  /* background: rgba(255, 0, 0, 0.516);
+  border: 1px forestgreen solid; */
 }
 
 .transparent {

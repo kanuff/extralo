@@ -43,6 +43,7 @@ export const fetchCard = id => dispatch => {
                     .then( card => dispatch(receiveCard(card)));
 }
 
-export const deleteCard = id => {
+export const deleteCard = id => dispatch => {
   return CardAPIUtil.deleteCard(id)
+                    .then( card => dispatch(receiveCard(card)))
 }

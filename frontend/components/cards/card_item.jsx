@@ -37,7 +37,7 @@ export default class CardItem extends React.Component {
   render(){
     return (
       <li onClick={this.openCardShowModal}>
-        {this.state.title}
+        {this.props.card.title}
       </li>
     )
   }
