@@ -52,12 +52,6 @@ class ListIndexItem extends React.Component{
         this.props.deleteList(this.state.id);
     }
 
-    // componentDidUpdate(pastProps){
-    //     if(pastProps !== this.props){
-    //         this.listIndexBottom.scrollIntoView();
-    //     }
-    // }
-
     handleSubmit(e) {
         const list = {
             title: this.state.title,
@@ -68,7 +62,15 @@ class ListIndexItem extends React.Component{
         this.props.updateList(list)
     }
 
+    formToggle() {
+        this.listIndexBottom.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        this.setState({
+            formVisible: !this.state.formVisible
+        })
+    }
+    
     handleCardSubmit(e){
+        this.listIndexBottom.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
         const card = {
             title: this.state.cardTitle,
             list_id: this.state.id,
@@ -93,25 +95,41 @@ class ListIndexItem extends React.Component{
     cardForm(){
         if (this.state.formVisible){
             return (
-                <form className={"create-card-form"} onSubmit={this.handleCardSubmit}>
+                <form  className={"create-card-form"} onSubmit={this.handleCardSubmit}>
                     <input
                         type="text"
                         placeholder={"Enter a title for this card..."}
                         onChange={this.update("cardTitle")}
                     />
-                    <div>
+                    <div ref={el => this.listIndexBottom = el}>
                         <input 
                             type="submit" 
                             value={"Add Card"}
                         />
-                        <button onClick={this.formToggle}> x </button>
+                        <button  onClick={this.formToggle}> x </button>
                     </div>
                 </form>
             )
         } else {
             return (
-                <>
-                </>
+                // <button 
+                //     ref={el => this.listIndexBottom = el}
+                //     id={"add-card-btn"} 
+                //     onClick={this.formToggle}>
+                //     + Add another card
+                // </button>
+                <div
+                    style={{
+                        position: 'relative',
+                        // bottom: 0,
+                        height: '30px',
+                        padding: '0px',
+                        color: 'transparent',
+                        background: 'transparent',
+                        'boxShadow': 'none',
+                    }}
+                    ref={el => this.listIndexBottom = el}>
+                </div>
             )
         }
     }
@@ -132,11 +150,7 @@ class ListIndexItem extends React.Component{
 
     }
 
-    formToggle() {
-        this.setState({
-            formVisible: !this.state.formVisible
-        })
-    }
+
 
     componentDidMount(){
         this.props.fetchCards(this.props.list.id)
@@ -176,8 +190,6 @@ class ListIndexItem extends React.Component{
                 <ul className={"card-container"}>
                     {this.renderCards()}
                     {this.cardForm()}
-                    <div style={{height: '0px', color: 'transparent', background: 'transparent', 'boxShadow': 'none'}} ref={ el => this.listIndexBottom = el}>
-                    </div>
                 </ul>
                 {this.addCardForm()}
             </li>
