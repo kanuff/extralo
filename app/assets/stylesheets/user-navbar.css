@@ -149,6 +149,7 @@ button, .home-btn{
   right: 3px;
   top: 45px;
   padding: 5px 0;
+  text-align: left;
 }
 
 .user-options > li {

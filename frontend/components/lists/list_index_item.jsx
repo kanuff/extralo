@@ -160,15 +160,17 @@ class ListIndexItem extends React.Component{
     renderCards(){
         return this.props.cards.map( (card) => {
             if( card.list_id === this.state.id){
-                return (
-                    <CardItem 
-                        card={card}
-                        key={`card_${this.state.id}_${card.id}`}
-                        openModal={this.props.openModal}
-                        history={this.props.history}
-                        board_id={this.props.board_id}
-                    />
-                )
+                if (!card.archived){
+                    return (
+                        <CardItem 
+                            card={card}
+                            key={`card_${this.state.id}_${card.id}`}
+                            openModal={this.props.openModal}
+                            history={this.props.history}
+                            board_id={this.props.board_id}
+                        />
+                    )
+                }
             }
         })
     }
