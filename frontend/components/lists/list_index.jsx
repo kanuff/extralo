@@ -13,6 +13,7 @@ export default class ListIndex extends React.Component{
         }
         this.generateListOrder = this.generateListOrder.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
+        this.onDragStart = this.onDragStart.bind(this);
     }
 
     componentDidUpdate(prevProps){
@@ -60,11 +61,16 @@ export default class ListIndex extends React.Component{
                             key={`list_${list.id}`}
                             board_id={this.props.board_id}
                             index={idx}
+                            
                         />
                     )
                 }
             })
         }
+    }
+
+    onDragStart(start){
+        console.log(start)
     }
 
     onDragEnd(result){
@@ -96,16 +102,26 @@ export default class ListIndex extends React.Component{
         }
     }
 
+    getListStyle(isDraggingOver) {
+        return {
+            background: isDraggingOver ? 'blue' : 'green'
+        }
+    }
+
     render(){
         return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
+            <DragDropContext 
+                onDragEnd={this.onDragEnd}
+                onDragStart={this.onDragStart}
+                >
                 <section className={"lists-index-container"}>
                     <Droppable droppableId={`board_${this.props.board_id}`} direction="horizontal">
-                        {(provided) => (
+                        {(provided, snapshot) => (
                             <ul 
                                 className={"lists-index"}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
+                                // style={this.getListStyle(snapshot.isDraggingOver)}
                             >
                                 {this.renderLists()}
                                 {provided.placeholder}

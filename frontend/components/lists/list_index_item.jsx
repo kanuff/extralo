@@ -166,6 +166,14 @@ class ListIndexItem extends React.Component{
         })
     }
 
+    getListStyle(isDragging, draggableStyle) {
+        return {
+            background: 'rgb(205, 229, 255)',
+            boxShadow: isDragging ? '5px 5px 2px 2px rgba(0, 0, 0, 0.25)' : '1px 1px 0px 0px rgba(0, 0, 0, 0.25)',
+            ...draggableStyle
+        }
+    }
+
     render(){
         const { list } = this.props
         return (
@@ -179,6 +187,10 @@ class ListIndexItem extends React.Component{
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
+                        style={this.getListStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                            )}
                     >
                         <form onSubmit={this.handleSubmit}>
                             <input 

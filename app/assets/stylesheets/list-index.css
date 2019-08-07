@@ -40,10 +40,17 @@
 .lists-index > li > form {
     background: transparent;
 }
+.lists-index {
+    display: flex;
+    background: transparent;
+    /* background: rgba(211,211,211, 0.8); */
+    justify-content: left
+}
 
 .lists-index > li {
     height: fit-content;
-    background: rgba(211, 211, 211, 0.8);
+    /* background: rgb(211, 211, 211); */
+    background: transparent;
     display: flex;
     flex-direction: column;
     margin-left: 5px;
@@ -71,11 +78,7 @@
     /* max-height: 80vh; */
 }
 
-.lists-index {
-    display: flex;
-    background: transparent;
-    justify-content: left
-}
+
 
 .card-container {
     /* border: 2px orangered solid; */
