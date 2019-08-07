@@ -26,14 +26,20 @@ class Api::ListsController < ApplicationController
     def update
         # debugger
         list = List.find(params[:id])
+        @lists = []
         # new_child = List.find(list_params.next_id]) if list_params.next_id != 'sentinel'
         # new_parent = List.find(list_params.prev_id]) if list_params.prev_id != 'sentinel'
-        new_child = params[:list][:next_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:next_id]) 
-        new_parent = params[:list][:prev_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:prev_id]) 
-        # new_child = List.find(params[:])
-        
-        if @lists = list.insertBetween(new_parent, new_child)
-            render :multiShow
+        if params[:list][:next_id] == 'sentinel' || params[:list][:prev_id] == 'sentinel'
+            new_child = params[:list][:next_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:next_id]) 
+            new_parent = params[:list][:prev_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:prev_id])
+            if @lists = list.insertBetween(new_parent, new_child)
+                render :multiShow
+            end
+        else
+            if list.update(list_params)
+                @lists << list 
+                render :multiShow
+            end
         end
     end
 
