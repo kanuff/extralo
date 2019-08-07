@@ -100,9 +100,9 @@ class List < ApplicationRecord
         # debugger
 
         List.transaction do 
-            newSelf = List.update(self.id, self.attributes)
             old_parent.save! if old_parent.id
             old_child.save! if old_child.id
+            newSelf = List.update(self.id, self.attributes)
             new_parent.save! if new_parent.id
             new_child.save! if new_child.id
         end

@@ -27,9 +27,8 @@ class Api::ListsController < ApplicationController
         # debugger
         list = List.find(params[:id])
         @lists = []
-        # new_child = List.find(list_params.next_id]) if list_params.next_id != 'sentinel'
-        # new_parent = List.find(list_params.prev_id]) if list_params.prev_id != 'sentinel'
-        if params[:list][:next_id] == 'sentinel' || params[:list][:prev_id] == 'sentinel'
+
+        if params[:list][:order_change] == "true"
             new_child = params[:list][:next_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:next_id]) 
             new_parent = params[:list][:prev_id] == 'sentinel' ? "sentinel" : List.find(params[:list][:prev_id])
             if @lists = list.insertBetween(new_parent, new_child)
@@ -54,6 +53,6 @@ class Api::ListsController < ApplicationController
 
     private
     def list_params
-        params.require("list").permit(:title, :next_id, :prev_id)
+        params.require("list").permit(:title, :next_id, :prev_id, :order_change)
     end
 end

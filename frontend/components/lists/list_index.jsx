@@ -100,6 +100,7 @@ export default class ListIndex extends React.Component{
         list.next_id = listOrder[destination.index + 1] || 'sentinel'
         list.prev_id = listOrder[destination.index - 1] || 'sentinel'
         console.log(list)
+        list.order_change = true;
         this.props.updateList(list)
     }
 
