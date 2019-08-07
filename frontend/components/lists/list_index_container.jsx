@@ -4,6 +4,9 @@ import {
     fetchCards,
     clearCards,
  } from '../../actions/card_actions';
+import {
+    updateList,
+} from '../../actions/list_actions';
 
 const msp = state => {
     return {
@@ -15,7 +18,7 @@ const mdp = dispatch => {
     return {
         fetchCards: list_id => dispatch(fetchCards(list_id)),
         clearCards: () => dispatch(clearCards()),
-
+        updateList: list => dispatch(updateList(list)),
     }
 }
 

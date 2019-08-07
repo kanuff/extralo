@@ -47,6 +47,16 @@ class List < ApplicationRecord
         card_ids
     end
 
+    def parent
+        return if !self.prev_id
+        List.find(self.prev_id)
+    end
+    
+    def child
+        return if !self.next_id
+        List.find(self.next_id)
+    end
+
     def insertNode(list)
         #update prev child node if exists
         if self.next_id

@@ -173,7 +173,10 @@ class ListIndexItem extends React.Component{
     render(){
         const { list } = this.props
         return (
-            <Draggable draggableId={this.props.list.id} index={this.props.index}>
+            <Draggable 
+                draggableId={this.props.list.id}
+                key={this.props.list.id} 
+                index={this.props.index}>
                 {(provided, snapshot) => (
                     <li 
                         className={"list-index-item"}
