@@ -36,13 +36,17 @@ export default class ListIndex extends React.Component{
     generateListOrder(){
         const { lists } = this.props;
         if(lists.length > 0){
+            debugger
             const listOrder = [];
             let current_list = lists.find(list => list.prev_id === null && list.archived===false)
+            debugger
             if ( current_list){
-                listOrder.push(current_list.id)
                 debugger
+                listOrder.push(current_list.id)
                 while( current_list.next_id !== null){
+                    debugger
                     current_list = lists.find(list => current_list.next_id === list.id)
+                    debugger
                     listOrder.push(current_list.id)
                 }
                 this.setState({
@@ -93,8 +97,9 @@ export default class ListIndex extends React.Component{
             listOrder: listOrder
         })
 
-        list.next_id = listOrder[destination.index + 1]
-        list.prev_id = listOrder[destination.index - 1]
+        list.next_id = listOrder[destination.index + 1] || 'sentinel'
+        list.prev_id = listOrder[destination.index - 1] || 'sentinel'
+        console.log(list)
         this.props.updateList(list)
     }
 

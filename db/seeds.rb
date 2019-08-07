@@ -11,21 +11,21 @@ Board.destroy_all
 BoardMembership.destroy_all
 List.destroy_all
 
-demoUser = User.create(name: "Matthew", email:"hunter12@gmail.com", password: "hunter12")
+demoUser = User.create!(name: "Matthew", email:"hunter12@gmail.com", password: "hunter12")
 
-users = User.create([
+users = User.create!([
   {name: "Jim", email: "hunter13@gmail.com", password: "hunter12"},
   {name: "Pam", email: "hunter14@gmail.com", password: "hunter12"},
   {name: "Dwight", email: "hunter15@gmail.com", password: "hunter12"}
 ])
 
-boards = Board.create([
+boards = Board.create!([
   {creator_id: User.first.id, title: "Garden Landscaping", description: "Earth'n'worms", starred: false},
   {creator_id: User.first.id, title: "Spy on the Competition", description: "A Different Kind of Bug", starred: false},
   {creator_id: User.first.id, title: "Website Creation", description: "Somehow still something about bugs", starred: true}
 ])
 
-memberships = BoardMembership.create([
+memberships = BoardMembership.create!([
   {user_id: User.first.id, board_id: boards.first.id},
   {user_id: User.first.id, board_id: boards.second.id},
   {user_id: users.first.id, board_id: boards.third.id},
@@ -34,7 +34,7 @@ memberships = BoardMembership.create([
   {user_id: users.third.id, board_id: boards.second.id}
 ])
 
-lists = List.create([
+lists = List.create!([
   {board_id: Board.first.id, title: "Herb Garden"},
   {board_id: Board.first.id, title: "Grape Vineyard"},
   {board_id: Board.first.id, title: "Koi Pond"},
@@ -44,14 +44,21 @@ lists = List.create([
   {board_id: Board.third.id, title: "Doing"},
   {board_id: Board.third.id, title: "Done"}
 ])
+# debugger
+lists.second.insertBetween(lists.first)
+lists.third.insertBetween(lists.second)
+# lists.first.insertNode(lists.second)
+# lists.second.insertNode(lists.third)
+# debugger
+lists[4].insertBetween(lists[3])
+# debugger
+# lists[3].insertNode(lists[4])
 
-lists.first.insertNode(lists.second)
-lists.second.insertNode(lists.third)
-
-lists[3].insertNode(lists[4])
-
-lists[5].insertNode(lists[6])
-lists[6].insertNode(lists[7])
+lists[6].insertBetween(lists[5])
+lists[7].insertBetween(lists[6])
+# debugger
+# lists[5].insertNode(lists[6])
+# lists[6].insertNode(lists[7])
 
 cards = Card.create([
   {list_id: lists.first.id, title: "Plant tomatoes"},
@@ -80,9 +87,15 @@ cards = Card.create([
   {list_id: lists.first.id, title: "Plant tomatoes"},
 ])
 
-cards.first.insertNode(cards.second)
-cards.second.insertNode(cards.third)
-cards.third.insertNode(cards.fourth)
+cards.second.insertBetween(cards.first)
+cards.third.insertBetween(cards.second)
+cards.fourth.insertBetween(cards.third)
 
-cards[4].insertNode(cards[5])
+# cards.first.insertNode(cards.second)
+# cards.second.insertNode(cards.third)
+# cards.third.insertNode(cards.fourth)
+
+cards[5].insertBetween(cards[4])
+
+# cards[4].insertNode(cards[5])
 

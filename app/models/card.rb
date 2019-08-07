@@ -33,6 +33,53 @@ class Card < ApplicationRecord
   class_name: :Card,
   required: false
 
+    def parent
+        return Card.new() if !self.prev_id
+        Card.find(self.prev_id)
+    end
+
+    def child
+        return Card.new() if !self.next_id
+        Card.find(self.next_id)
+    end
+
+    def insertBetween(new_parent = "sentinel", new_child = "sentinel")
+        # if this is called without passing any arguements,
+        # it effectively deletes the node from the list
+        # and correctly updates the surrounding nodes
+
+        new_parent = Card.new() if new_parent == "sentinel"
+        new_child = Card.new() if new_child == "sentinel"
+
+        old_parent = self.parent
+        old_child = self.child
+        old_parent.next_id = old_child.id
+        old_child.prev_id = old_parent.id
+
+        self.next_id = new_child.id
+        self.prev_id = new_parent.id
+
+        new_child.prev_id = self.id
+        new_parent.next_id = self.id
+
+        Card.transaction do 
+            newSelf = Card.update(self.id, self.attributes)
+            old_parent.save! if old_parent.id
+            old_child.save! if old_child.id
+            new_parent.save! if new_parent.id
+            new_child.save! if new_child.id
+        end
+        # returns an array of all the nodes that were updated
+        return [
+            self,
+            old_child,
+            old_parent,
+            new_parent,
+            new_child,
+        ].reject {|card| card.id == nil}
+
+    end
+
   def insertNode(card)
       #update prev child node if exists
       if self.next_id

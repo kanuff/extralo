@@ -15,6 +15,8 @@
 class List < ApplicationRecord
     validates :board_id, :title, presence: true
     validates :archived, inclusion: {in: [true, false]}
+    validate :cannot_child_self, :cannot_parent_self, :cannot_parent_and_child_node
+
     attr_reader :root, :card_ids
 
     belongs_to :board,
@@ -48,36 +50,95 @@ class List < ApplicationRecord
     end
 
     def parent
-        return if !self.prev_id
+        return List.new() if !self.prev_id
         List.find(self.prev_id)
     end
     
     def child
-        return if !self.next_id
+        return List.new() if !self.next_id
         List.find(self.next_id)
     end
 
-    def insertNode(list)
-        #update prev child node if exists
-        if self.next_id
-            oldChild = List.find(self.next_id)
-            oldChild.prev_id = list.id 
+    def insertBetween(new_parent = "sentinel", new_child = "sentinel")
+        # if this is called without passing any arguements,
+        # it effectively deletes the node from the list
+        # and correctly updates the surrounding nodes
+        # debugger
+        new_parent = List.new() if new_parent == "sentinel"
+        new_child = List.new() if new_child == "sentinel"
+        # debugger
+        old_parent = self.parent
+        old_child = self.child
+        old_parent.next_id = old_child.id
+        old_child.prev_id = old_parent.id
+        # debugger
+       
+
+        new_child.prev_id = self.id
+        new_parent.next_id = self.id
+
+        # debugger
+
+
+        # handle edge case where old_parent == new_child (swap)
+        if old_parent.id == new_child.id
+            old_parent.next_id = self.next_id
+            new_child.next_id = self.next_id
+            old_parent.prev_id = self.id
+            new_child.prev_id = self.id
         end
-        #update new child node
-        list.next_id = self.next_id
-        list.prev_id = self.id
-        #update current parent node
-        self.next_id = list.id
-        #save all changes together or not at all
-        List.transaction do
-            if oldChild
-                oldChild.save!
-            end
-            self.save!
-            list.save!
+
+        if new_parent.id == old_child.id
+            new_parent.prev_id = self.prev_id
+            old_child.prev_id = self.prev_id
+            new_parent.next_id = self.id
+            old_child.next_id = self.id
         end
-        list.next_id
+
+        self.next_id = new_child.id
+        self.prev_id = new_parent.id
+        # debugger
+
+        List.transaction do 
+            newSelf = List.update(self.id, self.attributes)
+            old_parent.save! if old_parent.id
+            old_child.save! if old_child.id
+            new_parent.save! if new_parent.id
+            new_child.save! if new_child.id
+        end
+
+        # returns an array of all the nodes that were updated
+        return [
+            self,
+            old_child,
+            old_parent,
+            new_parent,
+            new_child,
+        ].reject {|list| list.id == nil}
+
     end
+
+    # def insertNode(list)
+    #     #update prev child node if exists
+    #     if self.next_id
+    #         oldChild = List.find(self.next_id)
+    #         oldChild.prev_id = list.id 
+    #     end
+    #     #update new child node
+    #     list.next_id = self.next_id
+    #     list.prev_id = self.id
+    #     #update current parent node
+    #     self.next_id = list.id
+    #     #save all changes together or not at all
+    #     List.transaction do
+    #         if oldChild
+    #             oldChild.save!
+    #         end
+    #         self.save!
+    #         list.save!
+    #     end
+    #     list.next_id
+    # end
 
     def self.removeNode(list)
         return if (list.next_id == nil) && (list.prev_id == nil)
@@ -124,4 +185,20 @@ class List < ApplicationRecord
         List.find(leaf_id)
     end
 
+
+
+    ## Custom validations for linked-list behavior
+    def cannot_parent_self
+        errors.add(:prev_id, "Cannot be parent to itself") if prev_id == id && id
+    end
+
+    def cannot_child_self
+        errors.add(:next_id, "Cannot be child to itself") if next_id == id && id
+    end
+
+    def cannot_parent_and_child_node
+        if prev_id || next_id
+            errors.add(:next_id, "Cannot be child to itself") if next_id == prev_id
+        end
+    end
 end
