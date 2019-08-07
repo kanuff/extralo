@@ -47,7 +47,6 @@ class ListIndexItem extends React.Component{
         this.formToggle = this.formToggle.bind(this);
         this.handleCardSubmit = this.handleCardSubmit.bind(this);
         this.archiveList = this.archiveList.bind(this);
-        // this.innerRef = React.createRef();
     }
 
     archiveList(){
@@ -111,7 +110,7 @@ class ListIndexItem extends React.Component{
                         <button  onClick={this.formToggle}> x </button>
                     </div>
                 </form>
-            )
+            ) 
         } else {
             return (
                 <div
@@ -145,12 +144,9 @@ class ListIndexItem extends React.Component{
 
     }
 
-
-
     componentDidMount(){
         this.props.fetchCards(this.props.list.id)
     }
-
 
     renderCards(){
         return this.props.cards.map( (card) => {

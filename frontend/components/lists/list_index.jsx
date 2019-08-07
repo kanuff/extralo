@@ -70,6 +70,7 @@ export default class ListIndex extends React.Component{
     onDragEnd(result){
         const { listOrder } = this.state 
         const { destination, source, draggableId } = result;
+        console.log(result)
         if(!destination){
             return
         }
@@ -78,19 +79,21 @@ export default class ListIndex extends React.Component{
                 return
             }
 
-        const list = this.props.lists.find( list => list.id === draggableId)
-
-        listOrder.splice(source.index, 1)
-        listOrder.splice(destination.index, 0, draggableId)
-
-        this.setState({
-            listOrder: listOrder
-        })
-
-        list.next_id = listOrder[destination.index + 1] || 'sentinel'
-        list.prev_id = listOrder[destination.index - 1] || 'sentinel'
-        list.order_change = true;
-        this.props.updateList(list)
+        if (destination.droppableId === source.droppableId ){
+            const list = this.props.lists.find( list => list.id === draggableId)
+    
+            listOrder.splice(source.index, 1)
+            listOrder.splice(destination.index, 0, draggableId)
+    
+            this.setState({
+                listOrder: listOrder
+            })
+    
+            list.next_id = listOrder[destination.index + 1] || 'sentinel'
+            list.prev_id = listOrder[destination.index - 1] || 'sentinel'
+            list.order_change = true;
+            this.props.updateList(list)
+        }
     }
 
     render(){
