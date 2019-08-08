@@ -71,3 +71,11 @@
 .board-index-navbar-container {
   z-index: 3;
 }
+
+#board-index-title{
+  padding: 5px;
+  border: 1px red solid;
+  padding-left: 10px;
+  font-weight: 900;
+  font-size: 17px;
+}

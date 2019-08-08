@@ -123,6 +123,15 @@ export default class ListIndex extends React.Component{
                                 {this.renderLists()}
                                 {provided.placeholder}
                                 <CreateListForm />
+                                <div
+                                style={{
+                                    height: '87vh',
+                                }}
+                                >
+                                    {/* Leave me empty yo 
+                                    I keep the board show page 
+                                    looking nice */}
+                                </div>
                             </ul>
                         )}
                     </Droppable>

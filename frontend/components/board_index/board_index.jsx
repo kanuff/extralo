@@ -29,12 +29,15 @@ export default class BoardIndex extends React.Component{
       <section className={"board-index"}>
         <section className={"board-index-navbar-container"}>
           <ul className={"board-index-navbar"}>
-            <li className={""}><i className="fas fa-list"></i>  Boards</li>
+            <li> <i className="fas fa-list"></i>  Boards</li>
             <li><Link to="/" className={""}><i className="fas fa-home"></i> Home</Link></li>
           </ul>
         </section>
         <section className={"board-index-list-container"}>
-          <i className="far fa-user"></i> Personal Boards
+          <ul className={"recently-updated board-index-list"}>
+            {/* {recentlyUpdatedBoards} */}
+          </ul>
+          <div id={"board-index-title"}><i className="far fa-user"></i> Personal Boards</div>
           <ul className={"board-index-list"}>
             {boards}
             <li id={"create-board-btn"} onClick={this.openCreateBoardModal}>Create new board</li>

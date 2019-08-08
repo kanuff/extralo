@@ -67,7 +67,6 @@ class ListIndexItem extends React.Component{
     
     rearrangeAndUpdate(result, card) {
         //right now this is only configured to handle a move from the same list
-        console.log(`Rearranging cards for List #${this.state.id}`)
         const { cardOrder } = this.state
         const { destination, source, draggableId } = result;
         cardOrder.splice(source.index, 1)
@@ -85,7 +84,6 @@ class ListIndexItem extends React.Component{
 
     updateCardAcrossList(card, result, cardOrder){
         const {destination } = result
-        debugger
         card.next_id = cardOrder[destination.index + 1] || 'sentinel'
         card.prev_id = cardOrder[destination.index - 1] || 'sentinel'
         card.order_change = true;
@@ -94,7 +92,6 @@ class ListIndexItem extends React.Component{
 
     rearrange(result, action) {
         //right now this is only configured to handle a move from the same list
-        console.log(`Rearranging cards for List #${this.state.id}`)
         const { cardOrder } = this.state
         const { destination, source, draggableId } = result;
         
@@ -103,7 +100,6 @@ class ListIndexItem extends React.Component{
         } else if (action === "source"){
             cardOrder.splice(source.index, 1)
         }
-        debugger
         this.setState({
             cardOrder: cardOrder,
             result: result,
@@ -116,7 +112,6 @@ class ListIndexItem extends React.Component{
 
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(`List #${this.props.list.id} has updated`)
         if (prevProps !== this.props) {
             const { cardOrder } = this.state;
             const oldcardOrder = Object.assign([], prevState.cardOrder) || []
@@ -141,15 +136,12 @@ class ListIndexItem extends React.Component{
                     } else if (destination.droppableId !== source.droppableId){
                         if ( `list_${list_id}` === destination.droppableId){
                             if (!this.resultsEqual(result, oldResult)) {
-                                debugger
                                 card.list_id = list_id;
                                 const destinationCardOrder = this.rearrange(result, "destination")
                                 this.updateCardAcrossList(card, result, destinationCardOrder)
                             }
                         } else if (`list_${list_id}` === source.droppableId){
-                            debugger
                             if (!this.resultsEqual(result, oldResult)) {
-                                debugger
                                 this.rearrange(result, "source") 
                             }
                         }  
@@ -169,7 +161,6 @@ class ListIndexItem extends React.Component{
             if (current_card) {
                 cardOrder.push(current_card.id)
                 while (current_card.next_id !== null) {
-                    debugger
                     current_card = cards.find(card => current_card.next_id === card.id)
                     if ( !current_card ){
                         break
@@ -251,7 +242,7 @@ class ListIndexItem extends React.Component{
                 <div
                     style={{
                         position: 'relative',
-                        height: '30px',
+                        height: '50px',
                         padding: '0px',
                         color: 'transparent',
                         background: 'transparent',
@@ -280,7 +271,6 @@ class ListIndexItem extends React.Component{
     }
 
     componentDidMount(){
-        console.log(`List #${this.props.list.id} has mounted`)
         this.props.fetchCards(this.props.list.id)
     }
 

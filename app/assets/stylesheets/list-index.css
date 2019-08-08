@@ -14,8 +14,6 @@
     max-height: 90vh;
 }
 
-
-
 .lists-index > li > form > input{
     /* border: 2px green dashed; */
     background: transparent;
@@ -33,6 +31,7 @@
     font-weight: bold;
     color: black(0, 0, 0, 0.88);
     padding: 5px;
+    cursor: text;
 }
 
 
@@ -49,14 +48,13 @@
 
 .lists-index > li {
     height: fit-content;
-    /* background: rgb(211, 211, 211); */
     background: transparent;
     display: flex;
     flex-direction: column;
     margin-left: 5px;
     border-radius: 4px;
     padding: 10px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     max-height: 83vh;
     width: 230px;
     min-width: 230px;
@@ -97,7 +95,6 @@
     padding: 10px;
     line-height: 150%;
     letter-spacing: 0.03em;
-    /* border: none; */
     cursor: pointer;
 }
 
@@ -146,11 +143,11 @@
 }
 
 input {
-  -webkit-transition: background-color 0.1s, outline 0.1s;
-  -moz-transition:    background-color 0.1s, outline 0.1s;
-  -ms-transition:     background-color 0.1s, outline 0.1s;
-  -o-transition:      background-color 0.1s, outline 0.1s;
-  transition:         background-color 0.1s, outline 0.1s;
+    -webkit-transition: background-color 0.1s, outline 0.1s;
+    -moz-transition:    background-color 0.1s, outline 0.1s;
+    -ms-transition:     background-color 0.1s, outline 0.1s;
+    -o-transition:      background-color 0.1s, outline 0.1s;
+    transition:         background-color 0.1s, outline 0.1s;
 }
 
 
