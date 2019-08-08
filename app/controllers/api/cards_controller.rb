@@ -5,14 +5,19 @@ class Api::CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
-    @card.list_id = params[:list_id]
-    if @card.save
-      list_cards = List.find(params[:list_id]).cards
-      if list_cards.length > 1
-        list_cards[list_cards.length-2].insertNode(@card)
-      end
-      render :show
+    card = Card.new(card_params)
+    card.list_id = params[:list_id]
+    list_cards = List.find(params[:list_id]).cards.reject {|card| card.archived == true}
+    old_leaf = list_cards.last.leaf if list_cards.length > 0
+    if card.save
+        if list_cards.length > 0
+            @cards = card.insertBetween(old_leaf, "sentinel")
+            render :multiShow
+        else
+            @cards = []
+            @cards << card
+            render :multiShow
+        end
     end
   end
 
@@ -22,23 +27,34 @@ class Api::CardsController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
-    if @card.update(card_params)
-      render :show
+    card = Card.find(params[:id])
+    @cards = []
+
+    if params[:card][:order_change] == "true"
+        new_child = params[:card][:next_id] == 'sentinel' ? "sentinel" : Card.find(params[:card][:next_id]) 
+        new_parent = params[:card][:prev_id] == 'sentinel' ? "sentinel" : Card.find(params[:card][:prev_id])
+        if @cards = card.insertBetween(new_parent, new_child)
+            render :multiShow
+        end
+    else
+        if card.update(card_params)
+            @cards << card 
+            render :multiShow
+        end
     end
   end
 
   def destroy
-    @card = Card.find(params[:id])
-    Card.removeNode(@card)
-    @card.archived = true
-    if @card.save!
-        render :show
+    card = Card.find(params[:id])
+    card.archived = true
+    if card.save!
+        @cards = card.insertBetween()
+        render :multiShow
     end
   end
 
   private
   def card_params
-    params.require(:card).permit(:title, :description)
+    params.require(:card).permit(:title, :description, :next_id, :prev_id, :order_change)
   end
 end

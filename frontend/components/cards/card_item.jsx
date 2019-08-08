@@ -1,4 +1,5 @@
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 
 
 export default class CardItem extends React.Component {
@@ -33,12 +34,39 @@ export default class CardItem extends React.Component {
     }
   }
 
+  getListStyle(isDragging, draggableStyle) {
+    return {
+      background: 'rgba(255, 255, 255, 0.9)',
+      boxShadow: '0px 2px 3px 0px rgba(0, 0, 0, 0.25)',
+      ...draggableStyle
+    }
+  }
 
   render(){
     return (
-      <li onClick={this.openCardShowModal}>
-        {this.props.card.title}
-      </li>
+      <Draggable
+        draggableId={this.props.card.id}
+        key={this.props.card.id}
+        index={this.props.index}
+        type={'CARD'}
+      >
+        {(provided, snapshot) => (
+          <li 
+            className = {"card-item"}
+            onClick={this.openCardShowModal}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            style={this.getListStyle(
+              snapshot.isDragging,
+              provided.draggableProps.style
+            )}
+          >
+            {this.props.card.title}
+          </li>
+        )}
+      </Draggable>
+
     )
   }
 }

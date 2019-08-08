@@ -4,7 +4,11 @@
   flex-direction: column;
   justify-content: left;
   height: fit-content;
-  background: red;
+}
+
+#create-card-form-background{
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
 .create-card-form > input[type=text] {

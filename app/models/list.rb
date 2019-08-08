@@ -63,22 +63,17 @@ class List < ApplicationRecord
         # if this is called without passing any arguements,
         # it effectively deletes the node from the list
         # and correctly updates the surrounding nodes
-        # debugger
+
         new_parent = List.new() if new_parent == "sentinel"
         new_child = List.new() if new_child == "sentinel"
-        # debugger
+
         old_parent = self.parent
         old_child = self.child
         old_parent.next_id = old_child.id
         old_child.prev_id = old_parent.id
-        # debugger
-       
-
+ 
         new_child.prev_id = self.id
         new_parent.next_id = self.id
-
-        # debugger
-
 
         # handle edge case where old_parent == new_child (swap)
         if old_parent.id == new_child.id
@@ -87,7 +82,6 @@ class List < ApplicationRecord
             old_parent.prev_id = self.id
             new_child.prev_id = self.id
         end
-
         if new_parent.id == old_child.id
             new_parent.prev_id = self.prev_id
             old_child.prev_id = self.prev_id
@@ -97,7 +91,6 @@ class List < ApplicationRecord
 
         self.next_id = new_child.id
         self.prev_id = new_parent.id
-        # debugger
 
         List.transaction do 
             old_parent.save! if old_parent.id
@@ -115,53 +108,6 @@ class List < ApplicationRecord
             new_parent,
             new_child,
         ].reject {|list| list.id == nil}
-
-    end
-
-    # def insertNode(list)
-    #     #update prev child node if exists
-    #     if self.next_id
-    #         oldChild = List.find(self.next_id)
-    #         oldChild.prev_id = list.id 
-    #     end
-    #     #update new child node
-    #     list.next_id = self.next_id
-    #     list.prev_id = self.id
-    #     #update current parent node
-    #     self.next_id = list.id
-    #     #save all changes together or not at all
-    #     List.transaction do
-    #         if oldChild
-    #             oldChild.save!
-    #         end
-    #         self.save!
-    #         list.save!
-    #     end
-    #     list.next_id
-    # end
-
-    def self.removeNode(list)
-        return if (list.next_id == nil) && (list.prev_id == nil)
-        parent = list.prev_id ? List.find(list.prev_id) : nil
-        child =  list.next_id ? List.find(list.next_id) : nil
-
-        if parent && child          #if node was in the middle of a list
-            parent.next_id = child.id
-            child.prev_id = parent.id
-        elsif parent && !child      #if it was the last node in the list
-            parent.next_id = nil
-        else                        # if it was the root node in the list
-            child.prev_id = nil
-        end
-        list.next_id = nil
-        list.prev_id = nil
-
-        List.transaction do
-            parent.save! if parent
-            child.save! if child
-            list.save!
-        end
-        list
     end
 
     def root # THESE ARE N + 1 QUERIES, FIND WAY TO FIX (dynamically create joins?)
@@ -184,8 +130,6 @@ class List < ApplicationRecord
         end
         List.find(leaf_id)
     end
-
-
 
     ## Custom validations for linked-list behavior
     def cannot_parent_self

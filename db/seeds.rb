@@ -44,21 +44,15 @@ lists = List.create!([
   {board_id: Board.third.id, title: "Doing"},
   {board_id: Board.third.id, title: "Done"}
 ])
-# debugger
+
 lists.second.insertBetween(lists.first)
 lists.third.insertBetween(lists.second)
-# lists.first.insertNode(lists.second)
-# lists.second.insertNode(lists.third)
-# debugger
+
 lists[4].insertBetween(lists[3])
-# debugger
-# lists[3].insertNode(lists[4])
 
 lists[6].insertBetween(lists[5])
 lists[7].insertBetween(lists[6])
-# debugger
-# lists[5].insertNode(lists[6])
-# lists[6].insertNode(lists[7])
+
 
 cards = Card.create([
   {list_id: lists.first.id, title: "Plant tomatoes"},
@@ -69,33 +63,26 @@ cards = Card.create([
   {list_id: lists.second.id, title: "Wrink dine"},
   {list_id: lists.fourth.id, title: "Should belong to second board"},
   {list_id: lists.fifth.id, title: "Should also belong to second board"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
-  {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
+  # {list_id: lists.first.id, title: "Plant tomatoes"},
 ])
 
 cards.second.insertBetween(cards.first)
 cards.third.insertBetween(cards.second)
 cards.fourth.insertBetween(cards.third)
 
-# cards.first.insertNode(cards.second)
-# cards.second.insertNode(cards.third)
-# cards.third.insertNode(cards.fourth)
-
 cards[5].insertBetween(cards[4])
-
-# cards[4].insertNode(cards[5])
-

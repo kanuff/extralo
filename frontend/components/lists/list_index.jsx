@@ -10,10 +10,52 @@ export default class ListIndex extends React.Component{
         super(props)
         this.state = {
             listOrder: [],
+            // sourceCardOrder: [],
+            // destinationCardOrder: [],
+            // sourceListId: 0,
+            // destinationListId: 0,
+            result: {},
         }
         this.generateListOrder = this.generateListOrder.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.onDragStart = this.onDragStart.bind(this);
+    }
+
+    rearrangeAndUpdate(result){
+        const { listOrder } = this.state
+        const { destination, source, draggableId } = result;
+        const list = this.props.lists.find(list => list.id === draggableId)
+        listOrder.splice(source.index, 1)
+        listOrder.splice(destination.index, 0, draggableId)
+        this.setState({
+            listOrder: listOrder
+        })
+        list.next_id = listOrder[destination.index + 1] || 'sentinel'
+        list.prev_id = listOrder[destination.index - 1] || 'sentinel'
+        list.order_change = true;
+        this.props.updateList(list)
+    }
+
+    onDragEnd(result) {
+        const { destination, source, type } = result;
+        console.log(result)
+        if (!destination) {
+            return
+        }
+        if (destination.droppableId === source.droppableId &&
+            destination.index === source.index) {
+            return
+        }
+        if (destination.droppableId === source.droppableId &&
+            type === "LIST") {
+            this.rearrangeAndUpdate(result)
+        } else if (type === "CARD") {
+            console.log("Moving a card")
+            // debugger
+            this.setState({
+                result: result
+            })
+        }
     }
 
     componentDidUpdate(prevProps){
@@ -61,7 +103,7 @@ export default class ListIndex extends React.Component{
                             key={`list_${list.id}`}
                             board_id={this.props.board_id}
                             index={idx}
-                            
+                            result={this.state.result}
                         />
                     )
                 }
@@ -71,35 +113,6 @@ export default class ListIndex extends React.Component{
 
     onDragStart(start){
         console.log(start)
-    }
-
-    onDragEnd(result){
-        const { listOrder } = this.state 
-        const { destination, source, draggableId } = result;
-        console.log(result)
-        if(!destination){
-            return
-        }
-        if  (destination.droppableId === source.droppableId &&
-            destination.index === source.index){
-                return
-            }
-
-        if (destination.droppableId === source.droppableId ){
-            const list = this.props.lists.find( list => list.id === draggableId)
-    
-            listOrder.splice(source.index, 1)
-            listOrder.splice(destination.index, 0, draggableId)
-    
-            this.setState({
-                listOrder: listOrder
-            })
-    
-            list.next_id = listOrder[destination.index + 1] || 'sentinel'
-            list.prev_id = listOrder[destination.index - 1] || 'sentinel'
-            list.order_change = true;
-            this.props.updateList(list)
-        }
     }
 
     getListStyle(isDraggingOver) {
@@ -115,8 +128,12 @@ export default class ListIndex extends React.Component{
                 onDragStart={this.onDragStart}
                 >
                 <section className={"lists-index-container"}>
-                    <Droppable droppableId={`board_${this.props.board_id}`} direction="horizontal">
-                        {(provided, snapshot) => (
+                    <Droppable 
+                        droppableId={`board_${this.props.board_id}`} 
+                        direction="horizontal"
+                        type={"LIST"}
+                        >
+                        {(provided) => (
                             <ul 
                                 className={"lists-index"}
                                 {...provided.droppableProps}
