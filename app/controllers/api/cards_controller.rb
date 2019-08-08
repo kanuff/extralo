@@ -33,6 +33,7 @@ class Api::CardsController < ApplicationController
     if params[:card][:order_change] == "true"
         new_child = params[:card][:next_id] == 'sentinel' ? "sentinel" : Card.find(params[:card][:next_id]) 
         new_parent = params[:card][:prev_id] == 'sentinel' ? "sentinel" : Card.find(params[:card][:prev_id])
+        card.list_id = params[:card][:list_id]
         if @cards = card.insertBetween(new_parent, new_child)
             render :multiShow
         end
@@ -55,6 +56,6 @@ class Api::CardsController < ApplicationController
 
   private
   def card_params
-    params.require(:card).permit(:title, :description, :next_id, :prev_id, :order_change)
+    params.require(:card).permit(:title, :description, :next_id, :prev_id, :order_change, :list_id)
   end
 end

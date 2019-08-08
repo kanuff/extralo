@@ -83,19 +83,34 @@ class ListIndexItem extends React.Component{
         this.props.updateCard(card)
     }
 
-    rearrange(result) {
+    updateCardAcrossList(card, result, cardOrder){
+        const {destination } = result
+        debugger
+        card.next_id = cardOrder[destination.index + 1] || 'sentinel'
+        card.prev_id = cardOrder[destination.index - 1] || 'sentinel'
+        card.order_change = true;
+        this.props.updateCard(card)
+    }
+
+    rearrange(result, action) {
         //right now this is only configured to handle a move from the same list
         console.log(`Rearranging cards for List #${this.state.id}`)
         const { cardOrder } = this.state
         const { destination, source, draggableId } = result;
-        cardOrder.splice(source.index, 1)
-        cardOrder.splice(destination.index, 0, draggableId)
+        
+        if ( action === "destination"){
+            cardOrder.splice(destination.index, 0, draggableId)
+        } else if (action === "source"){
+            cardOrder.splice(source.index, 1)
+        }
         debugger
         this.setState({
             cardOrder: cardOrder,
             result: result,
         })
-        debugger
+        if ( action === "destination"){
+            return cardOrder
+        }
     }
 
 
@@ -120,28 +135,30 @@ class ListIndexItem extends React.Component{
                     const card = this.props.cards.find(card => card.id === draggableId)
                     if ( `list_${list_id}` === destination.droppableId &&
                          `list_${list_id}` === source.droppableId){
-                             debugger
                         if (!this.resultsEqual(result, oldResult)){
                             this.rearrangeAndUpdate(result, card)
                         }
-                    } else if ( `list_${list_id}` === destination.droppableId){
-                        if (!this.resultsEqual(result, oldResult)) {
+                    } else if (destination.droppableId !== source.droppableId){
+                        if ( `list_${list_id}` === destination.droppableId){
+                            if (!this.resultsEqual(result, oldResult)) {
+                                debugger
+                                card.list_id = list_id;
+                                const destinationCardOrder = this.rearrange(result, "destination")
+                                this.updateCardAcrossList(card, result, destinationCardOrder)
+                            }
+                        } else if (`list_${list_id}` === source.droppableId){
                             debugger
-                            card.list_id = list_id;
-                            this.rearrangeAndUpdate(result, card)
-                        }
-                    } else if (`list_${list_id}` === source.droppableId){
-                        debugger
-                        if (!this.resultsEqual(result, oldResult)) {
-                            debugger
-                            this.rearrange(result) 
-                        }
-                    }  
+                            if (!this.resultsEqual(result, oldResult)) {
+                                debugger
+                                this.rearrange(result, "source") 
+                            }
+                        }  
+                    }
                 }
             }
         }
-        console.log(this.state.cardOrder)
     }
+
 
     generateCardOrder(){
         let { cards } = this.props;

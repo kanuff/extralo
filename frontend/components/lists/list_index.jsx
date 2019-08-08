@@ -10,15 +10,10 @@ export default class ListIndex extends React.Component{
         super(props)
         this.state = {
             listOrder: [],
-            // sourceCardOrder: [],
-            // destinationCardOrder: [],
-            // sourceListId: 0,
-            // destinationListId: 0,
             result: {},
         }
         this.generateListOrder = this.generateListOrder.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
-        this.onDragStart = this.onDragStart.bind(this);
     }
 
     rearrangeAndUpdate(result){
@@ -38,7 +33,6 @@ export default class ListIndex extends React.Component{
 
     onDragEnd(result) {
         const { destination, source, type } = result;
-        console.log(result)
         if (!destination) {
             return
         }
@@ -50,8 +44,6 @@ export default class ListIndex extends React.Component{
             type === "LIST") {
             this.rearrangeAndUpdate(result)
         } else if (type === "CARD") {
-            console.log("Moving a card")
-            // debugger
             this.setState({
                 result: result
             })
@@ -69,7 +61,6 @@ export default class ListIndex extends React.Component{
             }
         }
     }
-
 
     generateListOrder(){
         const { lists } = this.props;
@@ -111,16 +102,6 @@ export default class ListIndex extends React.Component{
         }
     }
 
-    onDragStart(start){
-        console.log(start)
-    }
-
-    getListStyle(isDraggingOver) {
-        return {
-            background: isDraggingOver ? 'blue' : 'green'
-        }
-    }
-
     render(){
         return (
             <DragDropContext 
@@ -138,7 +119,6 @@ export default class ListIndex extends React.Component{
                                 className={"lists-index"}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                // style={this.getListStyle(snapshot.isDraggingOver)}
                             >
                                 {this.renderLists()}
                                 {provided.placeholder}
