@@ -24,15 +24,23 @@ const UserOptionsMenu = (props) => {
     return (
       <ul className="user-options">
         <li id={"user-options-title"}>{name} ({email})</li>
-        <hr className={"menu-line"}></hr>
+        {/* <hr className={"menu-line"}></hr>
         <li>Profile and Visibility</li>
         <li>Activity</li>
         <li>Cards</li>
-        <li>Settings</li>
+        <li>Settings</li> */}
         <hr className={"menu-line"}></hr>
-        <li>Help</li>
-        <li>Shortcuts</li>
-        <li>Change Lanuage...</li>
+        <li>
+          <a href="https://github.com/kanuff">Github</a>
+        </li>
+        <li>
+          <a href="https://github.com/kanuff">LinkedIn</a>
+        </li>
+        <li>
+          <a href="https://extralo.herokuapp.com">Personal Site</a>
+        </li>
+        {/* <li>Shortcuts</li>
+        <li>Change Lanuage...</li> */}
         <hr className={"menu-line"}></hr>
         <li id={"logout-btn"}onClick={props.logout}>Logout</li>
       </ul>

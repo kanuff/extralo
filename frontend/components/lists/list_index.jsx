@@ -87,16 +87,18 @@ export default class ListIndex extends React.Component{
             return listOrder.map( (list_id, idx) => {
                 // change to hash in the future to increase lookup speed?
                 const list = lists.find(list => list.id === list_id)
-                if(!list.archived){
-                    return (
-                        <ListIndexItem
-                            list={list} 
-                            key={`list_${list.id}`}
-                            board_id={this.props.board_id}
-                            index={idx}
-                            result={this.state.result}
-                        />
-                    )
+                if (list){
+                    if(!list.archived){
+                        return (
+                            <ListIndexItem
+                                list={list} 
+                                key={`list_${list.id}`}
+                                board_id={this.props.board_id}
+                                index={idx}
+                                result={this.state.result}
+                            />
+                        )
+                    }
                 }
             })
         }

@@ -154,8 +154,12 @@ button, .home-btn{
 
 }
 
-.user-options > li {
+.user-options > li, .user-options > a {
   padding: 10px;
+}
+
+.user-options > li > a{
+  display: block;
 }
 
 .user-options > li:hover {
