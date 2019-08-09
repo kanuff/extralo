@@ -1,24 +1,16 @@
-# README
+# extralo
+[Live Demo](https://extralo.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
+## About
+*"If you can see it, you can edit"*\
 
-Things you may want to cover:
+Extralo is a project-management app that helps users organize their workflow. With simple styling, intuitive controls, and a core philosophy of **"Organize just enough to do it"** , Extralo stays out of the way of what actually matters - getting work done.
 
-* Ruby version
+## Features
 
-* System dependencies
+The main organizational unit in Extralo is a **Board**. Boards can contain an arbitrary amount of **Lists**, which in turn can contain an arbitrary amount of **Cards**. There are no restrictions imposed on the internal structure of a Board, allowing the user to decide how they want to organize the structure of their project.
 
-* Configuration
+![alt text][board-index-page ]
+[board-index-page]:app/assets/images/readme/board-index-page.png
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
