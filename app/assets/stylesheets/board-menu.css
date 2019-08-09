@@ -1,0 +1,50 @@
+.board-navigation-menu {
+  position: absolute;
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 2px;
+  margin-left: 3px;
+  min-width: 300px;
+  left: 3px;
+  top: 45px;
+  padding: 5px 0;
+  text-align: left;
+  border-radius: 4px;
+}
+
+.board-navigation-menu > li {
+  padding: 10px;
+}
+
+.board-navigation-menu > li:hover {
+  background-color: rgba(22, 22, 22, 0.05);
+}
+
+#board-navigation-menu-title{
+  color: rgba(53, 52, 52, 0.735);
+  text-align: center;
+  cursor: text;
+}
+
+#board-navigation-menu-title:hover{
+  background-color: inherit;
+  text-align: center;
+  cursor: text;
+}
+
+.board-index-navbar > *{
+  z-index: -1;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+  box-shadow: none;
+  color: none;
+  width: 80%;
+}
+
+.elevated{
+  z-index: 10;
+}

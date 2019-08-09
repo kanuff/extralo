@@ -33,7 +33,7 @@ const Modal = ({modal, closeModal}) => {
       break;
     case 'board-navigation-menu':
       component = <BoardNavigationMenu />
-      modalType = "transparent";
+      modalType = "transparent elevated";
       break;
     case 'card-show':
       component = <CardShow className={"card-show-form"}/>

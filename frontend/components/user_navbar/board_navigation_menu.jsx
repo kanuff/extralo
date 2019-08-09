@@ -35,6 +35,7 @@ class BoardNavigationMenu extends React.Component {
         } else {
             return (
                 <ul className={"board-navigation-menu"}>
+                    <li id={"board-navigation-menu-title"}>Boards</li>
                     {Object.values(boards).map(board => (
                         <li key={board.id}>
                             <Link to={`/boards/${board.id}`}>
