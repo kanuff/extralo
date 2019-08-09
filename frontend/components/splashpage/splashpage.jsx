@@ -13,7 +13,7 @@ export default class Splashpage extends React.Component {
                 Extralo lets you use a week the way it was intended.
               </div>
               <div className={"blurb-small-text"}>
-                Extralo is built around weeks, and its boards, lists, and cards help you organize in a way that feels exciting and intuitive.
+                Extralo is built around boards, lists, and cards to help you organize in a way that feels exciting and intuitive.
               </div>
               <div className={"blurb-signup"}>
                 <Link to={"/signup"}>Sign Up - It's Free!</Link>
@@ -61,10 +61,10 @@ export default class Splashpage extends React.Component {
             <div className={"right-content"}>
               <div className={"splash-content-text"}>
                 <div className={"large-text"}>
-                  Track metrics, schedule meetings, and highlight code snippets all from one place!
+                  Create boards, add lists, and move cards to organize your workflow!
                  </div>
                 <div className={"med-text"}>
-                  With simple calendar integrations, powerful planning templates, and a deep respect for Agile principles, Extralo knows what's worth prioritizing and what's worth offloading
+                  With simple actions and no bounds, Extralo lets you be in charge of how to manage your tasks, team, and talent.
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ export default class Splashpage extends React.Component {
             <div className={"left-content"}>
               <div className={"splash-content-text"}>
                 <div className={"large-text"}>
-                  Intuitively rearrange EVERYTHING
+                  If you can see it, you can edit.
                  </div>
                 <div className={"med-text"}>
                   Oh something needs to change? (Of course it does).
