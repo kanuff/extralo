@@ -13,18 +13,20 @@
   border-radius: 4px;
 }
 
-/* .board-navigation-menu > li {
-  padding: 10px;
-} */
+/* .board-navigation-menu > div > li {
+  /* border: 1px solid red; */
+  /* margin-bottom: 5px;
+  box-sizing: content-box;
+} */ 
 
-.board-navigation-menu > li > a {
+.board-navigation-menu > div > li > a {
   /* border: 1px green solid; */
   padding: 10px;
   display: block;
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.331); */
 }
 
-.board-navigation-menu > li:hover {
+.board-navigation-menu > div> li:hover {
   background-color: rgba(22, 22, 22, 0.05);
 }
 
@@ -39,7 +41,7 @@
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.331); */
 }
 
-.board-navigation-menu > .menu-line {
+.board-navigation-menu > div> .menu-line {
   padding: 0;
   margin: 0 auto;
   width: 90%;

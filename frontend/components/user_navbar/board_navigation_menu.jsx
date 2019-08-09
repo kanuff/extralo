@@ -38,12 +38,14 @@ class BoardNavigationMenu extends React.Component {
                     <li id={"board-navigation-menu-title"}>Boards</li>
                     {/* <hr className={"menu-line"}></hr> */}
                     {Object.values(boards).map(board => (
-                            <li key={board.id}>
+                        <div key={board.id}>
+                            <li >
                                 <Link to={`/boards/${board.id}`}>
                                     {board.id}: {board.title}
                                 </Link>
-                            <hr className={"menu-line"}></hr>
                             </li>
+                            <hr className={"menu-line"}></hr>
+                        </div>
                     ))}
                 </ul>
             )
