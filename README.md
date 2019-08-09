@@ -3,7 +3,7 @@
 
 ---
 ## About
-*"If you can see it, you can edit"*\
+*"If you can see it, you can edit"*
 
 Extralo is a project-management app that helps users organize their workflow. With simple styling, intuitive controls, and a core philosophy of **"Organize just enough to do it"** , Extralo stays out of the way of what actually matters - getting work done.
 
