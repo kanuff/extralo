@@ -14,6 +14,8 @@ import {
 import {
   clearCards
 } from '../../actions/card_actions';
+import { openModal } from '../../actions/modal_actions'
+
 
 const msp = (state, ownProps) => {
   const defaultBoard = {
@@ -41,6 +43,7 @@ const mdp = (dispatch) => {
     fetchLists: board_id => dispatch(fetchLists(board_id)),
     clearLists: () => dispatch(clearLists()),
     clearCards: () => dispatch(clearCards()),
+    openModal: modal => dispatch(openModal(modal)),
   }
 }
 

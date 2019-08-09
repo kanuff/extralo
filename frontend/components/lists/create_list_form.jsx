@@ -52,8 +52,10 @@ class CreateListForm extends React.Component {
         const newList = {
             title: this.state.title
         }
-        this.props.createList(newList, this.state.board_id)
-                  .then( () => e.target.reset())
+        if (newList.title){
+            this.props.createList(newList, this.state.board_id)
+                      .then( () => e.target.reset())
+        }
     }
 
     update(field){

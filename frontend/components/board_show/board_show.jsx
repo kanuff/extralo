@@ -8,6 +8,13 @@ export default class BoardShow extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.board_id !== nextProps.board_id){
+      nextProps.fetchBoard(nextProps.board_id)
+        .then(() => nextProps.fetchLists(nextProps.board_id));
+    }
+  }
+
   componentDidMount(){
     this.props.fetchBoard(this.props.board_id)
       .then(() => this.props.fetchLists(this.props.board_id));
@@ -30,6 +37,7 @@ export default class BoardShow extends React.Component {
           receiveErrors={this.props.receiveErrors}
           clearErrors={this.props.clearErrors}
           errors={this.props.errors}
+          openModal={this.props.openModal}
         />
         <ListIndex board_id={this.props.board_id}/>
       </section>

@@ -150,6 +150,8 @@ button, .home-btn{
   top: 45px;
   padding: 5px 0;
   text-align: left;
+  border-radius: 4px;
+
 }
 
 .user-options > li {
@@ -178,4 +180,56 @@ hr {
   box-shadow: none;
   color: none;
   width: 80%;
+}
+
+.user-navbar-information{
+  position: absolute;
+  background-color: whitesmoke;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  margin-right: 75px;
+  width: 150px;
+  right: 3px;
+  top: 45px;
+  padding: 5px 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 150%;
+  border-radius: 4px;
+}
+
+#information-title{
+  font-size: 16.5px;
+  color: rgba(53, 52, 52, 0.735);
+  text-align: center;
+  cursor: text;
+  letter-spacing: 0.08em;
+}
+
+.user-navbar-information {
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.notification{
+  position: absolute;
+  background-color: whitesmoke;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  margin-right: 40px;
+  width: 150px;
+  right: 3px;
+  top: 45px;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 150%;
+  border-radius: 4px;
+}
+
+#notifications{
+  color: rgba(0, 0, 0, 0.35);
 }

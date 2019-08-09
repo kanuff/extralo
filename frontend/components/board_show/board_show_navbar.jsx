@@ -12,6 +12,11 @@ class BoardShowNavbar extends React.Component{
     this.destroyBoard = this.destroyBoard.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal(modal){
+    this.props.openModal(modal)
   }
 
   handleSubmit(e){

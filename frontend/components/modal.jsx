@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import UserOptionsMenu from './user_navbar/user_options_menu';
 import CreateBoardForm from './board_index/create_board_form';
 import CardShow from './cards/card_show';
+import NavbarInformation from './user_navbar/navbar_information';
+import Notifications from './user_navbar/notifications';
+import BoardNavigationMenu from './user_navbar/board_navigation_menu';
 
 const Modal = ({modal, closeModal}) => {
   if(!modal){
@@ -19,6 +22,18 @@ const Modal = ({modal, closeModal}) => {
       break;
     case 'create-board':
       component = <CreateBoardForm />
+      break;
+    case 'information':
+      component = <NavbarInformation />
+      modalType = "transparent"
+      break;
+    case 'notifications':
+      component = <Notifications />
+      modalType = "transparent"
+      break;
+    case 'board-navigation-menu':
+      component = <BoardNavigationMenu />
+      modalType = "transparent";
       break;
     case 'card-show':
       component = <CardShow className={"card-show-form"}/>

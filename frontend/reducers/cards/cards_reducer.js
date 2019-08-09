@@ -27,8 +27,10 @@ export default (state={}, action) => {
 
 const objectified = (array) => {
   const obj = {}
-  array.map(board => {
-    obj[board.id] = board
-  })
-  return obj
+  if (array){
+    array.map(board => {
+      obj[board.id] = board
+    })
+    return obj
+  }
 }

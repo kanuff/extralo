@@ -28,6 +28,12 @@ export default class UserNavbar extends React.Component{
     return () => this.props.openModal(field)
   }
 
+  openModal(modal){
+    return () => {
+      this.props.openModal(modal)
+    }
+  }
+
   clearSearch(){
     this.setState(
       { searchbar: ""}
@@ -48,7 +54,11 @@ export default class UserNavbar extends React.Component{
       <section className={"user-navbar"}>
         <div className={"float-left"}>
           <Link to="/" className={"home-btn"}><i className="fas fa-home"></i></Link>
-          <button className={"boards-btn"}><i className="fas fa-list"></i>  Boards</button>
+          <button
+            onClick={this.showForm("board-navigation-menu")}
+            className={"boards-btn"}>
+              <i className="fas fa-list"></i>  Boards
+          </button>
           <input 
             value={this.state.searchbar} 
             onBlur={this.clearSearch} 
@@ -62,7 +72,7 @@ export default class UserNavbar extends React.Component{
           <Link to="/" className={"logo"}>Extralo</Link>
         </div>
         <div className={"float-right"}>
-          <button onClick={this.showForm("create-board-options")} className={"create-board-btn"}><i className="fas fa-plus"></i></button>
+          <button onClick={this.openModal("create-board")} className={"create-board-btn"}><i className="fas fa-plus"></i></button>
           <button onClick={this.showForm("information")} className={"information-btn"}><i className="fas fa-info-circle"></i></button>
           <button onClick={this.showForm("notifications")} className={"notification-btn"}><i className="far fa-bell"></i></button>
           <button onClick={this.showForm("user-options")} id={"user-options-btn"}>{this.props.current_user.name[0]}</button>

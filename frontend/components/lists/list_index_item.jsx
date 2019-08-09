@@ -204,11 +204,13 @@ class ListIndexItem extends React.Component{
         }
         e.preventDefault()
         e.persist()
-        this.props.createCard(card)
-                 .then( () => {
-                     this.setState({cardTitle: ""});
-                     e.target.reset();
-                    })
+        if (card.title ){
+            this.props.createCard(card)
+                     .then( () => {
+                         this.setState({cardTitle: ""});
+                         e.target.reset();
+                        })
+        }
     }
 
     update(field) {
