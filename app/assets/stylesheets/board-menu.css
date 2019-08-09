@@ -13,8 +13,15 @@
   border-radius: 4px;
 }
 
-.board-navigation-menu > li {
+/* .board-navigation-menu > li {
   padding: 10px;
+} */
+
+.board-navigation-menu > li > a {
+  /* border: 1px green solid; */
+  padding: 10px;
+  display: block;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.331); */
 }
 
 .board-navigation-menu > li:hover {
@@ -25,6 +32,17 @@
   color: rgba(53, 52, 52, 0.735);
   text-align: center;
   cursor: text;
+  font-size: 18px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: underline rgba(53, 52, 52, 0.735);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.331); */
+}
+
+.board-navigation-menu > .menu-line {
+  padding: 0;
+  margin: 0 auto;
+  width: 90%;
 }
 
 #board-navigation-menu-title:hover{

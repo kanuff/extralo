@@ -13,7 +13,7 @@ const mdp = dispatch => {
 const msp = (state, ownProps) => {
     const defaultList = {
         title: "",
-        board_id: ownProps.match.params.board_id,
+        // board_id: ownProps.match.params.board_id,
     }
     return {
         list: defaultList,
@@ -25,7 +25,7 @@ class CreateListForm extends React.Component {
         super(props)
         this.state = {
             title: props.list.title,
-            board_id: props.list.board_id,
+            board_id: props.board_id,
             placeholder: " + Add another list"
         }
         this.update = this.update.bind(this);
@@ -53,7 +53,7 @@ class CreateListForm extends React.Component {
             title: this.state.title
         }
         if (newList.title){
-            this.props.createList(newList, this.state.board_id)
+            this.props.createList(newList, this.props.board_id)
                       .then( () => e.target.reset())
         }
     }

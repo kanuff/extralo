@@ -124,7 +124,7 @@ export default class ListIndex extends React.Component{
                             >
                                 {this.renderLists()}
                                 {provided.placeholder}
-                                <CreateListForm />
+                                <CreateListForm board_id={this.props.board_id}/>
                                 <div
                                 style={{
                                     height: '87vh',
