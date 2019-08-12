@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMember } from '../../actions/board_membership_actions';
+import { fetchUsers } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 const mdp = dispatch => {
@@ -12,6 +13,7 @@ const mdp = dispatch => {
 const msp = (state, ownProps) => {
     return{
         board_id: ownProps.location.pathname.split("/").pop(),
+        users: state.entities.users,
     }
 }
 
@@ -21,9 +23,14 @@ class MemberInvite extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
         debugger
         this.state = {
-            user_id: 0,
+            name: "",
             board_id: this.props.board_id,
         }
+        this.fetchUsers = this.fetchUsers.bind(this);
+    }
+
+    fetchUsers(name){
+        this.props.fetchUsers(name)
     }
 
 
@@ -37,17 +44,28 @@ class MemberInvite extends React.Component{
             this.setState({
                 [field]: e.target.value,
             })
+            this.fetchUsers(e.target.value)
         }
     }
 
     render(){
+        const { users } = this.props;
+        const sharableMembers = users.map( user => {
+            <li key={user.id}>
+                {user.name}
+            </li>
+        })
+
         return (
             <div className={"member-invite"}>
                 <form className={"member-invite-form"} onSubmit={this.handleSubmit}>
                     <input
-                        onChange={this.update("user_id")}
+                        onChange={this.update("name")}
                         type="text"
                         />
+                    <ul>
+                        {sharableMembers}
+                    </ul>
                     <input type="submit" value="Invite members"/>
                 </form>
             </div>

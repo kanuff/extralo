@@ -1,3 +1,12 @@
+export const fetchUsers = name => {
+  return $.ajax({
+    method: "GET",
+    url: 'api/users',
+    data: {
+      name
+    }
+  })
+}
 
 export const signup = (user) => {
   return $.ajax({
