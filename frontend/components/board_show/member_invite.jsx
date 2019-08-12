@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 const mdp = dispatch => {
     return {
         addMember: (user_id, board_id) => dispatch(addMember(user_id, board_id)),
+        fetchUsers: name => dispatch(fetchUsers(name)),
     }
 }
 
@@ -21,22 +22,35 @@ class MemberInvite extends React.Component{
     constructor(props){
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
-        debugger
         this.state = {
             name: "",
+            user_id: 0,
             board_id: this.props.board_id,
         }
         this.fetchUsers = this.fetchUsers.bind(this);
+        this.setUserId = this.setUserId.bind(this);
     }
 
     fetchUsers(name){
         this.props.fetchUsers(name)
     }
 
+    setUserId(user){
+        return () => {
+            return this.setState({
+                user_id: user.id,
+                name: user.name
+            })
+        }
+    }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.addMember(this.state);
+        const membership = {
+            user_id: this.state.user_id,
+            board_id: this.state.board_id,
+        }
+        this.props.addMember(membership, membership.board_id);
     }
 
     update(field) {
@@ -49,11 +63,17 @@ class MemberInvite extends React.Component{
     }
 
     render(){
-        const { users } = this.props;
-        const sharableMembers = users.map( user => {
-            <li key={user.id}>
-                {user.name}
-            </li>
+        const { users } = this.props
+        const sharableMembers = Object.values(users).map( (user, idx) => {
+            if (idx > 0 ){ //render all for now, later add logic to intelligently render the most relevant
+                return(
+                    <li className={"member-invite-listing"}
+                        onClick={this.setUserId(user)}
+                        key={user.id}>
+                        {user.name}
+                    </li>
+                )
+            }
         })
 
         return (
@@ -61,6 +81,7 @@ class MemberInvite extends React.Component{
                 <form className={"member-invite-form"} onSubmit={this.handleSubmit}>
                     <input
                         onChange={this.update("name")}
+                        value={this.state.name}
                         type="text"
                         />
                     <ul>

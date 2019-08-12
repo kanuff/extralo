@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
 
 
   def index
-    @users = User.where(name: params[:user][:name])
+    @users = User.where("name LIKE ?", "%#{params[:name]}%").limit(3)
     render :index
   end
 
