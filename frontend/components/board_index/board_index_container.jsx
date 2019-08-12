@@ -7,7 +7,8 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const msp = state => {
   return {
-    boards: Object.values(state.entities.boards)
+    boards: Object.values(state.entities.boards),
+    current_user: state.entities.users[state.session.id],
   }
 }
 

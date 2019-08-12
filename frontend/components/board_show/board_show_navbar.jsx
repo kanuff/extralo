@@ -1,5 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions';
+
+
+const mdp = dispatch => {
+  return {
+    openModal: modal => dispatch(openModal(modal)),
+  }
+}
 
 
 class BoardShowNavbar extends React.Component{
@@ -12,16 +20,17 @@ class BoardShowNavbar extends React.Component{
     this.destroyBoard = this.destroyBoard.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.openModal = this.openModal.bind(this);
+    // this.openModal = this.openModal.bind(this);
   }
 
   openModal(modal){
-    this.props.openModal(modal)
+    return () => {
+      this.props.openModal(modal)
+    }
   }
 
   handleSubmit(e){
     e.preventDefault();
-    // e.target.blur(); ???? doesn't work???
     document.getElementById("board-title-input").blur();
     this.props.updateBoard(this.state);
   }
@@ -67,7 +76,6 @@ class BoardShowNavbar extends React.Component{
   }
 
   render (){
-
     return (
       <>
         <section className={"board-show-navbar-container"}>
@@ -82,7 +90,11 @@ class BoardShowNavbar extends React.Component{
             </form>
             <button id={'board-favorited'}><i className="far fa-star"></i></button>
             <button id={'member-icon'}>M</button>
-            <button id={'board-invite-btn'}>Invite</button>
+            <button 
+              id={'board-invite-btn'}
+              onClick={this.openModal('invite-members')}
+              >Invite
+              </button>
           </section>
           <section className={"float-right"} >
             <button 
@@ -101,4 +113,4 @@ class BoardShowNavbar extends React.Component{
   }
 }
 
-export default connect(null, null)(BoardShowNavbar);
+export default connect(null, mdp)(BoardShowNavbar);

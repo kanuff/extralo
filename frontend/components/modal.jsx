@@ -7,6 +7,7 @@ import CardShow from './cards/card_show';
 import NavbarInformation from './user_navbar/navbar_information';
 import Notifications from './user_navbar/notifications';
 import BoardNavigationMenu from './user_navbar/board_navigation_menu';
+import MemberInvite from './board_show/member_invite';
 
 const Modal = ({modal, closeModal}) => {
   if(!modal){
@@ -34,6 +35,10 @@ const Modal = ({modal, closeModal}) => {
     case 'board-navigation-menu':
       component = <BoardNavigationMenu />
       modalType = "transparent elevated";
+      break;
+    case 'invite-members':
+      component = <MemberInvite />
+      modalType = "transparent";
       break;
     case 'card-show':
       component = <CardShow className={"card-show-form"}/>

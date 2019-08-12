@@ -22,8 +22,17 @@ export default class BoardIndex extends React.Component{
   }
 
   render(){
+    const { current_user } = this.props;
     const boards = this.props.boards.map( (board,idx) => {
-      return <BoardIndexItem board={board} key={`board_${idx}`}/>
+      if (board.creator_id === current_user.id){
+        return <BoardIndexItem board={board} key={`board_${idx}`}/>
+      }
+    })
+
+    const sharedBoards = this.props.boards.map((board, idx) => {
+      if (board.creator_id !== current_user.id) {
+        return <BoardIndexItem board={board} key={`board_${idx}`} />
+      }
     })
     return(
       <section className={"board-index"}>
@@ -36,6 +45,10 @@ export default class BoardIndex extends React.Component{
         <section className={"board-index-list-container"}>
           <ul className={"recently-updated board-index-list"}>
             {/* {recentlyUpdatedBoards} */}
+          </ul>
+          <div id={"board-index-title"}><i class="fas fa-user-friends"></i> Shared Boards</div>
+          <ul className={"shared board-index-list"}>
+            {sharedBoards}
           </ul>
           <div id={"board-index-title"}><i className="far fa-user"></i> Personal Boards</div>
           <ul className={"board-index-list"}>

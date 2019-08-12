@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     
     resources :boards, only: [:index, :create, :show, :update, :destroy] do
       resources :lists, only: [:index, :create]
+      resource :board_memberships, only: [:create]
     end
 
     resources :lists, only: [:update, :destroy] do 

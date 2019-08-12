@@ -22,12 +22,13 @@ users = User.create!([
 boards = Board.create!([
   {creator_id: User.first.id, title: "Garden Landscaping", description: "Earth'n'worms", starred: false},
   {creator_id: User.first.id, title: "Spy on the Competition", description: "A Different Kind of Bug", starred: false},
-  {creator_id: User.first.id, title: "Website Creation", description: "Somehow still something about bugs", starred: true}
+  {creator_id: users.second.id, title: "Website Creation", description: "Somehow still something about bugs", starred: true}
 ])
 
 memberships = BoardMembership.create!([
   {user_id: User.first.id, board_id: boards.first.id},
   {user_id: User.first.id, board_id: boards.second.id},
+  {user_id: User.first.id, board_id: boards.third.id},
   {user_id: users.first.id, board_id: boards.third.id},
   {user_id: users.second.id, board_id: boards.first.id},
   {user_id: users.second.id, board_id: boards.third.id},
