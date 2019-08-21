@@ -15,6 +15,7 @@ const msp = (state, ownProps) => {
     return{
         board_id: ownProps.location.pathname.split("/").pop(),
         users: state.entities.users,
+        inviteStatus: state.ui.membership
     }
 }
 
@@ -51,6 +52,7 @@ class MemberInvite extends React.Component{
             board_id: this.state.board_id,
         }
         this.props.addMember(membership, membership.board_id);
+        this.setState({name: "", user_id: 0})
     }
 
     update(field) {
@@ -64,8 +66,17 @@ class MemberInvite extends React.Component{
 
     render(){
         const { users } = this.props
+        const alert = this.props.inviteStatus.map((message, idx) => {
+            const styling = {
+                background: message === "Success" ? "rgb(85, 196, 85)" : "rgb(168, 23, 23)",
+                width: message === "Success" ? "200px" : "300px",
+            }
+            return (
+                <div style={styling} id={"invite-status-alert"} key={idx}>{message}</div>
+            )
+        })
         const sharableMembers = Object.values(users).map( (user, idx) => {
-            if (idx > 0 ){ //render all for now, later add logic to intelligently render the most relevant
+            if (idx > 0 ){
                 return(
                     <li className={"member-invite-listing"}
                         onClick={this.setUserId(user)}
@@ -78,13 +89,14 @@ class MemberInvite extends React.Component{
 
         return (
             <div className={"member-invite"}>
+                {alert}
                 <form className={"member-invite-form"} onSubmit={this.handleSubmit}>
                     <input
                         onChange={this.update("name")}
                         value={this.state.name}
                         type="text"
                         />
-                    <ul>
+                    <ul className={"member-list"}>
                         {sharableMembers}
                     </ul>
                     <input type="submit" value="Invite members"/>

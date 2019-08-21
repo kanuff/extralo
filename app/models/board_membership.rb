@@ -13,6 +13,7 @@
 
 class BoardMembership < ApplicationRecord
   validates :user_id, :board_id, presence: true
+  validates :user_id, uniqueness: {scope: :board_id}
 
   belongs_to :user,
   primary_key: :id,

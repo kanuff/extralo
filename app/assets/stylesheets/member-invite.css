@@ -12,7 +12,7 @@
   text-align: left;
   border-radius: 4px;
   border: none;
-  height: 150px;
+  min-height: 150px;
 }
 
 .member-invite-form {
@@ -28,10 +28,42 @@
     border-radius: 4px;
     cursor: text;
     font-size: 16px;
+
 }
 
 .member-invite-form > input[type=submit] {
     outline: none;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);
+    /* margin-top: 40px; */
+    /* bottom: 3%;
+    width: 90%;
+    margin-left: 1.75%; */
+}
+
+.member-invite-listing {
+    padding: 5px;
+    border-radius: 4px;
+    margin: 6px 4px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.member-invite-listing:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.member-list{
+    height: fit-content;
+    min-height: 100px;
+    padding-top: 5px;
+}
+
+#invite-status-alert {
+    position: absolute;
+    left: -4px;
+    top: -40px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
 }

@@ -7,6 +7,8 @@ class Api::BoardMembershipsController < ApplicationController
         board_membership.user_id = params[:board_membership][:user_id]
         if board_membership.save
             render json: ["Success"]
+        else
+            render json: ["User is already a member of this board"]
         end
     end
 
