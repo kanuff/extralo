@@ -21,7 +21,7 @@ class Card < ApplicationRecord
   belongs_to :list,
   primary_key: :id,
   foreign_key: :list_id,
-  class_name: :List
+  class_name: :List, touch: true
 
   belongs_to :prev,
   primary_key: :id,

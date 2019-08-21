@@ -22,7 +22,7 @@ class List < ApplicationRecord
     belongs_to :board,
     primary_key: :id,
     foreign_key: :board_id,
-    class_name: :Board
+    class_name: :Board, touch: true
 
     belongs_to :prev,
     primary_key: :id,
