@@ -79,3 +79,7 @@
   font-weight: 900;
   font-size: 17px;
 }
+
+.recently-updated{
+    min-height: 105px;
+}

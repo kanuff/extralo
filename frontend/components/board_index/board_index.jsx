@@ -38,8 +38,12 @@ export default class BoardIndex extends React.Component{
 
     const recentlyUpdatedBoards = this.props.boards.map((board, idx) => {
       const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate()-1)
-      if (new Date(board.updated_at) > yesterday && board.updated_at !== board.created_at) {
+      const updated = new Date(board.updated_at)
+      const created = new Date(board.created_at)
+
+      yesterday.setDate(yesterday.getDate() - 1)
+      created.setTime(created.getTime() + 3000)
+      if ( updated > yesterday && updated > created ) {
         return <BoardIndexItem board={board} key={`board_${idx}`} />
       }
 
