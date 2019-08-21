@@ -1,1 +1,1 @@
-json.extract! board, :id, :title, :description, :member_ids, :creator_id
+json.extract! board, :id, :title, :description, :member_ids, :creator_id, :updated_at

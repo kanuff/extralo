@@ -13,6 +13,13 @@ export default class BoardIndex extends React.Component{
     this.props.closeModal();
   }
 
+  // componentDidUpdate(prevProps){
+  //   if(this.props !== prevProps){
+  //     this.props.fetchBoards()
+  //     this.props.closeModal();
+  //   }
+  // }
+
   componentWillUnmount(){
     this.props.closeModal();
   }
@@ -29,6 +36,15 @@ export default class BoardIndex extends React.Component{
       }
     })
 
+    const recentlyUpdatedBoards = this.props.boards.map((board, idx) => {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate()-1)
+      if (new Date(board.updated_at) > yesterday) {
+        return <BoardIndexItem board={board} key={`board_${idx}`} />
+      }
+
+    })
+
     const sharedBoards = this.props.boards.map((board, idx) => {
       if (board.creator_id !== current_user.id) {
         return <BoardIndexItem board={board} key={`board_${idx}`} />
@@ -43,10 +59,11 @@ export default class BoardIndex extends React.Component{
           </ul>
         </section> */}
         <section className={"board-index-list-container"}>
+          <div id={"board-index-title"}><i className="fas fa-history"></i> Recently Updated</div>
           <ul className={"recently-updated board-index-list"}>
-            {/* {recentlyUpdatedBoards} */}
+            {recentlyUpdatedBoards}
           </ul>
-          <div id={"board-index-title"}><i class="fas fa-user-friends"></i> Shared Boards</div>
+          <div id={"board-index-title"}><i className="fas fa-user-friends"></i> Shared Boards</div>
           <ul className={"shared board-index-list"}>
             {sharedBoards}
           </ul>
