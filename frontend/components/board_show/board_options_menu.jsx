@@ -4,12 +4,18 @@ import {
     destroyBoard,
     receiveErrors
 } from '../../actions/board_actions';
+
+// import {
+//     fetchUsers
+// } from '../../actions/session_actions';
+
 import { withRouter } from 'react-router-dom';
 
 const mdp = dispatch => {
     return {
         destroyBoard: id => dispatch(destroyBoard(id)),
         receiveErrors: errors => dispatch(receiveErrors(errors)),
+        fetchUSers: errors => dispatch(fetchUSers(errors)),
     }
 }
 
@@ -27,6 +33,7 @@ const msp = (state, ownProps) => {
         current_user_id: state.session.id,
         history: ownProps.history,
         errors: state.errors.board,
+        users: state.entities.users,
     }
 }
 
@@ -49,17 +56,36 @@ class BoardOptionsMenu extends React.Component{
 
 
     render(){
-  
-        console.log(this.props)
+        const {users, board } = this.props;
+        const boardMembers = Object.values(users).map( user => {
+            if (board){
+                    if (board.member_ids.includes(user.id)) {
+                        return (
+                            <li className={"board-member"}
+                                key={user.id}>
+                                {user.name}
+                            </li>
+                        )
+                    }
+                }
+            }
+        )
+
         return(
             <div className={"board-options-menu"}>
                 <div className={"menu-title"}>
                     Menu
                 </div>
                 <div className={"menu-options"}>
-                    <button 
+                    <div className={"board-members"}>
+                        Board Members:
+                        <ul>
+                            {boardMembers}
+                        </ul>
+                    </div>
+                    <button
                         id={"delete-board-button"}
-                        onClick={ () => this.deleteBoard() }
+                        onClick={() => this.deleteBoard()}
                     >
                         Delete This Board
                     </button>

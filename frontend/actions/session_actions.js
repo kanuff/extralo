@@ -24,6 +24,8 @@ export const fetchUsers = name => dispatch => {
   return SessionAPIUtil.fetchUsers(name)
                        .then( users => dispatch(receiveUsers(users)))
 }
+
+
 export const receiveUsers = users => {
   return {
     type: RECEIVE_USERS,

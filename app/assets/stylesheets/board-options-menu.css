@@ -1,0 +1,43 @@
+.board-options-menu {
+    position: fixed;
+    height: 100%;
+    right: 0;
+    top: 41px;
+    width: 200px;
+    background: whitesmoke;
+}
+
+.menu-title{
+    padding: 8px;
+    color: grey;
+    font-size: 18px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.menu-options{
+    padding: 8px;
+}
+
+#delete-board-button{
+    position: fixed;
+    bottom: 30px;
+    right: 24px;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    background: rgb(190, 0, 0);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+#delete-board-button:hover {
+    background: rgb(130, 0, 0);
+}
+
+.board-members {
+    text-align: left;
+    line-height: 175%;
+}
+
