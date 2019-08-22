@@ -14,6 +14,7 @@ const msp = state => {
 const mdp = dispatch => {
     return {
         fetchBoards: () => dispatch(fetchBoards()),
+        clearErrors: () => dispatch(clearErrors()),
     }
 }
 
@@ -25,7 +26,6 @@ class BoardNavigationMenu extends React.Component {
     componentDidMount(){
         this.props.fetchBoards()
     }
-
 
     render(){
         const { boards } = this.props;
@@ -40,7 +40,7 @@ class BoardNavigationMenu extends React.Component {
                     {/* <hr className={"menu-line"}></hr> */}
                     {Object.values(boards).map(board => (
                         <div key={board.id}>
-                            <li >
+                            <li onClick={this.props.clearErrors}>
                                 <Link to={`/boards/${board.id}`}>
                                     {board.id}: {board.title}
                                 </Link>
