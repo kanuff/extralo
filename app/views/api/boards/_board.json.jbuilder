@@ -12,3 +12,8 @@ json.cards do
         json.extract! card, :id, :title, :description, :list_id, :next_id, :prev_id, :archived
     end
 end
+json.users do
+    json.array! board.members.each do |member|
+        json.extract! member, :email, :id, :name
+    end
+end

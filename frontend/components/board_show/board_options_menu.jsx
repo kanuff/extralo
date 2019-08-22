@@ -24,7 +24,7 @@ const msp = (state, ownProps) => {
         title: "Title",
         description: "Description",
         favorited: false,
-        members: [],
+        member_ids: [],
     }
     //workaround since React doesn't allow params to be accessed globally without changing the structure of components on the root level
     const board_id = ownProps.history.location.pathname.split("/")[2]
@@ -58,15 +58,15 @@ class BoardOptionsMenu extends React.Component{
     render(){
         const {users, board } = this.props;
         const boardMembers = Object.values(users).map( user => {
-            if (board){
-                    if (board.member_ids.includes(user.id)) {
-                        return (
-                            <li className={"board-member"}
-                                key={user.id}>
-                                {user.name}
-                            </li>
-                        )
-                    }
+                if (board.member_ids.includes(user.id)) {
+                    const admin = user.id === board.creator_id ? " (Admin)": ""
+                    return (
+                        <li className={"board-member"}
+                            key={user.id}>
+                            {user.name}
+                            {admin}
+                        </li>
+                    )
                 }
             }
         )

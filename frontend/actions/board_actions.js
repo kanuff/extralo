@@ -32,6 +32,7 @@ export const receiveBoard = payload => {
     board: payload.board,
     lists: payload.lists,
     cards: payload.cards,
+    users: payload.users,
   }
 }
 
