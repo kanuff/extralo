@@ -15,6 +15,7 @@ import { withRouter } from 'react-router-dom';
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 
 const msp = (state, ownProps) => {
+    
     return {
         cards: Object.values(state.entities.cards),
         history: ownProps.history,
@@ -107,6 +108,9 @@ class ListIndexItem extends React.Component{
         }
     }
 
+    componentDidMount(){
+        this.generateCardOrder();
+    }
 
 
     componentDidUpdate(prevProps, prevState) {
@@ -270,12 +274,12 @@ class ListIndexItem extends React.Component{
 
     }
 
-    componentDidMount(){
-        this.props.fetchCards(this.props.list.id)
-    }
+    // componentDidMount(){
+    //     this.props.fetchCards(this.props.list.id)
+    // }
 
     renderCards(){
-        const { cards } = this.props;
+        const cards = this.props.cards;
         if ( cards.length > 0){
             const { cardOrder } = this.state;
             return cardOrder.map((card_id, idx) => {

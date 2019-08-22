@@ -4,14 +4,17 @@ import {
   CLEAR_CARDS,
   RECEIVE_AND_UPDATE_CARDS,
 } from '../../actions/card_actions';
+import {
+  RECEIVE_BOARD
+} from '../../actions/board_actions'
 
-// import RECEIVE_LIST from '../../actions/list_actions';
-// import RECEIVE_BOARDS from '../../actions/board_actions';
 
 export default (state={}, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_CARDS:
+    // case RECEIVE_CARDS:
+    //   return Object.assign({},state,objectified(action.cards))
+    case RECEIVE_BOARD:
       return Object.assign({},state,objectified(action.cards))
     case RECEIVE_CARD:
       return Object.assign({}, state, {[action.card.id]: action.card})

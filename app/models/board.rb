@@ -43,14 +43,18 @@ class Board < ApplicationRecord
     return lists.first.root.id if lists.first
     nil
   end
-
-  def member_ids #this seems ugly --> is there a better way of doing it?
-    member_ids = []
-    members.each do |member|
-      member_ids << member.id
-    end
-    member_ids
+  
+  def member_ids
+    members.pluck(:id)
   end
+
+  # def member_ids #this seems ugly --> is there a better way of doing it?
+  #   member_ids = []
+  #   members.each do |member|
+  #     member_ids << member.id
+  #   end
+  #   member_ids
+  # end
 
   # def list_ids
   #   list_ids = []

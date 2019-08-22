@@ -4,11 +4,16 @@ import {
     CLEAR_LISTS,
     RECEIVE_AND_UPDATE,
 } from '../../actions/list_actions';
+import {
+    RECEIVE_BOARD
+} from '../../actions/board_actions'
 
 export default (state={}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_LISTS:
+            return objectified(action.lists)
+        case RECEIVE_BOARD:
             return objectified(action.lists)
         case RECEIVE_LIST:
             return Object.assign({}, state, {[action.list.id]: action.list})

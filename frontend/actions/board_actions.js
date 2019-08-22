@@ -25,10 +25,13 @@ export const receiveBoards = boards => {
   }
 }
 
-export const receiveBoard = board => {
+export const receiveBoard = payload => {
+  debugger
   return {
     type: RECEIVE_BOARD,
-    board
+    board: payload.board,
+    lists: payload.lists,
+    cards: payload.cards,
   }
 }
 
@@ -39,7 +42,7 @@ export const fetchBoards = () => dispatch => {
 
 export const fetchBoard = (id) => dispatch => {
   return BoardAPIUtil.fetchBoard(id)
-                     .then( board => dispatch(receiveBoard(board)))
+                     .then( payload => dispatch(receiveBoard(payload)))
 }
 
 export const createBoard = board => dispatch => {
