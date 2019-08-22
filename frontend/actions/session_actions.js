@@ -5,11 +5,18 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER"
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const CLEAR_USERS = "CLEAR_USERS";
 
 export const receiveCurrentUser = (user) => {
   return{
     type: RECEIVE_CURRENT_USER,
     user
+  }
+}
+
+export const clearUsers = () => {
+  return {
+    type: CLEAR_USERS,
   }
 }
 

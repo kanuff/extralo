@@ -1,6 +1,7 @@
 import { 
   RECEIVE_CURRENT_USER,
   RECEIVE_USERS,
+  CLEAR_USERS,
  } from '../actions/session_actions'
 
 export default (state={}, action) => {
@@ -11,6 +12,8 @@ export default (state={}, action) => {
     case RECEIVE_USERS:
       const users = objectified(action.users)
       return Object.assign({}, state, users)
+    case CLEAR_USERS:
+      return Object.assign({})
     default:
       return state
   }

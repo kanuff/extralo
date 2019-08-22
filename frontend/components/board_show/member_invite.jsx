@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMember } from '../../actions/board_membership_actions';
 import { fetchUsers } from '../../actions/session_actions';
+import { fetchBoard } from '../../actions/board_actions';
 import { withRouter } from 'react-router-dom';
 
 const mdp = dispatch => {
     return {
         addMember: (user_id, board_id) => dispatch(addMember(user_id, board_id)),
         fetchUsers: name => dispatch(fetchUsers(name)),
+        fetchBoard: board_id => dispatch(fetchBoard(board_id)),
     }
 }
 
@@ -32,6 +34,14 @@ class MemberInvite extends React.Component{
         this.setUserId = this.setUserId.bind(this);
     }
 
+    // componentDidUpdate(prevProps){
+    //     if(this.props !== prevProps){
+    //         if(this.props.inviteStatus === "Success"){
+    //             this.props.fetchBoard(this.props.board_id)
+    //         }
+    //     }
+    // }
+
     fetchUsers(name){
         this.props.fetchUsers(name)
     }
@@ -51,7 +61,8 @@ class MemberInvite extends React.Component{
             user_id: this.state.user_id,
             board_id: this.state.board_id,
         }
-        this.props.addMember(membership, membership.board_id);
+        this.props.addMember(membership, membership.board_id)
+            .then( () => this.props.fetchBoard(this.props.board_id))
         this.setState({name: "", user_id: 0})
     }
 
@@ -60,9 +71,27 @@ class MemberInvite extends React.Component{
             this.setState({
                 [field]: e.target.value,
             })
-            this.fetchUsers(e.target.value)
+            if(e.target.value !== ""){
+                this.fetchUsers(e.target.value)
+            }
         }
     }
+
+    // generateMembers(){
+    //     const sharableMembers = Object.values(users).map((user, idx) => {
+    //         if (idx > 0) {
+    //             return (
+    //                 <li className={"member-invite-listing"}
+    //                     onClick={this.setUserId(user)}
+    //                     key={user.id}>
+    //                     {user.name}
+    //                 </li>
+    //             )
+    //         }
+    //     })
+    //     return sharableMembers
+    // }
+
 
     render(){
         const { users } = this.props
@@ -77,13 +106,15 @@ class MemberInvite extends React.Component{
         })
         const sharableMembers = Object.values(users).map( (user, idx) => {
             if (idx > 0 ){
-                return(
-                    <li className={"member-invite-listing"}
-                        onClick={this.setUserId(user)}
-                        key={user.id}>
-                        {user.name}
-                    </li>
-                )
+                if (user.name.includes(this.state.name) && this.state.name!==""){
+                    return(
+                        <li className={"member-invite-listing"}
+                            onClick={this.setUserId(user)}
+                            key={user.id}>
+                            {user.name}
+                        </li>
+                    )
+                }
             }
         })
 

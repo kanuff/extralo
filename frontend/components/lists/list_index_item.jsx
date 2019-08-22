@@ -66,7 +66,6 @@ class ListIndexItem extends React.Component{
 
     
     rearrangeAndUpdate(result, card) {
-        //right now this is only configured to handle a move from the same list
         const { cardOrder } = this.state
         const { destination, source, draggableId } = result;
         cardOrder.splice(source.index, 1)
@@ -91,7 +90,6 @@ class ListIndexItem extends React.Component{
     }
 
     rearrange(result, action) {
-        //right now this is only configured to handle a move from the same list
         const { cardOrder } = this.state
         const { destination, source, draggableId } = result;
         
