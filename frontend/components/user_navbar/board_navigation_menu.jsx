@@ -10,7 +10,6 @@ const msp = state => {
     }
 }
 
-
 const mdp = dispatch => {
     return {
         fetchBoards: () => dispatch(fetchBoards()),

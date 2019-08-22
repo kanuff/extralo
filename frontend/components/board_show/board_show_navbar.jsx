@@ -68,7 +68,7 @@ class BoardShowNavbar extends React.Component{
   processErrors() {
     return this.props.errors.map((error, idx) => {
       return (
-        <li key={`error_${idx}`}>
+        <li className={"board-errors"} key={`error_${idx}`}>
           {error}
         </li>
       )
@@ -99,9 +99,9 @@ class BoardShowNavbar extends React.Component{
           <section className={"float-right"} >
             <button 
               id={'board-show-menu-btn'}
-              onClick={this.destroyBoard}
+              onClick={this.openModal('board-options-menu')}
               > 
-              Delete Board
+              ...show menu
             </button>
           </section>
         </section>

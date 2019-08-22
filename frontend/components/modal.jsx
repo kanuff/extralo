@@ -8,6 +8,7 @@ import NavbarInformation from './user_navbar/navbar_information';
 import Notifications from './user_navbar/notifications';
 import BoardNavigationMenu from './user_navbar/board_navigation_menu';
 import MemberInvite from './board_show/member_invite';
+import BoardOptionsMenu from './board_show/board_options_menu';
 
 const Modal = ({modal, closeModal}) => {
   if(!modal){
@@ -16,6 +17,7 @@ const Modal = ({modal, closeModal}) => {
 
   let component;
   let modalType;
+  let permanent;
   switch (modal) {
     case 'user-options':
       component = <UserOptionsMenu />
@@ -43,16 +45,35 @@ const Modal = ({modal, closeModal}) => {
     case 'card-show':
       component = <CardShow className={"card-show-form"}/>
       break
+    case 'board-options-menu':
+      component = <BoardOptionsMenu className={"board-options-menu"}/>
+      modalType = "transparent elevated";
+      // permanent = true;
+      break
     default:
       return null;
   }
 
+  const modalComponent = () => {
+    if(permanent){
+      return (
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+            {component}
+        </div>
+      )
+    } else {
+        return (
+          <div className={`modal-background ${modalType}`} onClick={closeModal}>
+            <div className="modal-child" onClick={e => e.stopPropagation()}>
+              {component}
+            </div>
+          </div>
+      )
+    }
+  }
+
   return (
-    <div className={`modal-background ${modalType}`} onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
-      </div>
-    </div>
+    modalComponent()
   );
 }
 
