@@ -34,14 +34,6 @@ class MemberInvite extends React.Component{
         this.setUserId = this.setUserId.bind(this);
     }
 
-    // componentDidUpdate(prevProps){
-    //     if(this.props !== prevProps){
-    //         if(this.props.inviteStatus === "Success"){
-    //             this.props.fetchBoard(this.props.board_id)
-    //         }
-    //     }
-    // }
-
     fetchUsers(name){
         this.props.fetchUsers(name)
     }
@@ -76,22 +68,6 @@ class MemberInvite extends React.Component{
             }
         }
     }
-
-    // generateMembers(){
-    //     const sharableMembers = Object.values(users).map((user, idx) => {
-    //         if (idx > 0) {
-    //             return (
-    //                 <li className={"member-invite-listing"}
-    //                     onClick={this.setUserId(user)}
-    //                     key={user.id}>
-    //                     {user.name}
-    //                 </li>
-    //             )
-    //         }
-    //     })
-    //     return sharableMembers
-    // }
-
 
     render(){
         const { users } = this.props

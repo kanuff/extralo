@@ -70,6 +70,7 @@ class CreateListForm extends React.Component {
         return (
             <form className={"create-list-form"} onSubmit={this.handleSubmit}>
                 <input 
+                    ref={ me => this.title = me}
                     type="text"
                     onChange={this.update("title")}
                     onFocus={this.editTitle}
@@ -77,6 +78,7 @@ class CreateListForm extends React.Component {
                     placeholder={this.state.placeholder}
                 />
                 <input
+                    onClick={ () => this.title.focus() }
                     type="submit"
                     value={"Add List"}
                 />
