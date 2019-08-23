@@ -48,20 +48,4 @@ class Board < ApplicationRecord
     members.pluck(:id)
   end
 
-  # def member_ids #this seems ugly --> is there a better way of doing it?
-  #   member_ids = []
-  #   members.each do |member|
-  #     member_ids << member.id
-  #   end
-  #   member_ids
-  # end
-
-  # def list_ids
-  #   list_ids = []
-  #   lists.each do |list|
-  #     list_ids << list.id
-  #   end
-  #   list_ids
-  # end
-
 end

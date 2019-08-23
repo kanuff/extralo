@@ -9,7 +9,6 @@ const mdp = dispatch => {
   }
 }
 
-
 class BoardShowNavbar extends React.Component{
   constructor(props){
     super(props);
@@ -20,7 +19,6 @@ class BoardShowNavbar extends React.Component{
     this.destroyBoard = this.destroyBoard.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.openModal = this.openModal.bind(this);
   }
 
   openModal(modal){
@@ -89,7 +87,7 @@ class BoardShowNavbar extends React.Component{
                 value={this.state.title}/>
             </form>
             <button id={'board-favorited'}><i className="far fa-star"></i></button>
-            <button id={'member-icon'}>M</button>
+            <button id={'member-icon'}>{this.props.ownerInitial}</button>
             <button 
               id={'board-invite-btn'}
               onClick={this.openModal('invite-members')}

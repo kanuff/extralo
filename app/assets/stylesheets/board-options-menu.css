@@ -3,7 +3,7 @@
     height: 100%;
     right: 0;
     top: 41px;
-    width: 200px;
+    width: 300px;
     background: whitesmoke;
 }
 
@@ -14,15 +14,36 @@
     border-bottom: 1px solid lightgrey;
 }
 
+.menu-title > button {
+    top: 44.5px;
+    background: transparent;
+    border-radius: 4px;
+    position: fixed;
+    right: 5px;
+    outline: none;
+    border: none;
+    padding: 0 9px 1px 9px;
+    font-size: 18px;
+    color: grey;
+    text-align: center;
+    line-height: 26px;
+}
+
+.menu-title > button:hover {
+    background: rgba(0,0,0,0.2);
+}
+
 .menu-options{
-    padding: 8px;
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 82%;
 }
 
 #delete-board-button{
-    position: fixed;
-    bottom: 30px;
-    right: 24px;
-    padding: 10px;
+    align-self: flex-end;
+    margin: auto auto 0 auto;
+    padding: 10px 20px;
     outline: none;
     cursor: pointer;
     background: rgb(190, 0, 0);
@@ -39,5 +60,10 @@
 .board-members {
     text-align: left;
     line-height: 175%;
+    /* text-decoration: underline; */
 }
 
+/* .board-members > ul > li {
+    border: 1px solid red;
+    text-decoration: none;
+} */

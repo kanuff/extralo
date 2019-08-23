@@ -4,6 +4,9 @@ import {
     destroyBoard,
     receiveErrors
 } from '../../actions/board_actions';
+import {
+    closeModal
+} from '../../actions/modal_actions'
 
 // import {
 //     fetchUsers
@@ -16,6 +19,7 @@ const mdp = dispatch => {
         destroyBoard: id => dispatch(destroyBoard(id)),
         receiveErrors: errors => dispatch(receiveErrors(errors)),
         fetchUSers: errors => dispatch(fetchUSers(errors)),
+        closeModal: () => dispatch(closeModal()),
     }
 }
 
@@ -75,6 +79,9 @@ class BoardOptionsMenu extends React.Component{
             <div className={"board-options-menu"}>
                 <div className={"menu-title"}>
                     Menu
+                    <button onClick={()=>this.props.closeModal()}>
+                        x
+                    </button>
                 </div>
                 <div className={"menu-options"}>
                     <div className={"board-members"}>

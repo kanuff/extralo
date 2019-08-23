@@ -23,13 +23,18 @@ const msp = (state, ownProps) => {
     description: "Description",
     favorited: false,
     members: [],
+    creator_id: 0,
   }
+  const board = state.entities.boards[ownProps.match.params.board_id] || defaultBoard;
+  const owner = state.entities.users[board.creator_id] || {name: "Matthew"};
+  const ownerInitial = owner.name.split("")[0];
   return {
     board_id: ownProps.match.params.board_id,
-    board: state.entities.boards[ownProps.match.params.board_id] || defaultBoard,
+    board: board,
     history: ownProps.history,
     current_user_id: state.session.id,
     errors: state.errors.board,
+    ownerInitial: ownerInitial,
   }
 }
 
