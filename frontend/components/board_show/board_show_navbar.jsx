@@ -86,7 +86,11 @@ class BoardShowNavbar extends React.Component{
                 onBlur={this.handleSubmit}
                 value={this.state.title}/>
             </form>
-            <button id={'board-favorited'}><i className="far fa-star"></i></button>
+            <button
+              onClick={() => this.props.updateBoard({id: this.state.id, starred: true})}
+              id={'board-favorited'}>
+                <i className="far fa-star"></i>
+            </button>
             <button id={'member-icon'}>{this.props.ownerInitial}</button>
             <button 
               id={'board-invite-btn'}
