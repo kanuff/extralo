@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { BoardIndexItem } from './board_index_item';
 
 export default class BoardIndex extends React.Component{
@@ -12,13 +11,6 @@ export default class BoardIndex extends React.Component{
     this.props.fetchBoards();
     this.props.closeModal();
   }
-
-  // componentDidUpdate(prevProps){
-  //   if(this.props !== prevProps){
-  //     this.props.fetchBoards()
-  //     this.props.closeModal();
-  //   }
-  // }
 
   componentWillUnmount(){
     this.props.closeModal();
@@ -56,12 +48,6 @@ export default class BoardIndex extends React.Component{
     })
     return(
       <section className={"board-index"}>
-        {/* <section className={"board-index-navbar-container"}>
-          <ul className={"board-index-navbar"}>
-            <li> <i className="fas fa-list"></i>  Boards</li>
-            <li><Link to="/" className={""}><i className="fas fa-home"></i> Home</Link></li>
-          </ul>
-        </section> */}
         <section className={"board-index-list-container"}>
           <div id={"board-index-title"}><i className="fas fa-history"></i> Recently Updated</div>
           <ul className={"recently-updated board-index-list"}>

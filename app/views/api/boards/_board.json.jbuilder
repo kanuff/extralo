@@ -1,6 +1,6 @@
 
 json.board do
-    json.extract! board, :id, :title, :description, :member_ids, :creator_id, :updated_at, :created_at
+    json.extract! board, :id, :title, :description, :member_ids, :creator_id, :updated_at, :created_at, :starred
 end
 json.lists do
     json.array! board.lists.each do |list|

@@ -1,6 +1,5 @@
 class Api::BoardMembershipsController < ApplicationController
 
-
     def create
         board_membership = BoardMembership.new()
         board_membership.board_id = params[:board_membership][:board_id]

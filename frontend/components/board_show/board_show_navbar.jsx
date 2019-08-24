@@ -15,10 +15,23 @@ class BoardShowNavbar extends React.Component{
     this.state = {
       title: props.board.title,
       id: props.board.id,
+      starred: props.board.starred,
     }
     this.destroyBoard = this.destroyBoard.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleStar = this.toggleStar.bind(this);
+  }
+
+  toggleStar(){
+    const toggled = this.state.starred ? false : true
+    this.setState(
+      {starred: toggled}
+    )
+    this.props.updateBoard({
+      id: this.state.id,
+      starred: toggled,
+    })
   }
 
   openModal(modal){
@@ -44,7 +57,11 @@ class BoardShowNavbar extends React.Component{
   componentDidUpdate(prevProps){
     if (prevProps !== this.props){
       this.setState(
-        {title: this.props.board.title, id: this.props.board.id}
+        {
+          title: this.props.board.title,
+          id: this.props.board.id,
+          starred: this.props.board.starred
+        }
       )
     }
   }
@@ -74,6 +91,7 @@ class BoardShowNavbar extends React.Component{
   }
 
   render (){
+    const star = this.state.starred ? <i className="fas fa-star" style={{ color: "rgba(255, 255, 0, 0.8)" }}></i> : <i className="far fa-star"></i>
     return (
       <>
         <section className={"board-show-navbar-container"}>
@@ -87,9 +105,9 @@ class BoardShowNavbar extends React.Component{
                 value={this.state.title}/>
             </form>
             <button
-              onClick={() => this.props.updateBoard({id: this.state.id, starred: true})}
+              onClick={this.toggleStar}
               id={'board-favorited'}>
-                <i className="far fa-star"></i>
+                {star}
             </button>
             <button id={'member-icon'}>{this.props.ownerInitial}</button>
             <button 

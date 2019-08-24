@@ -83,3 +83,24 @@
 .recently-updated{
     min-height: 105px;
 }
+
+
+
+#filled-star > * {
+  color: rgba(255, 255, 0, 0.8);
+}
+
+.fa-star {
+  color: rgba(255, 255, 0, 0.8);
+}
+
+
+.board-index-list > * > a{
+  display: flex;
+  flex-direction: column;
+}
+
+.board-index-list > * > a > * {
+  align-self: flex-end;
+  margin-top: auto;
+}
