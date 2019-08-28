@@ -1,6 +1,6 @@
 # extralo
 [Live Demo](https://extralo.herokuapp.com)
-![Image of Extralo](app/assets/images/readme/homepage.png)
+![Image of Extralo](app/assets/images/readme/extralo-homepage.png)
 
 ---
 ## About
