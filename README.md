@@ -11,3 +11,4 @@ Extralo is a project-management app that helps users organize their workflow. Wi
 
 The main organizational unit in Extralo is a **Board**. Boards can contain an arbitrary amount of **Lists**, which in turn can contain an arbitrary amount of **Cards**. There are no restrictions imposed on the internal structure of a Board, allowing the user to decide how they want to organize the structure of their project.
 
+![Image of Extralo]("app/assets/images/readme/homepage.png")
