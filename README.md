@@ -82,3 +82,16 @@ When a user drags a card/list to a new position, Extralo sends an AJAX request t
 ```
 
 The above code handles much of the logic involved with moving nodes within a linked-list, and when called without any specified parent/child nodes, the method removes a node from an existing linked-list, giving the method a high-degree of flexibility and reusability.
+
+Additional features:
+- Users may share boards with other accounts
+- Users may favorite boards for quick-access
+- Card titles and descriptions may be updated
+- Cards and lists may be archived
+- A user can see who else is a member of a board, and users may delete boards they own
+
+Planned future features:
+- Daily cart feature that allows users to "checkout" tasks across boards that they intend to accomplish for the day
+- User metrics for productivity
+- Board metrics for activity
+- Card and list logs for activity
