@@ -3,14 +3,12 @@ class Api::UsersController < ApplicationController
 
   def index
     @users = User.where("name LIKE ?", "#{params[:name]}%")
-    # @users = User.where("name LIKE ?", "#{params[:name]}\c%")
     render :index
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      # debugger
       login!(@user)
       render :show
     else

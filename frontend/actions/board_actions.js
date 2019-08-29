@@ -26,7 +26,6 @@ export const receiveBoards = boards => {
 }
 
 export const receiveBoard = payload => {
-  debugger
   return {
     type: RECEIVE_BOARD,
     board: payload.board,
