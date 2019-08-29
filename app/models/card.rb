@@ -77,7 +77,6 @@ class Card < ApplicationRecord
 
         self.next_id = new_child.id
         self.prev_id = new_parent.id
-        # debugger
 
         Card.transaction do 
             old_parent.save! if old_parent.id
@@ -97,7 +96,7 @@ class Card < ApplicationRecord
         ].reject {|card| card.id == nil}
     end
 
-    def root # THESE ARE N + 1 QUERIES, FIND WAY TO FIX (dynamically create joins?)
+    def root
         prev_id = self.prev_id || self.id
         return self if prev_id == self.id
         while prev_id
@@ -107,7 +106,7 @@ class Card < ApplicationRecord
         Card.find(root_id)
     end
 
-    def leaf # THESE ARE N + 1 QUERIES, FIND WAY TO FIX (dynamically create joins?)
+    def leaf
         prev_id = self.prev_id || self.id
         next_id = self.next_id || self.id
         return self if next_id == self.id
