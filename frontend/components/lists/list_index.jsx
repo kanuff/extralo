@@ -133,6 +133,7 @@ export default class ListIndex extends React.Component{
                                     {/* Leave me empty yo 
                                     I keep the board show page 
                                     looking nice */}
+                                    Testing to see if this shows up
                                 </div>
                             </ul>
                         )}
