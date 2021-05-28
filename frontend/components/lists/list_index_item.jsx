@@ -13,6 +13,8 @@ import CardItem from '../cards/card_item_container';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 import { Draggable, Droppable } from 'react-beautiful-dnd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBrain } from '@fortawesome/free-solid-svg-icons'
 
 const msp = (state, ownProps) => {
     
@@ -229,13 +231,13 @@ class ListIndexItem extends React.Component{
                 <form  className={"create-card-form"} id={"create-card-form-background"} onSubmit={this.handleCardSubmit}>
                     <input
                         type="text"
-                        placeholder={"Enter a title for this card..."}
+                        placeholder={"Enter a link for this thought..."}
                         onChange={this.update("cardTitle")}
                     />
                     <div ref={el => this.listIndexBottom = el}>
                         <input 
                             type="submit" 
-                            value={"Add Card"}
+                            value={"Add Thought"}
                         />
                         <button  onClick={this.formToggle}> x </button>
                     </div>
@@ -267,7 +269,7 @@ class ListIndexItem extends React.Component{
         } else {
             return(
                 <button id={"add-card-btn"} onClick={this.formToggle}>
-                    + Add another card
+                    + Add another thought
                 </button>
             )
         }
@@ -304,8 +306,10 @@ class ListIndexItem extends React.Component{
 
     getListStyle(isDragging, draggableStyle) {
         return {
-            background: 'rgb(205, 229, 255)',
-            boxShadow: isDragging ? '5px 5px 2px 2px rgba(0, 0, 0, 0.25)' : '1px 1px 0px 0px rgba(0, 0, 0, 0.25)',
+            // background: 'rgb(205, 229, 255)',
+            // boxShadow: isDragging ? '5px 5px 2px 2px rgba(0, 0, 0, 0.25)' : '1px 1px 0px 0px rgba(0, 0, 0, 0.25)',
+            background: 'transparent',
+            boxShadow: 'none',
             ...draggableStyle
         }
     }
@@ -329,7 +333,37 @@ class ListIndexItem extends React.Component{
                             provided.draggableProps.style
                             )}
                     >
-                        <form onSubmit={this.handleSubmit}>
+                      <div
+                        style={{
+                          backgroundColor: 'transparent',
+                          paddingBottom: '15px',
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={faBrain}
+                          style={{
+                            fontSize: '80px',
+                            backgroundColor: 'transparent',
+                            display: 'block',
+                            margin: 'auto',
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            window.open(this.state.title, '_blank')
+                          }}
+                        />
+                        <div
+                          style={{
+                            backgroundColor: 'transparent',
+                            textAlign: 'center',
+                            color: 'white',
+                            fontSize: '18px'
+                          }}
+                        >
+                          {this.state.title}
+                        </div>
+                      </div>
+                        {/* <form onSubmit={this.handleSubmit}>
                             <input 
                                 id={`list-title-input_${list.id}`}
                                 type="text"
@@ -337,12 +371,12 @@ class ListIndexItem extends React.Component{
                                 onChange={this.update("title")}
                                 onBlur={this.handleSubmit}
                             />
-                        </form>
-                        <button 
+                        </form> */}
+                        {/* <button 
                             id={'archive-list-btn'}
                             onClick={this.archiveList}>
-                            Archive List
-                        </button>
+                            Archive Main Thought
+                        </button> */}
                         <Droppable
                             droppableId={`list_${this.props.list.id}`}
                             type={'CARD'}

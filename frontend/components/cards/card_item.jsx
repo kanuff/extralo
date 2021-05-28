@@ -1,6 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBrain } from '@fortawesome/free-solid-svg-icons'
 
 export default class CardItem extends React.Component {
   constructor(props){
@@ -36,8 +37,8 @@ export default class CardItem extends React.Component {
 
   getListStyle(isDragging, draggableStyle) {
     return {
-      background: 'rgba(255, 255, 255, 0.9)',
-      boxShadow: '0px 2px 3px 0px rgba(0, 0, 0, 0.25)',
+      // background: 'rgba(255, 255, 255, 0.9)',
+      // boxShadow: '0px 2px 3px 0px rgba(0, 0, 0, 0.25)',
       ...draggableStyle
     }
   }
@@ -53,7 +54,7 @@ export default class CardItem extends React.Component {
         {(provided, snapshot) => (
           <li 
             className = {"card-item"}
-            onClick={this.openCardShowModal}
+            // onClick={this.openCardShowModal}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -62,7 +63,35 @@ export default class CardItem extends React.Component {
               provided.draggableProps.style
             )}
           >
-            {this.props.card.title}
+            <div
+              style={{
+                backgroundColor: 'transparent',
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faBrain}
+                  style={{
+                  fontSize: '50px',
+                  backgroundColor: 'transparent',
+                  display: 'block',
+                  margin: 'auto',
+                }}
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.open(this.props.card.title, '_blank')
+                }}
+              />
+              <div
+                style={{
+                  fontSize: '14px',
+                  backgroundColor: 'transparent',
+                  color: 'white',
+                  textAlign: 'center',
+                }}
+              >
+                {this.props.card.title}
+              </div>
+            </div>
           </li>
         )}
       </Draggable>

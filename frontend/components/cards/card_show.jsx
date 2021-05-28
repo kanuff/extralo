@@ -97,7 +97,7 @@ class CardShow extends React.Component {
                     />
                     <input type="submit" value="Update"/>
                 </form>
-                <button onClick={this.archiveCard}>Archive Card</button>
+                <button onClick={this.archiveCard}>Archive Thought</button>
             </section>
 
         )

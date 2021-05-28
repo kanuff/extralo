@@ -5,7 +5,7 @@ export const CreateCardForm = (props) => {
   <form className={"create-card-form"} onSubmit={this.handleCardSubmit}>
     <input
       type="text"
-      placeholder={"Enter a title for this card..."}
+      placeholder={"Enter a link for this thought..."}
       onChange={this.update("cardTitle")}
     />
     <div ref={el => this.listIndexBottom = el}>

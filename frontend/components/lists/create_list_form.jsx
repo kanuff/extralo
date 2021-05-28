@@ -25,7 +25,7 @@ class CreateListForm extends React.Component {
         this.state = {
             title: props.list.title,
             board_id: props.board_id,
-            placeholder: " + Add another list"
+            placeholder: " + Add another main thought"
         }
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,13 +35,13 @@ class CreateListForm extends React.Component {
 
     editTitle() {
         this.setState(
-            { placeholder: "Enter list title..." }
+            { placeholder: "Enter main thought link" }
         )
     }
 
     fillTitle() {
         this.setState(
-            { placeholder: " + Add another list" }
+            { placeholder: " + Add another main thought" }
         )
     }
 
@@ -81,7 +81,7 @@ class CreateListForm extends React.Component {
                 />
                 <input
                     type="submit"
-                    value={"Add List"}
+                    value={"Add Main Thought"}
                 />
             </form>
         )
