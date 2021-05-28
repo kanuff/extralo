@@ -87,6 +87,8 @@ export default class CardItem extends React.Component {
                   backgroundColor: 'transparent',
                   color: 'white',
                   textAlign: 'center',
+                  width: '200px',
+                  wordBreak: 'break-all'
                 }}
               >
                 {this.props.card.title}

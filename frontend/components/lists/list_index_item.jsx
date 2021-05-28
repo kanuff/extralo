@@ -357,7 +357,9 @@ class ListIndexItem extends React.Component{
                             backgroundColor: 'transparent',
                             textAlign: 'center',
                             color: 'white',
-                            fontSize: '18px'
+                            fontSize: '18px',
+                            width: '200px',
+                            wordBreak: 'break-all'
                           }}
                         >
                           {this.state.title}
